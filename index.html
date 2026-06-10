@@ -14,6 +14,7 @@
             font-family: 'Georgia', serif;
             overscroll-behavior-y: contain; 
             overflow-y: auto; 
+            overflow-x: hidden;
         }
 
         /* Container für die Zentrierung */
@@ -24,6 +25,90 @@
             align-items: center;
             padding: 20px;
             box-sizing: border-box;
+            position: relative;
+        }
+
+        /* --- WACHSSIEGEL BEREICH (Startseite) --- */
+        #siegelBereich {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        /* Der Text über dem Siegel */
+        .siegel-info {
+            font-size: 1.2rem;
+            color: #8b5a2b;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        /* Das Wachssiegel (Grafik-Elemente) */
+        .wax-seal {
+            width: 100px;
+            height: 100px;
+            background-color: #a12a2a; /* Klassisches Rot */
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Siegel-Innentext */
+        .wax-seal::after {
+            content: "Für Dich";
+            font-family: 'Times New Roman', serif;
+            color: #fcf5e3;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Die beiden Hälften für den Bruch */
+        .wax-seal-part {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #a12a2a;
+            border-radius: 50%;
+            transition: transform 0.5s ease 0.2s; /* Verzögerung für den Klick-Effekt */
+        }
+
+        /* Klick-Interaktion auf dem Siegel */
+        #siegelBereich:active .wax-seal {
+            transform: scale(0.95);
+        }
+
+        /* Animation: Siegel bricht auf */
+        .siegel-broken #siegelBereich {
+            opacity: 0;
+            transform: translateY(-20px);
+            pointer-events: none; /* Nicht mehr anklickbar */
+        }
+
+        .siegel-broken .wax-seal-part-1 {
+            transform: translateX(-60px) rotate(-15deg);
+        }
+        
+        .siegel-broken .wax-seal-part-2 {
+            transform: translateX(60px) rotate(15deg);
+        }
+
+
+        /* --- PERGAMENT BEREICH (Nach dem Öffnen) --- */
+        #pergamentBereich {
+            display: none; /* Erst nach Siegel-Bruch sichtbar */
+            opacity: 0;
+            transition: opacity 1s ease 0.7s; /* Startet nach Siegel-Animation */
+        }
+
+        .siegel-broken #pergamentBereich {
+            display: block;
+            opacity: 1;
         }
 
         /* Das edle Pergament */
@@ -41,11 +126,17 @@
                 inset 0 0 50px rgba(139,90,43,0.2);
             position: relative;
             box-sizing: border-box;
+            transform: scale(0.95);
+            transition: transform 1s ease 0.7s;
+        }
+
+        .siegel-broken .parchment {
+            transform: scale(1);
         }
 
         /* Das Schließen-X oben rechts */
         .close-x {
-            display: none; /* Erst auf Seite 2 sichtbar */
+            display: none;
             position: absolute;
             top: 15px;
             right: 20px;
@@ -117,40 +208,55 @@
 </head>
 <body>
 
-    <div class="wrapper">
+    <div class="wrapper" id="pageWrapper">
 
-        <div class="parchment">
-            <div class="close-x" id="closeBtn" onclick="showStartPage()">✕</div>
-
-            <div id="seite1">
-                <p class="message">
-                    Diesmal hat es leider nicht geklappt... aber wann immer es dich mal auf diese Seite verirrt, vergiss niemals: Ich bin für dich da. ✨
-                </p>
-                <button class="start-cheer-btn" onclick="showLaunePage()">
-                    Brauchst du ein kurzes Lächeln? Klick hier auf den Button!
-                </button>
+        <div id="siegelBereich" onclick="breakSeal()">
+            <p class="siegel-info">Hier wartet eine Botschaft für dich...</p>
+            <div class="wax-seal">
+                <div class="wax-seal-part wax-seal-part-1"></div>
+                <div class="wax-seal-part wax-seal-part-2"></div>
             </div>
+        </div>
 
-            <div id="seite2" class="laune-bereich">
-                <div class="compliment-box" id="complimentText">
-                    </div>
-                <div class="sub-text">✨ Lehn dich zurück, die Sprüche wechseln von ganz allein... ✨</div>
+        <div id="pergamentBereich">
+            <div class="parchment">
+                <div class="close-x" id="closeBtn" onclick="showStartPage()">✕</div>
+
+                <div id="pergamentStartText">
+                    <p class="message">
+                        Diesmal hat es leider nicht geklappt... aber wann immer es dich mal auf diese Seite verirrt, vergiss niemals: Ich bin für dich da. ✨
+                    </p>
+                    <button class="start-cheer-btn" onclick="showLaunePage()">
+                        Brauchst du ein kurzes Lächeln? Klick unten auf den Button! 👇
+                    </button>
+                </div>
+
+                <div id="pergamentLaune" class="laune-bereich">
+                    <div class="compliment-box" id="complimentText">
+                        </div>
+                    <div class="sub-text">✨ Lehn dich zurück, die Sprüche wechseln von ganz allein... ✨</div>
+                </div>
             </div>
-
         </div>
 
     </div>
 
     <script>
-        // Eine Liste mit charmanten Sprüchen
+        // Funktion: Siegel bricht auf, Pergament zeigt sich
+        function breakSeal() {
+            // Klasse zum Wrapper hinzufügen, damit CSS die Animation startet
+            document.getElementById('pageWrapper').classList.add('siegel-broken');
+        }
+
+        // Eine Liste mit charmanten Sprüchen (wird jetzt der Reihe nach abgespielt)
         const compliments = [
             "Du bist der Grund, warum heute jemand da draußen lächelt! 😊",
             "Egal wie grau der Tag wirkt: Du bringst deine ganz eigene Farbe hinein! 🎨✨",
-            "Kopf hoch, Prinzessin! Die Welt ist schöner, weil es dich gibt. 🌍",
-            "Du verdienst heute den leckersten Pudding und ein großes stück Schokolade! 🍮🍫",
-            "Atme tief durch. Du machst das großartig! 🌟",
+            "Kopf hoch, edle Maid! Die Welt ist schöner, weil es dich gibt. 🌍",
+            "Du verdienst heute das größte Stück Kuchen und das cremigste Eis! 🍦🍰",
+            "Atme tief durch. Du machst das alles großartig! 🌟",
             "Wenn du mal vergisst, wie wunderbar du bist – diese Seite merkt es sich für dich! 🌸",
-            "Ein kleiner Reminder: Du bist absolut einzigartig! ⚔️💛",
+            "Ein kleiner ritterlicher Reminder: Du bist absolut einzigartig! ⚔️💛",
             "Lass dir dein Lächeln von niemandem nehmen. Es steht dir viel zu gut! 😍"
         ];
 
@@ -180,13 +286,13 @@
             }, 500);
         }
 
-        // Wechselt zu Seite 2 (Gute Laune)
+        // Wechselt zu Seite B (Gute Laune)
         function showLaunePage() {
-            document.getElementById('seite1').style.display = 'none';
-            document.getElementById('seite2').style.display = 'block';
+            document.getElementById('pergamentStartText').style.display = 'none';
+            document.getElementById('pergamentLaune').style.display = 'block';
             document.getElementById('closeBtn').style.display = 'block';
 
-            // Index zurücksetzen, damit es immer beim ersten Spruch anfängt, wenn sie die Seite öffnet
+            // Index zurücksetzen, damit es immer beim ersten Spruch anfängt
             currentIndex = 0; 
             
             // Direkt das erste Kompliment anzeigen
@@ -196,11 +302,11 @@
             intervalId = setInterval(changeCompliment, 5000);
         }
 
-        // Wechselt zurück zu Seite 1 (Startseite)
+        // Wechselt zurück zu Seite A (Startseite mit deiner Nachricht)
         function showStartPage() {
-            document.getElementById('seite2').style.display = 'none';
+            document.getElementById('pergamentLaune').style.display = 'none';
             document.getElementById('closeBtn').style.display = 'none';
-            document.getElementById('seite1').style.display = 'block';
+            document.getElementById('pergamentStartText').style.display = 'block';
 
             // Automatischen Wechsel stoppen
             if (intervalId) {
