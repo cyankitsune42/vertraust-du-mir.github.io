@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eine Frage...</title>
+    <title>Für dich...</title>
     <style>
         /* Grunddesign der Seite */
         body {
@@ -36,16 +36,16 @@
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
 
-        /* Das Pergament (anfänglich unsichtbar) */
+        /* Das edle Pergament (anfänglich unsichtbar) */
         .parchment {
             display: none;
             opacity: 0;
             background: #fcf5e3;
             background-image: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 100%);
-            border: 8px double #8b5a2b; /* Edler, alter Doppelrahmen */
+            border: 8px double #8b5a2b;
             border-radius: 4px;
-            padding: 40px 50px;
-            max-width: 450px;
+            padding: 40px 45px;
+            max-width: 480px;
             text-align: center;
             box-shadow: 
                 0 10px 30px rgba(0,0,0,0.15),
@@ -54,52 +54,52 @@
             transition: opacity 1s ease, transform 1s ease;
         }
 
-        /* Der Text auf dem Pergament */
-        .parchment p {
-            font-size: 1.6rem;
+        /* Haupttext auf dem Pergament */
+        .parchment p.message {
+            font-size: 1.4rem;
             color: #4a2f15;
             line-height: 1.6;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-style: italic;
         }
 
-        /* Container für die Antwort-Buttons */
-        .button-group {
+        /* Trennlinie */
+        .divider {
+            border-top: 1px dashed #8b5a2b;
+            margin: 25px 0;
+            opacity: 0.5;
+        }
+
+        /* Der interaktive Gute-Laune-Bereich */
+        .compliment-box {
+            font-size: 1.2rem;
+            color: #8b5a2b;
+            font-weight: bold;
+            min-height: 50px;
+            margin-bottom: 20px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            align-items: center;
+            transition: all 0.3s ease;
         }
 
-        /* Styling für die Ja/Nein Buttons */
-        .choice-btn {
-            padding: 10px 25px;
-            font-size: 1.1rem;
+        /* Der Gute-Laune-Button */
+        .cheer-btn {
+            padding: 12px 25px;
+            font-size: 1rem;
             font-family: 'Georgia', serif;
-            border: 1px solid #8b5a2b;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .btn-yes {
             background-color: #8b5a2b;
             color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: all 0.2s ease;
         }
 
-        .btn-yes:hover {
+        .cheer-btn:hover {
             background-color: #6f4621;
-            transform: scale(1.05);
-        }
-
-        .btn-no {
-            background-color: transparent;
-            color: #8b5a2b;
-        }
-
-        .btn-no:hover {
-            background-color: rgba(139, 90, 43, 0.1);
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         /* Klasse zum Einblenden via JavaScript */
@@ -107,51 +107,6 @@
             display: block;
             opacity: 1;
             transform: translateY(0);
-        }
-
-        /* Das Pop-up (Modal) für "Nein" */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-        }
-
-        .modal-content {
-            background: #fcf5e3;
-            border: 2px solid #8b5a2b;
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            max-width: 300px;
-            animation: popIn 0.3s ease;
-        }
-
-        .modal-content p {
-            font-size: 1.2rem;
-            color: #4a2f15;
-            margin-bottom: 20px;
-        }
-
-        .modal-close-btn {
-            padding: 8px 20px;
-            background-color: #8b5a2b;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        @keyframes popIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
         }
     </style>
 </head>
@@ -162,29 +117,23 @@
     </button>
 
     <div class="parchment" id="parchmentPaper">
-        <p>Magst du heute mit mir ein Eis essen gehen? 🍦</p>
+        <p class="message">
+            Diesmal hat es leider nicht geklappt... aber wann immer es dich mal auf diese Seite verirrt, vergiss niemals: Ich bin für dich da. ✨
+        </p>
         
-        <div class="button-group">
-            <a href="https://wa.me/4917683472940?text=Seid%20gegr%C3%BC%C3%9Ft%2C%20edler%20Herr%2C%0A%0AEure%20Botschaft%20hat%20mein%20Herz%20erfreut%20wie%20der%20Morgentau%20im%20Mai.%20Gerne%20nehme%20ich%20Eure%20Einladung%20an%2C%20denn%20Eure%20holden%20Worte%20klingen%20wie%20s%C3%BC%C3%9Fe%20Musik%20in%20meinen%20Ohren.%0A%0ALasset%20uns%20treffen%20am%20heutigen%20Tage.%20Ich%20harre%20bereits%20mit%20gro%C3%9Fer%20Ungeduld%20unserer%20Zusammenkunft%20und%20verbleibe%20in%20voller%20Vorfreude." 
-               target="_blank" 
-               class="choice-btn btn-yes">
-               Ja!
-            </a>
-            
-            <button class="choice-btn btn-no" onclick="showNoPopup()">
-                Nein
-            </button>
+        <div class="divider"></div>
+        
+        <div class="compliment-box" id="complimentText">
+            Brauchst du ein kurzes Lächeln? Klick unten auf den Button! 👇
         </div>
-    </div>
 
-    <div class="modal-overlay" id="noModal">
-        <div class="modal-content">
-            <p>Kein Problem, vielleicht beim nächsten Mal! 😊</p>
-            <button class="modal-close-btn" onclick="closeNoPopup()">Schließen</button>
-        </div>
+        <button class="cheer-btn" onclick="generateCompliment()">
+            ✨ Magischer Gute-Laune-Bringer
+        </button>
     </div>
 
     <script>
+        // Funktion: Ersten Button verstecken & Pergament zeigen
         function revealMessage() {
             const button = document.getElementById('mainButton');
             const parchment = document.getElementById('parchmentPaper');
@@ -197,14 +146,14 @@
             }, 10);
         }
 
-        function showNoPopup() {
-            document.getElementById('noModal').style.display = 'flex';
-        }
-
-        function closeNoPopup() {
-            document.getElementById('noModal').style.display = 'none';
-        }
-    </script>
-
-</body>
-</html>
+        // Eine Liste mit charmanten Sprüchen, die gute Laune machen
+        const compliments = [
+            "Du bist der Grund, warum heute jemand da draußen lächelt! 😊",
+            "Egal wie grau der Tag wirkt: Du bringst deine ganz eigene Farbe hinein! 🎨✨",
+            "Kopf hoch, edle Maid! Die Welt ist schöner, weil es dich gibt. 🌍",
+            "Du verdienst heute das größte Stück Kuchen und das cremigste Eis! 🍦🍰",
+            "Atme tief durch. Du machst das alles großartig! 🌟",
+            "Wenn du mal vergisst, wie wunderbar du bist – diese Seite merkt es sich für dich! 🌸",
+            "Ein kleiner ritterlicher Reminder: Du bist absolut einzigartig! ⚔️💛",
+            "Lass dir dein Lächeln von niemandem nehmen. Es steht dir viel zu gut! 😍"
+        ];
