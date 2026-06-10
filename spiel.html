@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Erfolgstagebuch</title>
+    <style>
+        body { background: #1a1008; color: #fcf5e3; font-family: 'Georgia', serif; padding: 20px; }
+        .container { max-width: 600px; margin: auto; background: #3a2312; padding: 20px; border-radius: 10px; }
+        .card { background: #fcf5e3; color: #3a2312; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        button { cursor: pointer; background: #d4af37; border: none; padding: 5px 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏆 Erfolgstagebuch</h1>
+        <div class="card">Taler: <span id="coins">0</span></div>
+        <div id="tasks"></div>
+        <input id="newTask" placeholder="Neue Aufgabe">
+        <button onclick="addTask()">Hinzufügen</button>
+    </div>
+
+    <script>
+        // Hier kommt dein bekannter Spiel-Logik-Code hinein...
+        // ... (Dein Code aus der vorherigen Nachricht)
+        render();
+    </script>
+</body>
+</html>
