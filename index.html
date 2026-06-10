@@ -8,13 +8,14 @@
         /* Importiert die magische Schriftart NUR für den Button und das X */
         @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
 
-        /* Grunddesign der Seite - Jetzt mit vereinfachtem Bildpfad */
+        /* Grunddesign der Seite - Jetzt mit angepasstem Pfad für GitHub Pages */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            background-color: #1a1008; /* Dunklerer Fallback, falls das Bild lädt */
-            background-image: url('hintergrund.png'); 
+            background-color: #1a1008; 
+            /* Das ../ signalisiert dem Browser, eine Ebene höher nach dem Bild zu suchen */
+            background-image: url('../hintergrund.png'); 
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -32,14 +33,14 @@
             align-items: center;
             padding: 20px;
             box-sizing: border-box;
-            background-color: rgba(0, 0, 0, 0.2); /* Leicht dunkler Schleier für die Atmosphäre */
+            background-color: rgba(0, 0, 0, 0.2); 
         }
 
         /* Das edle Pergament - Hell und scharf */
         .parchment {
             background: #fcf5e3;
             background-image: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 100%);
-            border: 6px double #3a2312; /* Magischer Doppelrahmen */
+            border: 6px double #3a2312; 
             border-radius: 4px;
             padding: 40px 30px;
             max-width: 480px;
@@ -87,7 +88,7 @@
             font-size: 1rem;
             font-family: 'Cinzel Decorative', serif;
             background: linear-gradient(135deg, #3a2312 0%, #1a1008 100%);
-            color: #d4af37; /* Hogwarts-Gold */
+            color: #d4af37; 
             border: 2px solid #d4af37;
             border-radius: 30px;
             cursor: pointer;
