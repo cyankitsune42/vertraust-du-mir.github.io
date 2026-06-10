@@ -6,15 +6,25 @@
     <title>Für dich...</title>
     <style>
         /* Grunddesign der Seite */
-        body {
-            font-family: 'Georgia', serif;
-            background-color: #f4ece1;
+        html, body {
             margin: 0;
-            height: 100vh;
+            padding: 0;
+            height: 100%;
+            background-color: #f4ece1;
+            font-family: 'Georgia', serif;
+            /* Ermöglicht das typische "Pull-to-Refresh" beim Runterswipen auf Handys */
+            overscroll-behavior-y: contain; 
+            overflow-y: auto; 
+        }
+
+        /* Container, um alles perfekt in der Mitte zu halten */
+        .wrapper {
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         /* Der geheimnisvolle Start-Button */
@@ -44,14 +54,16 @@
             background-image: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 100%);
             border: 8px double #8b5a2b;
             border-radius: 4px;
-            padding: 40px 45px;
+            padding: 40px 30px;
             max-width: 480px;
+            width: 100%;
             text-align: center;
             box-shadow: 
                 0 10px 30px rgba(0,0,0,0.15),
                 inset 0 0 50px rgba(139,90,43,0.2);
             transform: translateY(20px);
             transition: opacity 1s ease, transform 1s ease;
+            box-sizing: border-box;
         }
 
         /* Haupttext auf dem Pergament */
@@ -75,12 +87,12 @@
             font-size: 1.2rem;
             color: #8b5a2b;
             font-weight: bold;
-            min-height: 50px;
+            min-height: 60px;
             margin-bottom: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 0.3s ease;
+            transition: opacity 0.2s ease;
         }
 
         /* Der Gute-Laune-Button */
@@ -112,24 +124,28 @@
 </head>
 <body>
 
-    <button class="trust-button" id="mainButton" onclick="revealMessage()">
-        Nur wenn du mir Vertraust, sollst du mich anklicken.
-    </button>
+    <div class="wrapper">
 
-    <div class="parchment" id="parchmentPaper">
-        <p class="message">
-            Diesmal hat es leider nicht geklappt... aber wann immer es dich mal auf diese Seite verirrt, vergiss niemals: Ich bin für dich da. ✨
-        </p>
-        
-        <div class="divider"></div>
-        
-        <div class="compliment-box" id="complimentText">
-            Brauchst du ein kurzes Lächeln? Klick unten auf den Button! 👇
+        <button class="trust-button" id="mainButton" onclick="revealMessage()">
+            Nur wenn du mir Vertraust, sollst du mich anklicken.
+        </button>
+
+        <div class="parchment" id="parchmentPaper">
+            <p class="message">
+                Diesmal hat es leider nicht geklappt... aber wann immer es dich mal auf diese Seite verirrt, vergiss niemals: Ich bin für dich da. ✨
+            </p>
+            
+            <div class="divider"></div>
+            
+            <div class="compliment-box" id="complimentText">
+                Brauchst du ein kurzes Lächeln? Klick unten auf den Button! 👇
+            </div>
+
+            <button class="cheer-btn" onclick="generateCompliment()">
+                ✨ Magischer Gute-Laune-Bringer
+            </button>
         </div>
 
-        <button class="cheer-btn" onclick="generateCompliment()">
-            ✨ Magischer Gute-Laune-Bringer
-        </button>
     </div>
 
     <script>
@@ -154,6 +170,31 @@
             "Du verdienst heute das größte Stück Kuchen und das cremigste Eis! 🍦🍰",
             "Atme tief durch. Du machst das alles großartig! 🌟",
             "Wenn du mal vergisst, wie wunderbar du bist – diese Seite merkt es sich für dich! 🌸",
-            "Ein kleiner ritterlicher Reminder: Du bist absolut einzigartig! ⚔️💛",
+            "Ein kleiner Reminder: Du bist absolut einzigartig! ⚔️💛",
             "Lass dir dein Lächeln von niemandem nehmen. Es steht dir viel zu gut! 😍"
         ];
+
+        let lastIndex = -1;
+
+        // Funktion: Wählt zufällig einen Spruch aus
+        function generateCompliment() {
+            const box = document.getElementById('complimentText');
+            let randomIndex;
+            
+            do {
+                randomIndex = Math.floor(Math.random() * compliments.length);
+            } while (randomIndex === lastIndex);
+            
+            lastIndex = randomIndex;
+
+            // Kurzer Ausblend-Effekt für den Textwechsel
+            box.style.opacity = 0;
+            setTimeout(() => {
+                box.innerText = compliments[randomIndex];
+                box.style.opacity = 1;
+            }, 200);
+        }
+    </script>
+
+</body>
+</html>
