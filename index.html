@@ -8,17 +8,17 @@
         /* Importiert die magische Schriftart NUR für den Button und das X */
         @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
 
-        /* Grunddesign der Seite - Jetzt mit deinem Hogwarts-Hintergrundbild */
+        /* Grunddesign der Seite - Jetzt mit vereinfachtem Bildpfad */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            /* Hier den Dateinamen deines hochgeladenen Bildes eintragen */
-            background-image: url('Gemini_Generated_Image_nqnmgxnqnmgxnqnm.png'); 
+            background-color: #1a1008; /* Dunklerer Fallback, falls das Bild lädt */
+            background-image: url('hintergrund.png'); 
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
-            background-attachment: fixed; /* Bild bleibt beim Scrollen fixiert */
+            background-attachment: fixed;
             font-family: 'Georgia', serif;
             overscroll-behavior-y: contain; 
             overflow-y: auto; 
@@ -32,8 +32,7 @@
             align-items: center;
             padding: 20px;
             box-sizing: border-box;
-            /* Ein ganz leichter dunkler Schleier über dem Hintergrund, damit die Schrift noch besser lesbar wird */
-            background-color: rgba(0, 0, 0, 0.15); 
+            background-color: rgba(0, 0, 0, 0.2); /* Leicht dunkler Schleier für die Atmosphäre */
         }
 
         /* Das edle Pergament - Hell und scharf */
@@ -47,7 +46,7 @@
             width: 100%;
             text-align: center;
             box-shadow: 
-                0 10px 30px rgba(0,0,0,0.3),
+                0 10px 30px rgba(0,0,0,0.5),
                 inset 0 0 50px rgba(139,90,43,0.2);
             position: relative;
             box-sizing: border-box;
@@ -155,7 +154,6 @@
     </div>
 
     <script>
-        // Exakt deine unveränderte Liste von Sprüchen
         const compliments = [
             "Du bist der Grund, warum heute jemand da draußen lächelt! 😊",
             "Egal wie grau der Tag wirkt: Du bringst deine ganz eigene Farbe hinein! 🎨✨",
