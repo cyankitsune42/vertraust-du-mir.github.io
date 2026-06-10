@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Für dich...</title>
     <style>
-        /* Grunddesign der Seite */
+        /* Importiert magische Schriftarten von Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
+
+        /* Grunddesign der Seite: Dunkles Hogwarts-Schloss-Ambiente */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            background-color: #f4ece1;
-            font-family: 'Georgia', serif;
+            /* Mystischer Farbverlauf wie eine Schlossmauer bei Nacht */
+            background: radial-gradient(circle, #2c1a10 0%, #0f0a06 100%);
+            font-family: 'EB Garamond', serif;
             overscroll-behavior-y: contain; 
             overflow-y: auto; 
+            color: #fcf5e3;
         }
 
         /* Container für die Zentrierung */
@@ -26,21 +31,29 @@
             box-sizing: border-box;
         }
 
-        /* Das edle Pergament */
+        /* Das edle, magische Pergament */
         .parchment {
-            background: #fcf5e3;
-            background-image: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 100%);
-            border: 8px double #8b5a2b;
-            border-radius: 4px;
-            padding: 40px 30px;
+            background: #f1e4c3;
+            background-image: radial-gradient(circle, rgba(0,0,0,0) 30%, rgba(139,90,43,0.2) 100%);
+            /* Doppelter, feiner Schloss-Rahmen */
+            border: 6px double #3a2312;
+            border-radius: 2px;
+            padding: 50px 30px;
             max-width: 480px;
             width: 100%;
             text-align: center;
             box-shadow: 
-                0 10px 30px rgba(0,0,0,0.15),
-                inset 0 0 50px rgba(139,90,43,0.2);
+                0 15px 35px rgba(0,0,0,0.7),
+                inset 0 0 60px rgba(92, 53, 19, 0.4);
             position: relative;
             box-sizing: border-box;
+            transform: scale(0.98);
+            animation: unfold 1.2s ease forwards;
+        }
+
+        /* Kleine Einblend-Animation für den Brief */
+        @keyframes unfold {
+            to { transform: scale(1); }
         }
 
         /* Das Schließen-X oben rechts */
@@ -49,44 +62,49 @@
             position: absolute;
             top: 15px;
             right: 20px;
-            font-size: 1.5rem;
-            color: #8b5a2b;
+            font-size: 1.6rem;
+            color: #5c3513;
             cursor: pointer;
+            font-family: 'Cinzel Decorative', serif;
             font-weight: bold;
-            transition: transform 0.2s;
+            transition: transform 0.2s, color 0.2s;
             user-select: none;
         }
 
         .close-x:hover {
             transform: scale(1.2);
+            color: #a12a2a; /* Gryffindor-Rot beim Drüberschweben */
         }
 
-        /* Haupttext auf dem Pergament */
+        /* Haupttext auf dem Pergament (Dunkle Zaubertinte) */
         .message {
-            font-size: 1.4rem;
-            color: #4a2f15;
-            line-height: 1.6;
-            margin-bottom: 30px;
+            font-size: 1.45rem;
+            color: #2b1a09; 
+            line-height: 1.7;
+            margin-bottom: 35px;
             font-style: italic;
+            font-weight: bold;
         }
 
-        /* Der Start-Button auf Seite 1 */
+        /* Der Start-Button auf Seite 1 im Hogwarts-Stil */
         .start-cheer-btn {
             padding: 15px 25px;
-            font-size: 1.1rem;
-            font-family: 'Georgia', serif;
-            background-color: #8b5a2b;
-            color: white;
-            border: none;
-            border-radius: 30px;
+            font-size: 1.05rem;
+            font-family: 'Cinzel Decorative', serif;
+            background: linear-gradient(135deg, #3a2312 0%, #1a1008 100%);
+            color: #d4af37; /* Hogwarts-Gold */
+            border: 2px solid #d4af37;
+            border-radius: 4px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
             transition: all 0.3s ease;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
         }
 
         .start-cheer-btn:hover {
-            background-color: #6f4621;
-            transform: scale(1.03);
+            background: linear-gradient(135deg, #5c3513 0%, #2c1a10 100%);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            transform: translateY(-2px);
         }
 
         /* Der automatische Komplimente-Bereich (Seite 2) */
@@ -95,23 +113,25 @@
         }
 
         .compliment-box {
-            font-size: 1.4rem;
-            color: #8b5a2b;
+            font-size: 1.5rem;
+            color: #5c3513; /* Tintenfarbe */
             font-weight: bold;
             font-style: italic;
-            min-height: 80px;
+            min-height: 90px;
             display: flex;
             justify-content: center;
             align-items: center;
-            line-height: 1.5;
-            transition: opacity 0.5s ease;
+            line-height: 1.6;
+            transition: opacity 0.6s ease;
         }
 
+        /* Magischer Untertext auf Seite 2 */
         .sub-text {
-            font-size: 0.9rem;
-            color: #a08060;
-            margin-top: 20px;
-            font-style: normal;
+            font-size: 0.95rem;
+            color: #8c6845;
+            margin-top: 25px;
+            font-family: 'Cinzel Decorative', serif;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -127,14 +147,14 @@
                     Diesmal hat es leider nicht geklappt... aber wann immer es dich mal auf diese Seite verirrt, vergiss niemals: Ich bin für dich da. ✨
                 </p>
                 <button class="start-cheer-btn" onclick="showLaunePage()">
-                    Brauchst du ein kurzes Lächeln? Klick hier auf den Button!
+                    Brauchst du ein kurzes Lächeln? Klick hier!
                 </button>
             </div>
 
             <div id="seite2" class="laune-bereich">
                 <div class="compliment-box" id="complimentText">
-                    </div>
-                <div class="sub-text">✨ Lehn dich zurück, die Sprüche wechseln von ganz allein... ✨</div>
+                </div>
+                <div class="sub-text">🔮 Felix Felicis wirkt... Die Sprüche wechseln von selbst 🔮</div>
             </div>
 
         </div>
@@ -145,7 +165,7 @@
         // Eine Liste mit charmanten Sprüchen
         const compliments = [
             "Du bist der Grund, warum heute jemand da draußen lächelt! 😊",
-            "Egal wie grau der Tag wirkt: Du bringst deine ganz eigene Farbe hinein! 🎨✨",
+            "Egal wie grau der Tag wirkt: Du bringst deine ganz eigene Magie hinein! 🔮✨",
             "Kopf hoch, Prinzessin! Die Welt ist schöner, weil es dich gibt. 🌍",
             "Du verdienst heute den leckersten Pudding und ein großes stück Schokolade! 🍮🍫",
             "Atme tief durch. Du machst das großartig! 🌟",
@@ -177,7 +197,7 @@
                 if (currentIndex >= compliments.length) {
                     currentIndex = 0;
                 }
-            }, 500);
+            }, 600); // Magisch-sanfter Übergang
         }
 
         // Wechselt zu Seite 2 (Gute Laune)
@@ -186,7 +206,7 @@
             document.getElementById('seite2').style.display = 'block';
             document.getElementById('closeBtn').style.display = 'block';
 
-            // Index zurücksetzen, damit es immer beim ersten Spruch anfängt, wenn sie die Seite öffnet
+            // Index zurücksetzen, damit es immer beim ersten Spruch anfängt
             currentIndex = 0; 
             
             // Direkt das erste Kompliment anzeigen
