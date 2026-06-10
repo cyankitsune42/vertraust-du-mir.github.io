@@ -146,32 +146,37 @@
         const compliments = [
             "Du bist der Grund, warum heute jemand da draußen lächelt! 😊",
             "Egal wie grau der Tag wirkt: Du bringst deine ganz eigene Farbe hinein! 🎨✨",
-            "Kopf hoch, edle Maid! Die Welt ist schöner, weil es dich gibt. 🌍",
-            "Du verdienst heute das größte Stück Kuchen und das cremigste Eis! 🍦🍰",
-            "Atme tief durch. Du machst das alles großartig! 🌟",
+            "Kopf hoch, Prinzessin! Die Welt ist schöner, weil es dich gibt. 🌍",
+            "Du verdienst heute den leckersten Pudding und ein großes stück Schokolade! 🍮🍫",
+            "Atme tief durch. Du machst das großartig! 🌟",
             "Wenn du mal vergisst, wie wunderbar du bist – diese Seite merkt es sich für dich! 🌸",
-            "Ein kleiner ritterlicher Reminder: Du bist absolut einzigartig! ⚔️💛",
+            "Ein kleiner Reminder: Du bist absolut einzigartig! ⚔️💛",
             "Lass dir dein Lächeln von niemandem nehmen. Es steht dir viel zu gut! 😍"
         ];
 
         let intervalId = null;
-        let lastIndex = -1;
+        let currentIndex = 0; // Startet beim ersten Spruch (Index 0)
 
-        // Funktion: Zeigt ein neues, zufälliges Kompliment an
+        // Funktion: Zeigt das nächste Kompliment der Reihe nach an
         function changeCompliment() {
             const box = document.getElementById('complimentText');
-            let randomIndex;
-            
-            do {
-                randomIndex = Math.floor(Math.random() * compliments.length);
-            } while (randomIndex === lastIndex);
-            
-            lastIndex = randomIndex;
 
+            // Sanftes Ausblenden
             box.style.opacity = 0;
+            
             setTimeout(() => {
-                box.innerText = compliments[randomIndex];
+                // Aktuellen Spruch in die Box setzen
+                box.innerText = compliments[currentIndex];
+                // Einblenden
                 box.style.opacity = 1;
+
+                // Index für das nächste Mal erhöhen
+                currentIndex++;
+
+                // Wenn das Ende der Liste erreicht ist, wieder bei 0 anfangen
+                if (currentIndex >= compliments.length) {
+                    currentIndex = 0;
+                }
             }, 500);
         }
 
@@ -181,10 +186,13 @@
             document.getElementById('seite2').style.display = 'block';
             document.getElementById('closeBtn').style.display = 'block';
 
+            // Index zurücksetzen, damit es immer beim ersten Spruch anfängt, wenn sie die Seite öffnet
+            currentIndex = 0; 
+            
             // Direkt das erste Kompliment anzeigen
             changeCompliment();
 
-            // Intervall starten: Alle 5000 Millisekunden (5 Sekunden) automatisch wechseln
+            // Intervall starten: Alle 5 Sekunden der Reihe nach wechseln
             intervalId = setInterval(changeCompliment, 5000);
         }
 
@@ -194,7 +202,7 @@
             document.getElementById('closeBtn').style.display = 'none';
             document.getElementById('seite1').style.display = 'block';
 
-            // Automatischen Wechsel stoppen, um Akku/Leistung zu schonen
+            // Automatischen Wechsel stoppen
             if (intervalId) {
                 clearInterval(intervalId);
             }
