@@ -2,27 +2,61 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Erfolgstagebuch</title>
+    <title>Besenflug</title>
     <style>
-        body { background: #1a1008; color: #fcf5e3; font-family: 'Georgia', serif; padding: 20px; }
-        .container { max-width: 600px; margin: auto; background: #3a2312; padding: 20px; border-radius: 10px; }
-        .card { background: #fcf5e3; color: #3a2312; padding: 15px; margin: 10px 0; border-radius: 5px; }
-        button { cursor: pointer; background: #d4af37; border: none; padding: 5px 10px; border-radius: 4px; }
+        body { margin: 0; background: #0b0b1a; color: white; text-align: center; font-family: sans-serif; overflow: hidden; }
+        canvas { display: block; margin: 20px auto; background: #1a1008; border: 4px solid #d4af37; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🏆 Erfolgstagebuch</h1>
-        <div class="card">Taler: <span id="coins">0</span></div>
-        <div id="tasks"></div>
-        <input id="newTask" placeholder="Neue Aufgabe">
-        <button onclick="addTask()">Hinzufügen</button>
-    </div>
+    <h1>Besenflug - Highscore: <span id="highscore">0</span></h1>
+    <canvas id="gameCanvas" width="400" height="600"></canvas>
+    <p>Steuerung: Bewege die Maus oder den Finger auf dem Handy, um auszuweichen!</p>
 
     <script>
-        // Hier kommt dein bekannter Spiel-Logik-Code hinein...
-        // ... (Dein Code aus der vorherigen Nachricht)
-        render();
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        let score = 0;
+        let highscore = localStorage.getItem("besenHighscore") || 0;
+        document.getElementById("highscore").innerText = highscore;
+
+        let player = { x: 200, y: 500, size: 40 };
+        let obstacles = [];
+
+        function drawPlayer() {
+            // Hier könntest du dein Bild als Avatar einfügen:
+            ctx.fillStyle = "#d4af37"; 
+            ctx.fillRect(player.x, player.y, player.size, player.size);
+        }
+
+        function update() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Hindernisse bewegen
+            if (Math.random() < 0.05) obstacles.push({ x: Math.random() * 360, y: 0 });
+
+            obstacles.forEach((obs, index) => {
+                obs.y += 5;
+                ctx.fillStyle = "red";
+                ctx.fillRect(obs.x, obs.y, 40, 40);
+
+                // Kollision
+                if (obs.y > player.y && obs.y < player.y + 40 && obs.x > player.x - 40 && obs.x < player.x + 40) {
+                    if (score > highscore) { highscore = score; localStorage.setItem("besenHighscore", score); }
+                    score = 0; obstacles = [];
+                }
+                if (obs.y > 600) { obstacles.splice(index, 1); score++; }
+            });
+
+            drawPlayer();
+            requestAnimationFrame(update);
+        }
+
+        canvas.addEventListener("mousemove", (e) => {
+            player.x = e.clientX - canvas.offsetLeft - 20;
+        });
+
+        update();
     </script>
 </body>
 </html>
