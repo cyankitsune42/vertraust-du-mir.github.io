@@ -3,116 +3,622 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Für dich, mein Schatz</title>
+    <title>Gesellenprüfung Simulation – Fachkunde</title>
     <style>
         html, body {
             margin: 0;
             padding: 0;
-            width: 100%;
             height: 100%;
-            background-color: #1a0d1a;
+            background-color: #1a1008; 
+            background-image: url('hintergrund.png'); 
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
             font-family: 'Georgia', serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            overscroll-behavior-y: contain; 
+            overflow-y: auto; 
         }
 
-        .love-container {
-            text-align: center;
-            position: relative;
-            z-index: 10;
-            padding: 20px;
+        .wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 10px 40px 10px;
+            box-sizing: border-box;
+            background-color: rgba(0, 0, 0, 0.2); 
+        }
+
+        /* PERGAMENT-NAVIGATION (RESPONSIV) */
+        .nav-bar {
+            background: #fcf5e3;
+            border: 3px double #3a2312;
+            border-radius: 4px;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            max-width: 850px;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+        }
+
+        .nav-link {
+            color: #3a2312;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 6px 8px;
+            transition: all 0.2s;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #8b5a2b;
+            border-bottom: 2px solid #8b5a2b;
+        }
+
+        /* PERGAMENT-CONTAINER (RESPONSIV) */
+        .parchment {
+            background: #fcf5e3;
+            background-image: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 100%);
+            border: 6px double #3a2312; 
+            border-radius: 4px;
+            padding: 25px 20px;
+            max-width: 850px; 
+            width: 100%;
+            box-shadow: 
+                0 10px 30px rgba(0,0,0,0.5),
+                inset 0 0 50px rgba(139,90,43,0.2);
+            box-sizing: border-box;
         }
 
         h1 {
-            color: #ff3366;
-            font-size: 3rem;
-            text-shadow: 0 0 20px rgba(255, 51, 102, 0.6);
+            color: #3a2312;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 10px;
+            border-bottom: 3px double #8b5a2b;
+            padding-bottom: 15px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-style: italic;
+            color: #704214;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        h2 {
+            color: #5c3513;
+            font-size: 1.3rem;
+            margin-top: 35px;
+            border-bottom: 1px dashed #8b5a2b;
+            padding-bottom: 5px;
+        }
+
+        .task-card {
+            background-color: rgba(139, 90, 43, 0.03);
+            border: 1px solid #3a2312;
+            border-radius: 4px;
+            padding: 15px;
             margin-bottom: 20px;
-            animation: pulseText 2s infinite ease-in-out;
+            box-sizing: border-box;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #3a2312;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .info-icon {
+            background: #8b5a2b;
+            color: #fcf5e3;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+
+        .info-icon:hover {
+            background: #d4af37;
+            color: #3a2312;
+        }
+
+        .answer-input {
+            width: 100%;
+            padding: 12px 10px;
+            font-size: 1rem;
+            font-family: 'Georgia', serif;
+            border: 1px solid #8b5a2b;
+            border-radius: 4px;
+            background-color: #fcf5e3;
+            color: #4a2f15;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+            -webkit-appearance: none;
+        }
+
+        .check-btn {
+            background: #3a2312;
+            color: #d4af37;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+            width: 100%;
+        }
+
+        @media (min-width: 480px) {
+            .check-btn {
+                width: auto;
+            }
+        }
+
+        .check-btn:hover {
+            background: #5c3513;
+        }
+
+        .feedback {
+            font-weight: bold;
+            margin-top: 12px;
+            font-size: 1rem;
+            display: none;
+            line-height: 1.3;
+        }
+
+        .feedback.correct { color: #274011; }
+        .feedback.wrong { color: #a12a2a; }
+
+        .hint-content {
+            display: none;
+            margin-top: 12px;
+            padding: 10px 15px;
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 3px solid #d4af37;
+            color: #5c3513;
+            font-style: italic;
+            font-size: 0.95rem;
+            border-radius: 0 4px 4px 0;
             line-height: 1.4;
         }
 
         @media (min-width: 768px) {
-            h1 {
-                font-size: 5rem;
-            }
-        }
-
-        /* Große Herzanimation im Hintergrund */
-        .big-heart {
-            font-size: 6rem;
-            color: #ff3366;
-            display: inline-block;
-            animation: beat 1.2s infinite ease-in-out;
-            filter: drop-shadow(0 0 15px rgba(255, 51, 102, 0.8));
-        }
-
-        /* Schwebende kleine Herzen */
-        .heart-particle {
-            position: absolute;
-            color: #ff4d79;
-            font-size: 20px;
-            pointer-events: none;
-            bottom: -10%;
-            animation: floatUp 6s linear infinite;
-        }
-
-        @keyframes beat {
-            0%, 100% { transform: scale(1); }
-            30% { transform: scale(1.2); }
-            60% { transform: scale(1.1); }
-        }
-
-        @keyframes pulseText {
-            0%, 100% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.03); opacity: 1; }
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) translateX(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-110vh) translateX(var(--random-x)) rotate(360deg);
-                opacity: 0;
-            }
+            .wrapper { padding: 20px; }
+            .parchment { padding: 40px; }
+            h1 { font-size: 2.2rem; }
+            .nav-bar { gap: 20px; padding: 12px 25px; }
+            .nav-link { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="love-container">
-        <h1>Ich liebe dich mein Schatz</h1>
-        <div class="big-heart">❤️</div>
+    <div class="wrapper">
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-link">Laune-Bereich</a>
+            <a href="pruefungsvorbereitung.html" class="nav-link active">Fachkunde-Test</a>
+            <a href="mathe.html" class="nav-link">Formelbuch Mathe</a>
+            <a href="wiso_gk.html" class="nav-link">WiSo & GK</a>
+        </nav>
+
+        <div class="parchment">
+            <h1>Prüfungssimulation: Fachkunde</h1>
+            <div class="subtitle">Interaktives Testmodul — 30 Fachkundefragen für Maler und Lackierer</div>
+            
+            <h2>Bereich 1: Untergründe, Prüfpflichten & Vorbereitung</h2>
+            
+            <div class="task-card" id="f1">
+                <div class="question-header">
+                    <p class="question-text">1. Mit welcher physikalischen Kraft haftet eine Beschichtung rein mechanisch auf einem angerauten Untergrund?</p>
+                    <div class="info-icon" onclick="toggleHint('hf1')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f1', 'adhäsion adhäsionskraft')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf1" class="hint-content">Musterlösung: Durch die Adhäsionskraft (Adhäsion / mechanische Verklammerung).</div>
+            </div>
+
+            <div class="task-card" id="f2">
+                <div class="question-header">
+                    <p class="question-text">2. Welcher chemische Vorgang führt zum Rosten von ungeschütztem Eisen an feuchter Luft?</p>
+                    <div class="info-icon" onclick="toggleHint('hf2')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f2', 'oxidation oxidieren sauerstoff')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf2" class="hint-content">Musterlösung: Eine Oxidation (Reaktion von Metall mit Sauerstoff und Feuchtigkeit).</div>
+            </div>
+
+            <div class="task-card" id="f3">
+                <div class="question-header">
+                    <p class="question-text">3. Wie prüft man einen alten Putzuntergrund auf verborgene Hohlstellen oder Ablösungen?</p>
+                    <div class="info-icon" onclick="toggleHint('hf3')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f3', 'abklopfen klopfen hammer holzhammer')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf3" class="hint-content">Musterlösung: Durch Abklopfen (z. B. mit einem Hammerstiel). Ein hohler Klang signalisiert Fehlstellen.</div>
+            </div>
+
+            <div class="task-card" id="f4">
+                <div class="question-header">
+                    <p class="question-text">4. Mit welcher einfachen Prüfung vor Ort stellt der Maler fest, ob ein Altputz stark sandet oder kreidet?</p>
+                    <div class="info-icon" onclick="toggleHint('hf4')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f4', 'wischtest reibetest wischen reiben handfläche')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf4" class="hint-content">Musterlösung: Durch den Wischtest (mit der flachen Hand oder einem dunklen Tuch über den Untergrund reiben).</div>
+            </div>
+
+            <div class="task-card" id="f5">
+                <div class="question-header">
+                    <p class="question-text">5. Wie lässt sich die Tragfähigkeit einer Altschicht am besten auf lose Partikel und unzureichende Haftung prüfen (Schnittverfahren)?</p>
+                    <div class="info-icon" onclick="toggleHint('hf5')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f5', 'gitterschnitt gitterschnittprüfung')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf5" class="hint-content">Musterlösung: Durch die Gitterschnittprüfung (oder alternativ den Klebebandtest).</div>
+            </div>
+
+            <div class="task-card" id="f6">
+                <div class="question-header">
+                    <p class="question-text">6. Warum müssen alte Papiertapeten vor Spachtel- oder Streicharbeiten zwingend restlos entfernt werden?</p>
+                    <div class="info-icon" onclick="toggleHint('hf6')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f6', 'quellen weichen blasen ablösen wasser feuchtigkeit')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf6" class="hint-content">Musterlösung: Die wasserlöslichen Kleisterreste weichen durch feuchte Beschichtungsstoffe auf, was zu Blasenbildung und Ablösungen führt.</div>
+            </div>
+
+            <div class="task-card" id="f7">
+                <div class="question-header">
+                    <p class="question-text">7. Welches chemische Phänomen beschreibt das Wandern von wasserlöslichen Holzinhaltsstoffen (z.B. Gerbstoffen bei Eiche) an die Oberfläche weißer Lacke?</p>
+                    <div class="info-icon" onclick="toggleHint('hf7')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f7', 'durchbluten verfärben gerbstoffe ausbluten')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf7" class="hint-content">Musterlösung: Das Durchbluten (Ausbluten) von Holzinhaltsstoffen, das gelb-braune Verfärbungen verursacht.</div>
+            </div>
+
+            <h2>Bereich 2: Anstrichfarben & Zusammensetzung</h2>
+
+            <div class="task-card" id="f8">
+                <div class="question-header">
+                    <p class="question-text">8. Welche drei Hauptbestandteile bilden die stoffliche Basis jeder flüssigen Anstrichfarbe?</p>
+                    <div class="info-icon" onclick="toggleHint('hf8')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f8', 'bindemittel pigment lösemittel lösungsmittel füllstoff additiv')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf8" class="hint-content">Musterlösung: Bindemittel, Pigmente (inkl. Füllstoffe) und Lösemittel/Wasser (sowie Additive).</div>
+            </div>
+
+            <div class="task-card" id="f9">
+                <div class="question-header">
+                    <p class="question-text">9. Welcher bestandteil einer Farbe ist allein für die Filmbildung, Haftung und Beständigkeit der Beschichtung verantwortlich?</p>
+                    <div class="info-icon" onclick="toggleHint('hf9')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f9', 'bindemittel')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf9" class="hint-content">Musterlösung: Das Bindemittel verklebt die Pigmentteilchen untereinander und mit dem Untergrund.</div>
+            </div>
+
+            <div class="task-card" id="f10">
+                <div class="question-header">
+                    <p class="question-text">10. Wie nennt man die unlöslichen, feinstpulverisierten Farbteilchen, die für das Deckvermögen und den Farbton zuständig sind?</p>
+                    <div class="info-icon" onclick="toggleHint('hf10')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f10', 'pigment pigmente')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf10" class="hint-content">Musterlösung: Pigmente. Du unterscheidest organische und anorganische Pigmente.</div>
+            </div>
+
+            <div class="task-card" id="f11">
+                <div class="question-header">
+                    <p class="question-text">11. Welches anorganische Weißpigment besitzt das höchste Deckvermögen und wird standardmäßig in Dispersionsfarben eingesetzt?</p>
+                    <div class="info-icon" onclick="toggleHint('hf11')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f11', 'titandioxid titan weiß')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf11" class="hint-content">Musterlösung: Titandioxid (TiO₂).</div>
+            </div>
+
+            <div class="task-card" id="f12">
+                <div class="question-header">
+                    <p class="question-text">12. Auf welchem Bindemittel basieren klassische Silikatfarben, die rein mineralisch verkieseln?</p>
+                    <div class="info-icon" onclick="toggleHint('hf12')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f12', 'kaliwasserglas wasserglas kaliumsilikat')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf12" class="hint-content">Musterlösung: Kaliwasserglas (Kaliumsilikat).</div>
+            </div>
+
+            <div class="task-card" id="f13">
+                <div class="question-header">
+                    <p class="question-text">13. Was versteht man bei Lacken unter physikalischer Trocknung im Gegensatz zur chemischen Härtung?</p>
+                    <div class="info-icon" onclick="toggleHint('hf13')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f13', 'verdunsten verdampfen verdunstung lösemittel wasser')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf13" class="hint-content">Musterlösung: Das reine Verdunsten/Verdampfen der flüchtigen Lösemittel oder des Wassers ohne chemische Veränderung.</div>
+            </div>
+
+            <div class="task-card" id="f14">
+                <div class="question-header">
+                    <p class="question-text">14. Wie trocknen Alkydharzlacke (KH-Lacke) nach dem anfänglichen Verdunsten der Lösemittel an der Luft weiter?</p>
+                    <div class="info-icon" onclick="toggleHint('hf14')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f14', 'oxidativ oxidation sauerstoff chemisch')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf14" class="hint-content">Musterlösung: Oxidativ (durch Aufnahme von Luftsauerstoff vernetzen sich die Moleküle chemisch).</div>
+            </div>
+
+            <div class="task-card" id="f15">
+                <div class="question-header">
+                    <p class="question-text">15. Welcher Lacktyp besteht aus Stammkomponente und Härter und muss innerhalb der Topfzeit verarbeitet werden?</p>
+                    <div class="info-icon" onclick="toggleHint('hf15')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f15', '2k zweikomponenten epoxid polyurethan')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf15" class="hint-content">Musterlösung: 2K-Lack (Zwei-Komponenten-Lack, z.B. EP- oder PUR-Lack).</div>
+            </div>
+
+            <h2>Bereich 3: Werkzeuge, Applikationsverfahren & Geräte</h2>
+
+            <div class="task-card" id="f16">
+                <div class="question-header">
+                    <p class="question-text">16. Welcher runde Pinseltyp wird traditionell vorzugsweise für die Verarbeitung lösemittelhaltiger Lacke auf Holz verwendet?</p>
+                    <div class="info-icon" onclick="toggleHint('hf16')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f16', 'ringpinsel rundpinsel')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf16" class="hint-content">Musterlösung: Der Ringpinsel. Er speichert zähe Lacke gut und erlaubt sauberes Beschichten.</div>
+            </div>
+
+            <div class="task-card" id="f17">
+                <div class="question-header">
+                    <p class="question-text">17. Warum werden für wasserbasierte Acryllacke Pinsel mit synthetischen Borsten (z.B. Polyester) statt reiner Naturborsten (Chinaborsten) eingesetzt?</p>
+                    <div class="info-icon" onclick="toggleHint('hf17')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f17', 'quellen aufquellen wasser aufnehmen form verlieren')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf17" class="hint-content">Musterlösung: Naturborsten nehmen Wasser auf, quellen auf und verlieren ihre Form und Elastizität. Kunstborsten quellen nicht.</div>
+            </div>
+
+            <div class="task-card" id="f18">
+                <div class="question-header">
+                    <p class="question-text">18. Wie funktioniert das hydraulische Airless-Spritzverfahren im Gegensatz zum luftzerstäubenden Becherpistolen-Verfahren?</p>
+                    <div class="info-icon" onclick="toggleHint('hf18')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f18', 'materialdruck druck pumpe ohne luft luftlos')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf18" class="hint-content">Musterlösung: Das Material wird rein über eine Pumpe unter hohen Druck (bis über 200 bar) gesetzt und luftlos durch eine Düse zerstäubt.</div>
+            </div>
+
+            <div class="task-card" id="f19">
+                <div class="question-header">
+                    <p class="question-text">19. Welcher technische Fehler beim Spritzen führt zu ungleichmäßig dicken Lackschichten mit dicken Rändern ("Fingerbildung")?</p>
+                    <div class="info-icon" onclick="toggleHint('hf19')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f19', 'druck zu niedrig düse verstopft abstand falsch verschlissen')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf19" class="hint-content">Musterlösung: Zu geringer Arbeitsdruck am Gerät oder eine abgenutzte/falsche Düse.</div>
+            </div>
+
+            <div class="task-card" id="f20">
+                <div class="question-header">
+                    <p class="question-text">20. Welches moderne Niederdruck-Spritzverfahren reduziert den Overspray (Spritznebel) durch ein hohes Luftvolumen bei geringem Druck gravierend?</p>
+                    <div class="info-icon" onclick="toggleHint('hf20')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f20', 'hvlp niederdruck')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf20" class="hint-content">Musterlösung: HVLP-Verfahren (High Volume Low Pressure).</div>
+            </div>
+
+            <h2>Bereich 4: Tapeten, Wandbekleidungen & Korrosionsschutz</h2>
+
+            <div class="task-card" id="f21">
+                <div class="question-header">
+                    <p class="question-text">21. Was bedeutet die Kennzeichnung "Rapport" (z.B. 64 cm) auf dem Einlegerzettel einer Tapetenrolle für den Zuschnitt?</p>
+                    <div class="info-icon" onclick="toggleHint('hf21')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f21', 'muster musterabstand verschnitt wiederholung wiederholt')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf21" class="hint-content">Musterlösung: Der Abstand, nach dem sich das Mustermotiv auf der Tapete wiederholt. Erzeugt Verschnitt beim Zuschnitt.</div>
+            </div>
+
+            <div class="task-card" id="f22">
+                <div class="question-header">
+                    <p class="question-text">22. Welchen produktionstechnischen Vorteil bietet eine Vliestapete gegenüber einer klassischen Papiertapete bei der Verarbeitung?</p>
+                    <div class="info-icon" onclick="toggleHint('hf22')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f22', 'wandeinklebetechnik dimensionsstabil weichzeit trocken wand')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf22" class="hint-content">Musterlösung: Sie ist dimensionsstabil (dehnt sich nicht aus) und kann trocken direkt in das eingekleisterte Bett eingelegt werden (Wandeinklebetechnik).</div>
+            </div>
+
+            <div class="task-card" id="f23">
+                <div class="question-header">
+                    <p class="question-text">23. Welcher Kleistertyp wird zur Erhöhung der Klebkraft für schwere Wandbekleidungen wie Vinyl- oder Prägetapeten mit normalem Stärkekleister gemischt?</p>
+                    <div class="info-icon" onclick="toggleHint('hf23')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f23', 'kunstharz spezialkleister kunstharzkleister')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf23" class="hint-content">Musterlösung: Spezialkleister mit Kunstharzzusatz (oder reiner Dispersionskleber).</div>
+            </div>
+
+            <div class="task-card" id="f24">
+                <div class="question-header">
+                    <p class="question-text">24. Um Stahlkonstruktionen wirksam kathodisch vor Rost zu schützen, wird welches Metall als Pigment in einer hochdosierten Grundbeschichtung eingesetzt?</p>
+                    <div class="info-icon" onclick="toggleHint('hf24')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f24', 'zink zinkstaub zinkstaubgrundierung')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf24" class="hint-content">Musterlösung: Zink (z. B. eine Zinkstaubgrundierung fungiert als Opferelektrode).</div>
+            </div>
+
+            <div class="task-card" id="f25">
+                <div class="question-header">
+                    <p class="question-text">25. Welcher mechanische Norm-Reinheitsgrad (z. B. Sa 2,5) wird für Stahl durch Sandstrahlen gefordert, um eine langlebige Korrosionsschutzbeschichtung aufzutragen?</p>
+                    <div class="info-icon" onclick="toggleHint('hf25')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f25', 'sa 2,5 sa2,5 oberfläche metallisch blank')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf25" class="hint-content">Musterlösung: Sa 2,5 (Sehr gründliches Strahlen, die Oberfläche muss fast vollständig metallisch blank sein).</div>
+            </div>
+
+            <h2>Bereich 5: Bautenschutz, Wärmedämmung & Arbeitssicherheit</h2>
+
+            <div class="task-card" id="f26">
+                <div class="question-header">
+                    <p class="question-text">26. Was versteht man im Fassadenbereich unter einem WDVS?</p>
+                    <div class="info-icon" onclick="toggleHint('hf26')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f26', 'wärmedämmverbundsystem wärmedämmung dämmung fassade')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf26" class="hint-content">Musterlösung: Wärmedämm-Verbundsystem.</div>
+            </div>
+
+            <div class="task-card" id="f27">
+                <div class="question-header">
+                    <p class="question-text">27. Welchen Zweck erfüllt die Gewebearmierung im Armierungsputz eines Wärmedämm-Verbundsystems?</p>
+                    <div class="info-icon" onclick="toggleHint('hf27')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f27', 'risse zugkräfte spannung rissbildung auffangen')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf27" class="hint-content">Musterlösung: Sie nimmt Zugspannungen auf und verhindert Rissbildungen im Außenputz durch Temperaturschwankungen.</div>
+            </div>
+
+            <div class="task-card" id="f28">
+                <div class="question-header">
+                    <p class="question-text">28. Was gibt der Sd-Wert bei einer Beschichtung oder Folie bauphysikalisch an?</p>
+                    <div class="info-icon" onclick="toggleHint('hf28')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f28', 'wasserdampfdiffusion diffusion diffusionsoffen atmungsaktivität widerstand dampf')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf28" class="hint-content">Musterlösung: Die wasserdampfdiffusionsäquivalente Luftschichtdicke (wie stark das Material das Entweichen von Wasserdampf bremst).</div>
+            </div>
+
+            <div class="task-card" id="f29">
+                <div class="question-header">
+                    <p class="question-text">29. Ab welcher Absturzhöhe muss auf Baustellen laut BG-Vorschrift beim Arbeiten auf Gerüsten zwingend ein dreiteiliger Seitenschutz vorhanden sein?</p>
+                    <div class="info-icon" onclick="toggleHint('hf29')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f29', '2 meter zwei 2,0')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf29" class="hint-content">Musterlösung: Ab 2,00 m Absturzhöhe ist ein Seitenschutz (Geländerholm, Zwischenholm, Bordbrett) vorgeschrieben.</div>
+            </div>
+
+            <div class="task-card" id="f30">
+                <div class="question-header">
+                    <p class="question-text">30. Welche Filterklasse muss eine Atemschutzmaske (Partikelfilter) mindestens aufweisen, wenn krebserzeugende oder hochgiftige Feinstäube (z.B. bleihaltige Altanstriche) geschliffen werden?</p>
+                    <div class="info-icon" onclick="toggleHint('hf30')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f30', 'ffp3 p3 ffp 3')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf30" class="hint-content">Musterlösung: Partikelfilterklasse P3 bzw. eine FFP3-Maske.</div>
+            </div>
+
+        </div>
     </div>
 
     <script>
-        // Erzeugt automatisch dauerhaft schwebende kleine Herzen im Hintergrund
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-particle');
-            heart.innerHTML = '❤️';
-            
-            // Zufällige Positionen und Größen für den natürlichen Look
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 4 + 's'; // Zwischen 4 und 7 Sekunden
-            heart.style.fontSize = Math.random() * 15 + 15 + 'px'; // Zwischen 15px und 30px
-            heart.style.setProperty('--random-x', (Math.random() * 200 - 100) + 'px');
-            
-            document.body.appendChild(heart);
-
-            // Nach der Animation löschen, um den Browser nicht zu verlangsamen
-            setTimeout(() => {
-                heart.remove();
-            }, 7000);
+        function toggleHint(id) {
+            const hint = document.getElementById(id);
+            if (hint) {
+                hint.style.display = (hint.style.display === "block") ? "none" : "block";
+            }
         }
 
-        // Alle 300ms ein neues Herz aufsteigen lassen
-        setInterval(createHeart, 300);
-    </script>
+        function checkAnswer(quizId, keywords) {
+            const quizCard = document.getElementById(quizId);
+            if (!quizCard) return;
 
+            const inputField = quizCard.querySelector('.answer-input');
+            const feedback = quizCard.querySelector('.feedback');
+            
+            // Eingabe säubern und in Kleinbuchstaben umwandeln für den flexiblen Vergleich
+            const userAnswer = inputField.value.toLowerCase().trim();
+            const keywordArray = keywords.split(' ');
+            
+            feedback.style.display = 'block';
+
+            if (userAnswer.length <= 2) {
+                feedback.innerText = "✗ Bitte schreibe erst eine fachliche Antwort hinein.";
+                feedback.className = "feedback wrong";
+                return;
+            }
+
+            let correctCount = 0;
+            keywordArray.forEach(keyword => {
+                if (userAnswer.includes(keyword.toLowerCase())) {
+                    correctCount++;
+                }
+            });
+
+            if (correctCount >= 1) {
+                feedback.innerText = "✓ Fachlich richtig tendiert! Nutze das ℹ-Symbol zum exakten Abgleich.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.innerText = "✗ Das trifft den Kern noch nicht ganz. Klicke auf das ℹ für die Fachbegriffe.";
+                feedback.className = "feedback wrong";
+            }
+        }
+    </script>
 </body>
 </html>
