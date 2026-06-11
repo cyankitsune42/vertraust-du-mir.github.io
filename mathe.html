@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lernbereich</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #1a1008; 
+            background-image: url('hintergrund.png'); 
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Georgia', serif;
+            overscroll-behavior-y: contain; 
+            overflow-y: auto; 
+        }
+
+        .wrapper {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(0, 0, 0, 0.2); 
+        }
+
+        .parchment {
+            background: #fcf5e3;
+            background-image: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 100%);
+            border: 6px double #3a2312; 
+            border-radius: 4px;
+            padding: 40px 30px;
+            max-width: 600px; /* Hier etwas breiter für besseres Lesen beim Lernen */
+            width: 100%;
+            text-align: center;
+            box-shadow: 
+                0 10px 30px rgba(0,0,0,0.5),
+                inset 0 0 50px rgba(139,90,43,0.2);
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #3a2312;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 2px dashed #8b5a2b;
+            padding-bottom: 10px;
+        }
+
+        .content-text {
+            font-size: 1.2rem;
+            color: #4a2f15;
+            line-height: 1.6;
+            text-align: left; /* Text linksbündig für besseren Lesefluss beim Lernen */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="parchment">
+            <h1>Themenbereich</h1>
+            <div class="content-text">
+                <p>Hier kannst du jetzt ganz entspannt deine Notizen, Aufgaben oder Fragen eintragen. Dieser Bereich nutzt dasselbe Design, bietet dir aber in einem eigenen Tab vollen Fokus auf den Stoff! ✨</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
