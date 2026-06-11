@@ -5,207 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Für dich...</title>
     <style>
-        /* Importiert die magische Schriftart NUR für den Button und das X */
         @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
 
-        /* Grunddesign der Seite - Jetzt mit vereinfachtem Bildpfad */
         html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background-color: #1a1008; /* Dunklerer Fallback, falls das Bild lädt */
+            margin: 0; padding: 0; height: 100%;
+            background-color: #1a1008;
             background-image: url('hintergrund.png'); 
             background-position: center center;
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;
             font-family: 'Georgia', serif;
-            overscroll-behavior-y: contain; 
-            overflow-y: auto; 
         }
 
-        /* Container für die Zentrierung */
         .wrapper {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            box-sizing: border-box;
-            background-color: rgba(0, 0, 0, 0.2); /* Leicht dunkler Schleier für die Atmosphäre */
         }
 
-        /* Das edle Pergament - Hell und scharf */
         .parchment {
             background: #fcf5e3;
-            background-image: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 100%);
-            border: 6px double #3a2312; /* Magischer Doppelrahmen */
-            border-radius: 4px;
+            border: 6px double #3a2312;
             padding: 40px 30px;
             max-width: 480px;
             width: 100%;
             text-align: center;
-            box-shadow: 
-                0 10px 30px rgba(0,0,0,0.5),
-                inset 0 0 50px rgba(139,90,43,0.2);
-            position: relative;
-            box-sizing: border-box;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
         }
 
-        /* Das Schließen-X oben rechts */
-        .close-x {
-            display: none; 
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 1.5rem;
-            color: #8b5a2b;
+        .laune-bereich { display: none; }
+        .message { font-size: 1.4rem; color: #4a2f15; line-height: 1.6; margin-bottom: 30px; }
+        .start-cheer-btn { padding: 15px 25px; font-size: 1rem; cursor: pointer; }
+        
+        /* Der Zauberstab-Button */
+        .wand-trigger {
+            font-size: 60px;
             cursor: pointer;
-            font-family: 'Cinzel Decorative', serif;
-            font-weight: bold;
+            margin-top: 10px;
             transition: transform 0.2s;
-            user-select: none;
         }
-
-        .close-x:hover {
-            transform: scale(1.2);
-            color: #a12a2a;
-        }
-
-        /* Haupttext auf dem Pergament - Gestochen scharf */
-        .message {
-            font-size: 1.4rem;
-            color: #4a2f15;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
-
-        /* Der Start-Button im Hogwarts-Stil */
-        .start-cheer-btn {
-            padding: 15px 25px;
-            font-size: 1rem;
-            font-family: 'Cinzel Decorative', serif;
-            background: linear-gradient(135deg, #3a2312 0%, #1a1008 100%);
-            color: #d4af37; /* Hogwarts-Gold */
-            border: 2px solid #d4af37;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: all 0.3s ease;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
-        }
-
-        .start-cheer-btn:hover {
-            background: linear-gradient(135deg, #5c3513 0%, #2c1a10 100%);
-            box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
-            transform: scale(1.02);
-        }
-
-        /* Der automatische Komplimente-Bereich */
-        .laune-bereich {
-            display: none;
-        }
-
-        .compliment-box {
-            font-size: 1.4rem;
-            color: #8b5a2b;
-            font-weight: bold;
-            font-style: italic;
-            min-height: 80px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            line-height: 1.5;
-            transition: opacity 0.5s ease;
-        }
-
-        .sub-text {
-            font-size: 0.9rem;
-            color: #a08060;
-            margin-top: 20px;
-            font-style: normal;
-        }
+        .wand-trigger:hover { transform: scale(1.2); }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
-
         <div class="parchment">
-            <div class="close-x" id="closeBtn" onclick="showStartPage()">✕</div>
-
             <div id="seite1">
-                <p class="message">
-                    Diesmal hat es leider nicht geklappt... aber wann immer es dich mal auf diese Seite verirrt, vergiss niemals: Ich bin für dich da. ✨
-                </p>
-                <button class="start-cheer-btn" onclick="showLaunePage()">
-                    Brauchst du ein kurzes Lächeln? Klick hier auf den Button!
-                </button>
+                <p class="message">Diesmal hat es leider nicht geklappt... aber wann immer es dich mal auf diese Seite verirrt, vergiss niemals: Ich bin für dich da. ✨</p>
+                <button class="start-cheer-btn" onclick="document.getElementById('seite1').style.display='none'; document.getElementById('seite2').style.display='block';">Lächeln gefällig?</button>
             </div>
 
             <div id="seite2" class="laune-bereich">
-                <div class="compliment-box" id="complimentText"></div>
-                <div class="sub-text">✨ Lehn dich zurück, die Sprüche wechseln von ganz allein... ✨</div>
+                <p>Du bist wunderbar! ✨</p>
             </div>
 
+            <div id="riddlePage" class="laune-bereich">
+                <p id="riddleText" style="font-size: 1.2rem;"></p>
+                <input type="text" id="riddleAnswer">
+                <button onclick="checkAnswer()">Antworten</button>
+            </div>
         </div>
 
+        <div class="wand-trigger" onclick="startRiddle()">🪄</div>
     </div>
 
     <script>
-        const compliments = [
-            "Du bist der Grund, warum heute jemand da draußen lächelt! 😊",
-            "Egal wie grau der Tag wirkt: Du bringst deine ganz eigene Farbe hinein! 🎨✨",
-            "Kopf hoch, Prinzessin! Die Welt ist schöner, weil es dich gibt. 🌍",
-            "Du verdienst heute den leckersten Pudding und ein großes stück Schokolade! 🍮🍫",
-            "Atme tief durch. Du machst das großartig! 🌟",
-            "Wenn du mal vergisst, wie wunderbar du bist – diese Seite merkt es sich für dich! 🌸",
-            "Ein kleiner Reminder: Du bist absolut einzigartig! ⚔️💛",
-            "Lass dir dein Lächeln von niemandem nehmen. Es steht dir viel zu gut! 😍"
+        const riddles = [
+            { q: "Gryffindor Wappentier?", a: "löwe" },
+            { q: "Hausmeister von Hogwarts?", a: "filch" },
+            { q: "Licht-Zauberspruch?", a: "lumos" },
+            { q: "Besensport?", a: "quidditch" },
+            { q: "Wie heißt die Schule?", a: "hogwarts" }
         ];
+        let step = 0;
 
-        let intervalId = null;
-        let currentIndex = 0;
-
-        function changeCompliment() {
-            const box = document.getElementById('complimentText');
-
-            box.style.opacity = 0;
-            
-            setTimeout(() => {
-                box.innerText = compliments[currentIndex];
-                box.style.opacity = 1;
-
-                currentIndex++;
-
-                if (currentIndex >= compliments.length) {
-                    currentIndex = 0;
-                }
-            }, 500);
-        }
-
-        function showLaunePage() {
+        function startRiddle() {
             document.getElementById('seite1').style.display = 'none';
-            document.getElementById('seite2').style.display = 'block';
-            document.getElementById('closeBtn').style.display = 'block';
-
-            currentIndex = 0; 
-            changeCompliment();
-
-            intervalId = setInterval(changeCompliment, 5000);
+            document.getElementById('seite2').style.display = 'none';
+            document.getElementById('riddlePage').style.display = 'block';
+            document.getElementById('riddleText').innerText = riddles[step].q;
         }
 
-        function showStartPage() {
-            document.getElementById('seite2').style.display = 'none';
-            document.getElementById('closeBtn').style.display = 'none';
-            document.getElementById('seite1').style.display = 'block';
-
-            if (intervalId) {
-                clearInterval(intervalId);
+        function checkAnswer() {
+            let input = document.getElementById('riddleAnswer').value.toLowerCase().trim();
+            if(input === riddles[step].a) {
+                step++;
+                if(step < riddles.length) {
+                    document.getElementById('riddleText').innerText = riddles[step].q;
+                    document.getElementById('riddleAnswer').value = "";
+                } else {
+                    window.location.href = "https://cyankitsune42.github.io/";
+                }
+            } else {
+                alert("Nicht korrekt!");
             }
         }
     </script>
-
 </body>
 </html>
