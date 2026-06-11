@@ -23,11 +23,42 @@
         .wrapper {
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
+            padding: 20px 20px 40px 20px;
             box-sizing: border-box;
             background-color: rgba(0, 0, 0, 0.2); 
+        }
+
+        /* PERGAMENT-NAVIGATION */
+        .nav-bar {
+            background: #fcf5e3;
+            border: 3px double #3a2312;
+            border-radius: 4px;
+            padding: 12px 25px;
+            margin-bottom: 30px;
+            max-width: 850px;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-sizing: border-box;
+        }
+
+        .nav-link {
+            color: #3a2312;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 5px 10px;
+            transition: all 0.2s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #8b5a2b;
+            border-bottom: 2px solid #8b5a2b;
         }
 
         .parchment {
@@ -170,6 +201,14 @@
 <body>
 
     <div class="wrapper">
+        
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-link">Laune-Bereich</a>
+            <a href="pruefungsvorbereitung.html" class="nav-link">Fachkunde-Test</a>
+            <a href="mathe.html" class="nav-link">Formelbuch Mathe</a>
+            <a href="wiso_gk.html" class="nav-link active">WiSo & GK</a>
+        </nav>
+
         <div class="parchment">
             <h1>Prüfungssimulation: WiSo & GK</h1>
             <div class="subtitle">Interaktives Testmodul — 30 Wirtschafts- und Sozialkundefragen</div>
@@ -187,361 +226,25 @@
                 <div id="hw1" class="hint-content">Musterlösung: Die Probezeit muss mindestens einen Monat und darf höchstens vier Monate betragen.</div>
             </div>
 
-            <div class="task-card" id="w2">
-                <div class="question-header">
-                    <p class="question-text">2. Wer unterschreibt den Ausbildungsvertrag (Berufsausbildungsvertrag), wenn der Auszubildende noch minderjährig (unter 18 Jahre) ist?</p>
-                    <div class="info-icon" onclick="toggleHint('hw2')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w2', 'eltern vertreter sorgeberechtigte gesetzliche ausbildende')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw2" class="hint-content">Musterlösung: Der Auszubildende selbst, der Ausbildende (Betrieb) sowie die gesetzlichen Vertreter (in der Regel beide Elternteile).</div>
             </div>
-
-            <div class="task-card" id="w3">
-                <div class="question-header">
-                    <p class="question-text">3. Nach bestandener Gesellenprüfung arbeitet der frischgebackene Geselle einfach weiter, ohne dass ein neuer schriftlicher Vertrag geschlossen wurde. Welches Rechtsverhältnis entsteht dadurch?</p>
-                    <div class="info-icon" onclick="toggleHint('hw3')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w3', 'unbefristet arbeitsverhältnis arbeitsvertrag')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw3" class="hint-content">Musterlösung: Es entsteht automatisch ein unbefristetes Arbeitsverhältnis zu den üblichen Konditionen des Betriebs.</div>
-            </div>
-
-            <div class="task-card" id="w4">
-                <div class="question-header">
-                    <p class="question-text">4. Nennen Sie zwei rechtlich wirksame Gründe, die einen Arbeitgeber zur fristlosen (außerordentlichen) Kündigung berechtigen.</p>
-                    <div class="info-icon" onclick="toggleHint('hw4')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w4', 'diebstahl betrug verweigerung beleidigung tätlichkeit sachbeschädigung')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw4" class="hint-content">Musterlösung: Z. B. Diebstahl/Unterschlagung, beharrliche Arbeitsverweigerung, grobe Beleidigung oder Tätlichkeiten gegenüber Kollegen/Vorgesetzten.</div>
-            </div>
-
-            <div class="task-card" id="w5">
-                <div class="question-header">
-                    <p class="question-text">5. Welches Bundesgesetz schützt Arbeitnehmer vor sozial ungerechtfertigten ordentlichen Kündigungen in Betrieben mit mehr als 10 Mitarbeitern?</p>
-                    <div class="info-icon" onclick="toggleHint('hw5')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w5', 'kündigungsschutz kündigungsschutzgesetz kschg')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw5" class="hint-content">Musterlösung: Das Kündigungsschutzgesetz (KSchG).</div>
-            </div>
-
-            <div class="task-card" id="w6">
-                <div class="question-header">
-                    <p class="question-text">6. Innerhalb welcher Frist muss ein Arbeitnehmer eine Kündigungsschutzklage beim Arbeitsgericht einreichen, wenn er die Kündigung für unwirksam hält?</p>
-                    <div class="info-icon" onclick="toggleHint('hw6')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w6', 'wochen 3 drei')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw6" class="hint-content">Musterlösung: Innerhalb von 3 Wochen nach Zugang der schriftlichen Kündigung.</div>
-            </div>
-
-            <h2>Bereich 2: Betriebliche Mitbestimmung und Tarifrecht</h2>
-
-            <div class="task-card" id="w7">
-                <div class="question-header">
-                    <p class="question-text">7. Ab wie vielen ständig wahlberechtigten Arbeitnehmern kann in einem Betrieb ein Betriebsrat gewählt werden?</p>
-                    <div class="info-icon" onclick="toggleHint('hw7')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w7', '5 fünf')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw7" class="hint-content">Musterlösung: Ab mindestens 5 ständig wahlberechtigten Arbeitnehmern.</div>
-            </div>
-
-            <div class="task-card" id="w8">
-                <div class="question-header">
-                    <p class="question-text">8. Welches Gesetz regelt die Rechte, Pflichten und die Wahl des Betriebsrats?</p>
-                    <div class="info-icon" onclick="toggleHint('hw8')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w8', 'betriebsverfassungsgesetz betrvg')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw8" class="hint-content">Musterlösung: Das Betriebsverfassungsgesetz (BetrVG).</div>
-            </div>
-
-            <div class="task-card" id="w9">
-                <div class="question-header">
-                    <p class="question-text">9. Wer schließt einen Tarifvertrag ab? Nennen Sie die beiden Vertragsparteien (Tarifpartner).</p>
-                    <div class="info-icon" onclick="toggleHint('hw9')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w9', 'gewerkschaft arbeitgeberverband arbeitgeber')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw9" class="hint-content">Musterlösung: Die Gewerkschaft (z. B. IG BAU) und der Arbeitgeberverband (oder ein einzelner Arbeitgeber).</div>
-            </div>
-
-            <div class="task-card" id="w10">
-                <div class="question-header">
-                    <p class="question-text">10. Was versteht man unter der 'Friedenspflicht' während der Laufzeit eines Tarifvertrages?</p>
-                    <div class="info-icon" onclick="toggleHint('hw10')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w10', 'streik streiks arbeitskampf kein verboten')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw10" class="hint-content">Musterlösung: Dass während der Gültigkeit des Tarifvertrages keine Arbeitskampfmaßnahmen (Streiks) bezüglich der darin geregelten Punkte durchgeführt werden dürfen.</div>
-            </div>
-
-            <div class="task-card" id="w11">
-                <div class="question-header">
-                    <p class="question-text">11. Wie nennt man das offizielle Verfahren, bei dem versucht wird, einen festgefahrenen Tarifkonflikt mithilfe einer unparteiischen Person ohne Streik zu lösen?</p>
-                    <div class="info-icon" onclick="toggleHint('hw11')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w11', 'schlichtung schlichtungsverfahren')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw11" class="hint-content">Musterlösung: Schlichtungsverfahren (Schlichtung).</div>
-            </div>
-
-            <h2>Bereich 3: Sozialversicherung und soziale Sicherung</h2>
-
-            <div class="task-card" id="w12">
-                <div class="question-header">
-                    <p class="question-text">12. Welcher Zweig der gesetzlichen Sozialversicherung wird finanziell ausschließlich vom Arbeitgeber getragen?</p>
-                    <div class="info-icon" onclick="toggleHint('hw12')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w12', 'unfall unfallversicherung')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw12" class="hint-content">Musterlösung: Die gesetzliche Unfallversicherung (Berufsgenossenschaft).</div>
-            </div>
-
-            <div class="task-card" id="w13">
-                <div class="question-header">
-                    <p class="question-text">13. Wer ist der Träger der gesetzlichen Unfallversicherung im Maler- und Lackiererhandwerk?</p>
-                    <div class="info-icon" onclick="toggleHint('hw13')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('hw13', 'bg bau berufsgenossenschaft bauwirtschaft')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw13" class="hint-content">Musterlösung: Die Berufsgenossenschaft der Bauwirtschaft (BG BAU).</div>
-            </div>
-
-            <div class="task-card" id="w14">
-                <div class="question-header">
-                    <p class="question-text">14. Bei welchen zwei spezifischen Ereignissen tritt die gesetzliche Unfallversicherung ein?</p>
-                    <div class="info-icon" onclick="toggleHint('hw14')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w14', 'arbeitsunfall wegeunfall berufskrankheit')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw14" class="hint-content">Musterlösung: Bei Arbeitsunfällen, Wegeunfällen (Weg zur Arbeit oder zurück) sowie bei staatlich anerkannten Berufskrankheiten.</div>
-            </div>
-
-            <div class="task-card" id="w15">
-                <div class="question-header">
-                    <p class="question-text">15. Wie funktioniert das 'Generationenvertrag'-Prinzip in der gesetzlichen Rentenversicherung?</p>
-                    <div class="info-icon" onclick="toggleHint('hw15')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w15', 'umlageverfahren einzahlen bezahlen finanzieren rentner')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw15" class="hint-content">Musterlösung: Die Beiträge der aktuellen Beitragszahler (Arbeitnehmer) werden direkt als Rente an die heutigen Rentner ausgezahlt (Umlageverfahren).</div>
-            </div>
-
-            <div class="task-card" id="w16">
-                <div class="question-header">
-                    <p class="question-text">16. Wie lange zahlt der Arbeitgeber im Krankheitsfall das volle Arbeitsentgelt weiter (Entgeltfortzahlung), bevor die Krankenkasse Krankengeld leistet?</p>
-                    <div class="info-icon" onclick="toggleHint('hw16')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w16', 'wochen 6 sechs')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw16" class="hint-content">Musterlösung: Bis zu einer Dauer von 6 Wochen (42 Tage).</div>
-            </div>
-
-            <h2>Bereich 4: Wirtschaft, Markt und Geld</h2>
-
-            <div class="task-card" id="w17">
-                <div class="question-header">
-                    <p class="question-text">17. Wie bezeichnet man eine Wirtschaftsordnung, in der der Staat soziale Korrekturen (z.B. Kündigungsschutz, Sozialversicherungen) vornimmt, um Schwächere zu schützen?</p>
-                    <div class="info-icon" onclick="toggleHint('hw17')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w17', 'soziale marktwirtschaft')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw17" class="hint-content">Musterlösung: Soziale Marktwirtschaft (die Wirtschaftsordnung der Bundesrepublik Deutschland).</div>
-            </div>
-
-            <div class="task-card" id="w18">
-                <div class="question-header">
-                    <p class="question-text">18. Wie nennt man eine Marktform, bei der es auf einem Markt sehr viele Nachfrager, aber nur einen einzigen Anbieter gibt?</p>
-                    <div class="info-icon" onclick="toggleHint('hw18')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w18', 'monopol angebotsmonopol')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw18" class="hint-content">Musterlösung: Monopol (bzw. Angebotsmonopol).</div>
-            </div>
-
-            <div class="task-card" id="w19">
-                <div class="question-header">
-                    <p class="question-text">19. Was versteht man unter dem Begriff 'Inflation'?</p>
-                    <div class="info-icon" onclick="toggleHint('hw19')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w19', 'geldentwertung teuerung kaufkraftverlust teurer')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw19" class="hint-content">Musterlösung: Eine anhaltende Geldentwertung bzw. das Steigen des allgemeinen Preisniveaus, wodurch die Kaufkraft des Geldes sinkt.</div>
-            </div>
-
-            <div class="task-card" id="w20">
-                <div class="question-header">
-                    <p class="question-text">20. Was unterscheidet den Bruttolohn grundlegend vom Nettolohn?</p>
-                    <div class="info-icon" onclick="toggleHint('hw20')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w20', 'abzüge steuern sozialversicherung ausbezahlt')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw20" class="hint-content">Musterlösung: Der Bruttolohn ist das Gehalt vor Abzug von Steuern und Sozialversicherungsbeiträgen. Der Nettolohn ist der Betrag, der tatsächlich ausgezahlt wird.</div>
-            </div>
-
-            <div class="task-card" id="w21">
-                <div class="question-header">
-                    <p class="question-text">21. Wer ist in Deutschland primär für die Überwachung und Einhaltung von Kartellverboten (Absprachen zur Preisbildung) zuständig?</p>
-                    <div class="info-icon" onclick="toggleHint('hw21')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w21', 'bundeskartellamt kartellamt')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw21" class="hint-content">Musterlösung: Das Bundeskartellamt.</div>
-            </div>
-
-            <h2>Bereich 5: Gemeinschaftskunde (Politik und Staatsbürgerkunde)</h2>
-
-            <div class="task-card" id="w22">
-                <div class="question-header">
-                    <p class="question-text">22. Wie heißt die Verfassung der Bundesrepublik Deutschland?</p>
-                    <div class="info-icon" onclick="toggleHint('hw22')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w22', 'grundgesetz gg')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw22" class="hint-content">Musterlösung: Das Grundgesetz (GG).</div>
-            </div>
-
-            <div class="task-card" id="w23">
-                <div class="question-header">
-                    <p class="question-text">23. Welche fünf Wahlrechtsgrundsätze gelten laut Grundgesetz für die politischen Wahlen in Deutschland?</p>
-                    <div class="info-icon" onclick="toggleHint('hw23')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w23', 'allgemein unmittelbar frei gleich geheim')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw23" class="hint-content">Musterlösung: Wahlen müssen allgemein, unmittelbar, frei, gleich und geheim sein.</div>
-            </div>
-
-            <div class="task-card" id="w24">
-                <div class="question-header">
-                    <p class="question-text">24. Was versteht man im deutschen Bundestagswahlsystem unter der 'Fünf-Prozent-Hürde' (Sperrklausel)?</p>
-                    <div class="info-icon" onclick="toggleHint('hw24')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w24', 'stimmen mindestanteil bundestag einzug partei')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw24" class="hint-content">Musterlösung: Eine Partei muss mindestens 5% der Zweitstimmen erhalten, um über die Landeslisten Abgeordnete in den Bundestag entsenden zu dürfen (Verhindert Zersplitterung).</div>
-            </div>
-
-            <div class="task-card" id="w25">
-                <div class="question-header">
-                    <p class="question-text">25. Welche drei Gewalten unterscheidet man im Rahmen der staatlichen Gewaltenteilung?</p>
-                    <div class="info-icon" onclick="toggleHint('hw25')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w25', 'legislative exekutive judikative gesetzgebung ausführende rechtsprechung')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw25" class="hint-content">Musterlösung: Legislative (gesetzgebende Gewalt), Exekutive (ausführende Gewalt) und Judikative (rechtsprechende Gewalt).</div>
-            </div>
-
-            <div class="task-card" id="w26">
-                <div class="question-header">
-                    <p class="question-text">26. Welches Verfassungsorgan vertritt die Interessen der 16 Bundesländer auf Bundesebene bei der Gesetzgebung?</p>
-                    <div class="info-icon" onclick="toggleHint('hw26')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w26', 'bundesrat')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw26" class="hint-content">Musterlösung: Der Bundesrat.</div>
-            </div>
-
-            <div class="task-card" id="w27">
-                <div class="question-header">
-                    <p class="question-text">27. Wer wählt in Deutschland den Bundeskanzler oder die Bundeskanzlerin?</p>
-                    <div class="info-icon" onclick="toggleHint('hw27')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w27', 'bundestag abgeordnete parlament')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw27" class="hint-content">Musterlösung: Der Deutsche Bundestag (die Abgeordneten).</div>
-            </div>
-
-            <div class="task-card" id="w28">
-                <div class="question-header">
-                    <p class="question-text">28. Welches höchste deutsche Gericht wacht über die Einhaltung und Auslegung des Grundgesetzes?</p>
-                    <div class="info-icon" onclick="toggleHint('hw28')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w28', 'bundesverfassungsgericht bverfg')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw28" class="hint-content">Musterlösung: Das Bundesverfassungsgericht (mit Sitz in Karlsruhe).</div>
-            </div>
-
-            <div class="task-card" id="w29">
-                <div class="question-header">
-                    <p class="question-text">29. Wo haben die wichtigsten Organe der Europäischen Union (EU-Kommission, Ministerrat) ihren Hauptsitz?</p>
-                    <div class="info-icon" onclick="toggleHint('hw29')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w29', 'brüssel belgien')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw29" class="hint-content">Musterlösung: In Brüssel (Belgien).</div>
-            </div>
-
-            <div class="task-card" id="w30">
-                <div class="question-header">
-                    <p class="question-text">30. Was besagt das im Grundgesetz verankerte 'Sozialstaatsprinzip'?</p>
-                    <div class="info-icon" onclick="toggleHint('hw30')">ℹ</div>
-                </div>
-                <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('w30', 'gerechtigkeit schutz schwache absicherung sozialer')">Prüfen</button>
-                <div class="feedback"></div>
-                <div id="hw30" class="hint-content">Musterlösung: Dass der Staat verpflichtet ist, für soziale Gerechtigkeit zu sorgen und die Bürger vor existenzieller Not (z.B. durch Sozialhilfe, Absicherung bei Armut) zu schützen.</div>
-            </div>
-
-        </div>
     </div>
 
     <script>
-        // Info-Symbol ein-/ausblenden
         function toggleHint(id) {
             const hint = document.getElementById(id);
-            if (hint.style.display === "block") {
-                hint.style.display = "none";
-            } else {
-                hint.style.display = "block";
-            }
+            hint.style.display = (hint.style.display === "block") ? "none" : "block";
         }
 
-        // Validierung per Keyword-Abgleich
         function checkAnswer(quizId, keywords) {
             const quizCard = document.getElementById(quizId);
             const inputField = quizCard.querySelector('.answer-input');
             const feedback = quizCard.querySelector('.feedback');
-            
             const userAnswer = inputField.value.toLowerCase().trim();
             const keywordArray = keywords.split(' ');
             
             let correctCount = 0;
             keywordArray.forEach(keyword => {
-                if (userAnswer.includes(keyword)) {
-                    correctCount++;
-                }
+                if (userAnswer.includes(keyword)) correctCount++;
             });
 
             feedback.style.display = 'block';
@@ -553,11 +256,10 @@
                 feedback.innerText = "✗ Bitte schreibe erst eine fachliche Antwort hinein.";
                 feedback.className = "feedback wrong";
             } else {
-                feedback.innerText = "✗ Das trifft den Kern noch nicht ganz. Klicke auf das ℹ für die juristischen/wirtschaftlichen Fachbegriffe.";
+                feedback.innerText = "✗ Das trifft den Kern noch nicht ganz. Klicke auf das ℹ für die Fachbegriffe.";
                 feedback.className = "feedback wrong";
             }
         }
     </script>
-
 </body>
 </html>
