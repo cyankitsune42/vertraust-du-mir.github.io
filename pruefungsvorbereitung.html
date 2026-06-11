@@ -30,7 +30,6 @@
             background-color: rgba(0, 0, 0, 0.2); 
         }
 
-        /* PERGAMENT-NAVIGATION */
         .nav-bar {
             background: #fcf5e3;
             border: 3px double #3a2312;
@@ -201,7 +200,6 @@
 <body>
 
     <div class="wrapper">
-        
         <nav class="nav-bar">
             <a href="index.html" class="nav-link">Laune-Bereich</a>
             <a href="pruefungsvorbereitung.html" class="nav-link active">Fachkunde-Test</a>
@@ -225,8 +223,53 @@
                 <div class="feedback"></div>
                 <div id="hf1" class="hint-content">Musterlösung: Durch die Adhäsionskraft (Adhäsion).</div>
             </div>
-            
+
+            <div class="task-card" id="f2">
+                <div class="question-header">
+                    <p class="question-text">2. Welcher chemische Vorgang führt zum Rosten von ungeschütztem Eisen an feuchter Luft?</p>
+                    <div class="info-icon" onclick="toggleHint('hf2')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f2', 'oxidation oxidieren sauerstoff')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf2" class="hint-content">Musterlösung: Eine Oxidation (Reaktion von Eisen mit Sauerstoff und Wasser).</div>
             </div>
+
+            <div class="task-card" id="f3">
+                <div class="question-header">
+                    <p class="question-text">3. Wie prüft man einen alten Putzuntergrund auf Hohlstellen?</p>
+                    <div class="info-icon" onclick="toggleHint('hf3')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f3', 'abklopfen klopfen hammer holzhammer')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf3" class="hint-content">Musterlösung: Durch Abklopfen (z. B. mit einem Hammerstiel). Ein hohler Klang verrät Schadstellen.</div>
+            </div>
+
+            <h2>Bereich 2: Anstrichfarben und Werkzeuge</h2>
+
+            <div class="task-card" id="f4">
+                <div class="question-header">
+                    <p class="question-text">4. Welche drei Hauptbestandteile bilden die Zusammensetzung klassischer Anstrichfarben?</p>
+                    <div class="info-icon" onclick="toggleHint('hf4')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f4', 'bindemittel pigment lösemittel lösungsmittel zusatzstoffe additiven')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf4" class="hint-content">Musterlösung: Bindemittel, Pigmente/Füllstoffe und Lösemittel (bzw. Wasser).</div>
+            </div>
+
+            <div class="task-card" id="f5">
+                <div class="question-header">
+                    <p class="question-text">5. Welcher Pinseltyp wird wegen seiner runden Form traditionell für Beschichtungen mit lösemittelhaltigen Lacken auf Holzbauteilen verwendet?</p>
+                    <div class="info-icon" onclick="toggleHint('hf5')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f5', 'ringpinsel rundpinsel')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf5" class="hint-content">Musterlösung: Der Ringpinsel (Rundpinsel).</div>
+            </div>
+        </div>
     </div>
 
     <script>
