@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prüfungsvorbereitung – Maler & Lackierer</title>
+    <title>Interaktive Prüfungsvorbereitung</title>
     <style>
         html, body {
             margin: 0;
@@ -36,7 +36,7 @@
             border: 6px double #3a2312; 
             border-radius: 4px;
             padding: 40px 40px;
-            max-width: 800px; /* Breiter für den Lernstoff */
+            max-width: 900px; /* Breiter für den Lernstoff und die Grafik */
             width: 100%;
             box-shadow: 
                 0 10px 30px rgba(0,0,0,0.5),
@@ -48,7 +48,7 @@
             color: #3a2312;
             font-size: 2.2rem;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             border-bottom: 3px double #8b5a2b;
             padding-bottom: 15px;
         }
@@ -61,12 +61,6 @@
             padding-bottom: 5px;
         }
 
-        h3 {
-            color: #704214;
-            font-size: 1.2rem;
-            margin-top: 20px;
-        }
-
         .content-text {
             font-size: 1.1rem;
             color: #4a2f15;
@@ -74,69 +68,106 @@
             text-align: left;
         }
 
-        /* Wichtige Merkkästen */
-        .info-box {
-            background-color: rgba(212, 175, 55, 0.1);
-            border-left: 4px solid #d4af37;
-            padding: 15px;
-            margin: 20px 0;
-            font-style: italic;
-            border-radius: 0 4px 4px 0;
-        }
-
-        /* Platzhalter für Fachbilder */
-        .image-placeholder {
-            background-color: #e8dfc7;
-            border: 1px dashed #8b5a2b;
-            padding: 40px 20px;
-            text-align: center;
-            margin: 15px 0;
-            color: #704214;
-            font-style: italic;
+        /* DIE NEUE THEMENÜBERSICHT-GRAFIK */
+        .themen-grafik {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border: 4px solid #3a2312;
             border-radius: 4px;
+            margin: 20px auto 40px auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        /* Vokabel-/Prüfungslisten */
-        ul {
-            padding-left: 20px;
+        /* INTERAKTIVES QUIZ STYLING */
+        .quiz-container {
+            margin-top: 40px;
         }
 
-        li {
-            margin-bottom: 8px;
-        }
-
-        /* Interaktive Aufgaben (Akkordeon für Lösungen) */
         .task-card {
             background-color: rgba(139, 90, 43, 0.05);
-            border: 1px solid #3a2312;
+            border: 2px solid #3a2312;
             border-radius: 4px;
-            padding: 15px;
-            margin-top: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            position: relative;
         }
 
-        .solution-btn {
-            background: #3a2312;
-            color: #fcf5e3;
-            border: none;
-            padding: 8px 15px;
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #3a2312;
+            margin-bottom: 15px;
+        }
+
+        .answer-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            font-family: 'Georgia', serif;
+            border: 2px solid #8b5a2b;
+            border-radius: 4px;
+            background-color: #fcf5e3;
+            color: #4a2f15;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .quiz-btn {
+            padding: 10px 20px;
             font-family: 'Georgia', serif;
             cursor: pointer;
             border-radius: 4px;
-            margin-top: 10px;
+            border: none;
+            font-size: 1rem;
             transition: background 0.2s;
         }
 
-        .solution-btn:hover {
+        .check-btn {
+            background: #3a2312;
+            color: #d4af37;
+        }
+
+        .check-btn:hover {
             background: #5c3513;
+        }
+
+        .solution-btn {
+            background: #a08060;
+            color: #fcf5e3;
+        }
+
+        .solution-btn:hover {
+            background: #8b5a2b;
+        }
+
+        .feedback {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1.1rem;
+            display: none;
+        }
+
+        .feedback.correct {
+            color: #274011; /* Dunkelgrün */
+        }
+
+        .feedback.wrong {
+            color: #a12a2a; /* Dunkelrot */
         }
 
         .solution-content {
             display: none;
-            margin-top: 12px;
+            margin-top: 15px;
             padding-top: 10px;
             border-top: 1px dashed #3a2312;
             color: #274011;
-            font-weight: bold;
+            font-style: italic;
         }
     </style>
 </head>
@@ -144,57 +175,114 @@
 
     <div class="wrapper">
         <div class="parchment">
-            <h1>Prüfungsvorbereitung: Lernfeld 1–4</h1>
+            <h1>Interaktive Prüfungsvorbereitung</h1>
             
+            <img src="image_0.png" alt="Maler Gesellenprüfung Themenübersicht" class="themen-grafik">
+
             <div class="content-text">
-                <p>Willkommen im Lernbereich! Hier findest du die wichtigsten Kernkompetenzen, die für die Gesellenprüfung theoretisch wie praktisch sitzen müssen. Gehe die Abschnitte aufmerksam durch und teste dein Wissen am Ende jedes Kapitels.</p>
+                <p>Nutze die obige Grafik, um dir die Kernbereiche der Prüfung einzuprägen. Gehe die drei Abschnitte aufmerksam durch und teste dein Wissen im interaktiven Quiz darunter.</p>
 
-                <h2>1. Untergrundprüfung & Vorbereitung</h2>
-                <p>Bevor ein Anstrich oder eine Beschichtung aufgetragen werden kann, muss der Untergrund zwingend geprüft werden. Fehler bei der Prüfung führen unweigerlich zu Haftungsmängeln (Ablösen der Beschichtung).</p>
-                
-                <h3>Die wichtigsten Prüfmethoden im Überblick:</h3>
+                <h2>Wissenswertes</h2>
                 <ul>
-                    <li><strong>Sichtprüfung:</strong> Überprüfung auf Risse, Ausblühungen, Schimmel, Verschmutzungen oder alte Tapetenreste.</li>
-                    <li><strong>Wischprobe (Daumenprobe):</strong> Mit dem Daumen oder einem dunklen Tuch fest über den Putz streichen. Kreidet der Untergrund ab, muss er grundiert oder abgewaschen werden.</li>
-                    <li><strong>Kratz-/Ritzprüfung:</strong> Mit einem harten Gegenstand (z. B. Spachtelkante) prüfen, ob der Putz sandet oder alte Schichten abplatzen.</li>
-                    <li><strong>Benetzungsprobe (Saugfähigkeit):</strong> Wasser auf den Untergrund spritzen. Zieht es sofort ein, ist er stark saugend (Tiefgrund nötig). Perlt es ab, liegt eine Trennschicht vor.</li>
-                    <li><strong>Gitterrisstest:</strong> Speziell für Altanstriche, um die <em>Adhäsionskraft</em> (Haftung zum Untergrund) zu testen. Ein gitterförmiger Ritz wird mit Klebeband ruckartig abgezogen.</li>
+                    <li><strong>Untergrund:</strong> Immer auf Risse, Kreiden (Daumenprobe) und Saugfähigkeit (Benetzungsprobe) prüfen. Ein Gitterrisstest prüft die Adhäsion (Haftung zum Untergrund).</li>
+                    <li><strong>Werkzeug:</strong> Der Fadenvorband beim Ringpinsel reguliert die Borstenlänge.</li>
+                    <li><strong>Chemie:</strong> Das Bindemittel ist das Herzstück der Farbe; es verbindet Pigmente und sorgt für Haftung. Kohäsion ist die innere Festigkeit der Farbschicht.</li>
                 </ul>
+            </div>
 
-                <div class="info-box">
-                    <strong>Wissenswertes zur Adhäsionskraft:</strong> Die Adhäsion beschreibt die Haftung von ungleichen Stoffen aneinander (z. B. Lack auf Holz). Die Kohäsion hingegen beschreibt die inneren Zusammenhaltskräfte innerhalb eines Stoffes (z. B. wie stabil der getrocknete Lackfilm selbst ist).
-                </div>
+            <div class="quiz-container">
+                <h2>📝 Interaktives Quiz</h2>
+                <p>Beantworte die Fragen. Klicke auf 'Prüfen', um dein Ergebnis zu sehen, oder 'Lösung anzeigen', wenn du Hilfe brauchst.</p>
 
-                <div class="image-placeholder">
-                    [Hier kannst du ein Bild zur Benetzungsprobe oder zum Gitterrisstest einfügen: z.B. <img src="gitterriss.jpg" style="max-width:100%; height:auto; margin-top:10px;">]
-                </div>
-
-                <h2>2. Werkzeugkunde & Applikation</h2>
-                <p>Je nach Material und Untergrund entscheidet das richtige Werkzeug über die Qualität der Oberfläche.</p>
-                
-                <h3>Pinselarten:</h3>
-                <ul>
-                    <li><strong>Ringpinsel (Rundpinsel):</strong> Der Klassiker für Beschneidearbeiten und Beschichtungen auf Holz (Fenster, Türen). Besitzt oft einen Fadenvorband, der bei Abnutzung der Borsten gekürzt werden kann.</li>
-                    <li><strong>Flachpinsel:</strong> Ideal für flächige Bauteile und Lasuren.</li>
-                </ul>
-
-                <h3>Moderne Spritzverfahren:</h3>
-                <p>Für große Flächen im Objektbereich wird häufig das <strong>Airless-Verfahren</strong> genutzt. Hierbei wird das Material rein über hohen hydraulischen Druck (ohne Luft) zerstäubt. Das sorgt für einen extrem schnellen Materialauftrag, erfordert aber sorgfältiges Abkleben.</p>
-
-                <h2>3. Anstrichstoffe (Materialzusammensetzung)</h2>
-                <p>Ein Beschichtungsstoff besteht im Wesentlichen aus vier Hauptkomponenten:</p>
-                <ol>
-                    <li><strong>Bindemittel:</strong> Das Herzstück. Es verbindet die Pigmente untereinander und sorgt für die Haftung auf dem Untergrund (z. B. Acrylat, Alkydharz, Silikat).</li>
-                    <li><strong>Pigmente:</strong> Geben der Farbe ihre Deckkraft und den Farbton.</li>
-                    <li><strong>Füllstoffe:</strong> Geben dem Material Körper und regeln den Glanzgrad sowie die Schichtdicke.</li>
-                    <li><strong>Lösemittel / Wasser:</strong> Halten das Material flüssig, damit es verarbeitet werden kann, und verflüchtigen sich beim Trocknen.</li>
-                </ol>
-
-                <h2>📝 Interaktive Prüfungsfragen</h2>
-                <p>Teste dein Wissen! Klicke auf die Schaltfläche, um die richtige Antwort zu sehen.</p>
-
-                <div class="task-card">
-                    <p><strong>Frage 1:</strong> Ein Putz kreidet bei der Wischprobe stark ab. Welche Maßnahme ist vor dem Anstrich zwingend erforderlich?</p>
-                    <button class="solution-btn" onclick="toggleSolution('sol1')">Lösung anzeigen</button>
+                <div class="task-card" id="quiz1">
+                    <p class="question-text">Frage 1: Ein Putz kreidet bei der Wischprobe stark ab. Welche Maßnahme ist vor dem Anstrich zwingend erforderlich?</p>
+                    <input type="text" class="answer-input" id="ans1" placeholder="Deine Antwort hier...">
+                    <div class="feedback" id="feed1"></div>
+                    
+                    <div class="button-group">
+                        <button class="quiz-btn check-btn" onclick="checkAnswer('quiz1', 'grundierung tiefgrund reinigen')">Prüfen</button>
+                        <button class="quiz-btn solution-btn" onclick="toggleSolution('sol1')">Lösung anzeigen</button>
+                    </div>
                     <div id="sol1" class="solution-content">
-                        Antwort: Der Untergrund muss gründlich abgewaschen/abgefegt und anschließend mit einem verfestigenden Tiefgrund (
+                        Musterlösung: Der Untergrund muss gründlich gereinigt und anschließend mit einem verfestigenden Tiefgrund grundiert werden.
+                    </div>
+                </div>
+
+                <div class="task-card" id="quiz2">
+                    <p class="question-text">Frage 2: Was ist der Unterschied zwischen Adhäsion und Kohäsion?</p>
+                    <input type="text" class="answer-input" id="ans2" placeholder="Deine Antwort hier...">
+                    <div class="feedback" id="feed2"></div>
+
+                    <div class="button-group">
+                        <button class="quiz-btn check-btn" onclick="checkAnswer('quiz2', 'adhäsion untergrund kohäsion festigkeit bindung')">Prüfen</button>
+                        <button class="quiz-btn solution-btn" onclick="toggleSolution('sol2')">Lösung anzeigen</button>
+                    </div>
+                    <div id="sol2" class="solution-content">
+                        Musterlösung: Adhäsion ist die Haftung zum Untergrund (Haftkraft). Kohäsion ist die innere Festigkeit der Farbschicht (Zusammenhalt).
+                    </div>
+                </div>
+
+                <div class="task-card" id="quiz3">
+                    <p class="question-text">Frage 3: Welchen Zweck erfüllt der Fadenvorband bei einem Ringpinsel?</p>
+                    <input type="text" class="answer-input" id="ans3" placeholder="Deine Antwort hier...">
+                    <div class="feedback" id="feed3"></div>
+
+                    <div class="button-group">
+                        <button class="quiz-btn check-btn" onclick="checkAnswer('quiz3', 'borstenlänge regulieren elastizität schlusskraft abnutzung')">Prüfen</button>
+                        <button class="quiz-btn solution-btn" onclick="toggleSolution('sol3')">Lösung anzeigen</button>
+                    </div>
+                    <div id="sol3" class="solution-content">
+                        Musterlösung: Der Fadenvorband reguliert die nutzbare Borstenlänge bei fortschreitender Abnutzung.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logik für das interaktive Quiz (Prüfen auf Schlüsselwörter)
+        function checkAnswer(quizId, keywords) {
+            const quizCard = document.getElementById(quizId);
+            const inputField = quizCard.querySelector('.answer-input');
+            const feedback = quizCard.querySelector('.feedback');
+            
+            const userAnswer = inputField.value.toLowerCase().trim();
+            const keywordArray = keywords.split(' ');
+            
+            let correctKeywordsCount = 0;
+            
+            keywordArray.forEach(keyword => {
+                if (userAnswer.includes(keyword)) {
+                    correctKeywordsCount++;
+                }
+            });
+
+            feedback.style.display = 'block';
+
+            // Einfache Validierung: Wenn mindestens ein Schlüsselwort vorkommt, gilt es als 'richtig tendiert'
+            if (correctKeywordsCount >= 1 && userAnswer.length > 5) {
+                feedback.innerText = "✓ Das sieht gut aus! Vergleiche deine Antwort mit der Musterlösung.";
+                feedback.className = "feedback correct";
+            } else if (userAnswer.length <= 5) {
+                feedback.innerText = "✗ Bitte gib eine ausführlichere Antwort ein.";
+                feedback.className = "feedback wrong";
+            } else {
+                feedback.innerText = "✗ Hm, deine Antwort enthält nicht die wichtigsten Fachbegriffe. Schau dir die Lösung an.";
+                feedback.className = "feedback wrong";
+            }
+        }
+
+        // Funktion zum Ein- und Ausblenden der Lösungen
+        function toggleSolution(id) {
+            const solution = document.getElementById(id);
+            if (solution.style.display === "block") {
+                solution.style.display = "none";
+            } else {
+                solution.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>
