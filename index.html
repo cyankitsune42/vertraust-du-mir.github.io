@@ -261,5 +261,125 @@
             }
         }
     </script>
+    <div id="pull-to-refresh-indicator">
+        <svg class="spinner" viewBox="0 0 50 50">
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        </svg>
+        <span>Wische zum Aktualisieren...</span>
+    </div>
+
+    <style>
+        /* CSS für den Pull-to-Refresh Indikator */
+        #pull-to-refresh-indicator {
+            position: fixed;
+            top: -60px; /* Standardmäßig außerhalb des Bildschirms */
+            left: 0;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background: #fcf5e3; /* Passt perfekt zu deinem Pergament-Stil */
+            border-bottom: 2px solid #3a2312;
+            color: #3a2312;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            font-size: 0.95rem;
+            z-index: 9999;
+            transition: transform 0.1s ease-out;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+
+        /* Der rotierende Ladekreis */
+        .spinner {
+            animation: rotate 2s linear infinite;
+            width: 24px;
+            height: 24px;
+        }
+
+        .spinner .path {
+            stroke: #8b5a2b;
+            stroke-linecap: round;
+            animation: dash 1.5s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes dash {
+            0% { stroke-dasharray: 1, 150; stroke-dashoffset: 0; }
+            50% { stroke-dasharray: 90, 150; stroke-dashoffset: -35; }
+            100% { stroke-dasharray: 90, 150; stroke-dashoffset: -124; }
+        }
+    </style>
+
+    <script>
+        // JavaScript für die Touch-Erkennung
+        let touchStartPoint = 0;
+        let touchMovePoint = 0;
+        const indicator = document.getElementById('pull-to-refresh-indicator');
+        const triggerDistance = 150; // Wie weit man nach unten ziehen muss (in Pixeln)
+
+        window.addEventListener('touchstart', function(e) {
+            // Nur aktivieren, wenn der Nutzer ganz oben an der Seite steht
+            if (window.scrollY === 0) {
+                touchStartPoint = e.touches[0].clientY;
+            } else {
+                touchStartPoint = 0;
+            }
+        }, { passive: true });
+
+        window.addEventListener('touchmove', function(e) {
+            if (touchStartPoint === 0) return;
+
+            touchMovePoint = e.touches[0].clientY;
+            const pullDistance = touchMovePoint - touchStartPoint;
+
+            // Wenn nach unten gezogen wird
+            if (pullDistance > 0 && pullDistance < triggerDistance + 50) {
+                // Den Indikator sichtbar nach unten verschieben (gedrosselt für flüssiges Gefühl)
+                const moveY = Math.min(pullDistance * 0.5, 60); 
+                indicator.style.transform = `translateY(${moveY}px)`;
+                
+                if (pullDistance > triggerDistance) {
+                    indicator.querySelector('span').innerText = "Loslassen zum Laden...";
+                } else {
+                    indicator.querySelector('span').innerText = "Wische zum Aktualisieren...";
+                }
+            }
+        }, { passive: true });
+
+        window.addEventListener('touchend', function() {
+            if (touchStartPoint === 0) return;
+
+            const pullDistance = touchMovePoint - touchStartPoint;
+            
+            // Wenn weit genug gezogen wurde -> Seite neu laden
+            if (pullDistance > triggerDistance) {
+                indicator.style.transform = 'translateY(60px)';
+                indicator.querySelector('span').innerText = "Aktualisiere...";
+                
+                setTimeout(() => {
+                    window.location.reload();
+                }, 400); // Kurze Verzögerung für die Animation
+            } else {
+                // Ansonsten Indikator wieder verstecken
+                indicator.style.transform = 'translateY(0px)';
+            }
+
+            // Punkte zurücksetzen
+            touchStartPoint = 0;
+            touchMovePoint = 0;
+        });
+    </script>
+    ```
+
+### Wie es funktioniert:
+1. **Sicherheit:** Es löst nur aus, wenn du dich ganz oben auf der Seite befindest (`window.scrollY === 0`). Wenn du mitten im Test nach oben scrollst, lädt die Seite nicht aus Versehen neu.
+2. **Optik:** Es zieht oben einen kleinen Balken im gleichen Pergament-Stil heraus, der dir anzeigt, wann du loslassen musst.
+3. **Flüssig:** Durch die `passive: true` Events ruckelt die Seite beim normalen Scrollen auf dem Handy überhaupt nicht.
 </body>
 </html>
