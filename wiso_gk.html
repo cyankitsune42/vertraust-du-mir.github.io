@@ -25,23 +25,25 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px 20px 40px 20px;
+            padding: 15px 10px 40px 10px; /* Kleinere Abstände am Rand für Handys */
             box-sizing: border-box;
             background-color: rgba(0, 0, 0, 0.2); 
         }
 
+        /* PERGAMENT-NAVIGATION (RESPONSIV) */
         .nav-bar {
             background: #fcf5e3;
             border: 3px double #3a2312;
             border-radius: 4px;
-            padding: 12px 25px;
-            margin-bottom: 30px;
+            padding: 10px 15px;
+            margin-bottom: 20px;
             max-width: 850px;
             width: 100%;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 10px;
+            flex-wrap: wrap; /* Erlaubt Umbruch auf kleinen Bildschirmen */
             box-sizing: border-box;
         }
 
@@ -49,10 +51,11 @@
             color: #3a2312;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1rem;
-            padding: 5px 10px;
+            font-size: 0.95rem;
+            padding: 6px 8px;
             transition: all 0.2s;
             border-bottom: 2px solid transparent;
+            white-space: nowrap; /* Verhindert hässlichen Textumbruch im Button */
         }
 
         .nav-link:hover, .nav-link.active {
@@ -60,12 +63,13 @@
             border-bottom: 2px solid #8b5a2b;
         }
 
+        /* PERGAMENT-CONTAINER (RESPONSIV) */
         .parchment {
             background: #fcf5e3;
             background-image: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 100%);
             border: 6px double #3a2312; 
             border-radius: 4px;
-            padding: 40px 40px;
+            padding: 25px 20px; /* Reduzierter Innenabstand auf Mobilgeräten */
             max-width: 850px; 
             width: 100%;
             box-shadow: 
@@ -76,7 +80,7 @@
 
         h1 {
             color: #3a2312;
-            font-size: 2.2rem;
+            font-size: 1.8rem; /* Etwas kleiner für Handys */
             text-align: center;
             margin-bottom: 10px;
             border-bottom: 3px double #8b5a2b;
@@ -87,14 +91,14 @@
             text-align: center;
             font-style: italic;
             color: #704214;
-            margin-bottom: 40px;
-            font-size: 1.1rem;
+            margin-bottom: 30px;
+            font-size: 1rem;
         }
 
         h2 {
             color: #5c3513;
-            font-size: 1.4rem;
-            margin-top: 40px;
+            font-size: 1.3rem;
+            margin-top: 35px;
             border-bottom: 1px dashed #8b5a2b;
             padding-bottom: 5px;
         }
@@ -103,8 +107,9 @@
             background-color: rgba(139, 90, 43, 0.03);
             border: 1px solid #3a2312;
             border-radius: 4px;
-            padding: 20px;
+            padding: 15px;
             margin-bottom: 20px;
+            box-sizing: border-box;
         }
 
         .question-header {
@@ -116,7 +121,7 @@
         }
 
         .question-text {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: bold;
             color: #3a2312;
             margin: 0;
@@ -127,12 +132,12 @@
             background: #8b5a2b;
             color: #fcf5e3;
             border-radius: 50%;
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: bold;
             cursor: pointer;
             user-select: none;
@@ -147,7 +152,7 @@
 
         .answer-input {
             width: 100%;
-            padding: 10px;
+            padding: 12px 10px; /* Größeres Touch-Target für Handzutat */
             font-size: 1rem;
             font-family: 'Georgia', serif;
             border: 1px solid #8b5a2b;
@@ -156,18 +161,26 @@
             color: #4a2f15;
             box-sizing: border-box;
             margin-bottom: 12px;
+            -webkit-appearance: none; /* Verhindert iOS-Standard-Styling */
         }
 
         .check-btn {
             background: #3a2312;
             color: #d4af37;
             border: none;
-            padding: 8px 15px;
+            padding: 10px 20px; /* Bessere Klickbarkeit auf dem Smartphone */
             font-family: 'Georgia', serif;
             cursor: pointer;
             border-radius: 4px;
             font-size: 0.95rem;
             transition: background 0.2s;
+            width: 100%; /* Button nimmt auf dem Handy die volle Breite ein */
+        }
+
+        @media (min-width: 480px) {
+            .check-btn {
+                width: auto; /* Auf größeren Bildschirmen wieder normal breit */
+            }
         }
 
         .check-btn:hover {
@@ -176,9 +189,10 @@
 
         .feedback {
             font-weight: bold;
-            margin-top: 10px;
+            margin-top: 12px;
             font-size: 1rem;
             display: none;
+            line-height: 1.3;
         }
 
         .feedback.correct { color: #274011; }
@@ -194,6 +208,16 @@
             font-style: italic;
             font-size: 0.95rem;
             border-radius: 0 4px 4px 0;
+            line-height: 1.4;
+        }
+
+        /* Größere Bildschirme bekommen wieder mehr Luxus-Platz */
+        @media (min-width: 768px) {
+            .wrapper { padding: 20px; }
+            .parchment { padding: 40px; }
+            h1 { font-size: 2.2rem; }
+            .nav-bar { gap: 20px; padding: 12px 25px; }
+            .nav-link { font-size: 1rem; }
         }
     </style>
 </head>
@@ -327,7 +351,7 @@
 
             <div class="task-card" id="w11">
                 <div class="question-header">
-                    <p class="question-text">11. Wie nennt man das offizielle Verfahren, bei dem versucht wird, einen festgefahrenen Tarifkonflikt mithilfe einer unparteiischen Person ohne Streik zu lösen?</p>
+                    <p class="question-text">11. Wie nennt man das offizielle Verfahren, bei dem versucht wird, einen festgefahrenen Tarifkonflikt mithilfe einer unparteiischen person ohne Streik zu lösen?</p>
                     <div class="info-icon" onclick="toggleHint('hw11')">ℹ</div>
                 </div>
                 <input type="text" class="answer-input" placeholder="Deine Antwort...">
@@ -340,7 +364,7 @@
 
             <div class="task-card" id="w12">
                 <div class="question-header">
-                    <p class="question-text">12. Welcher Zweig der gesetzlichen Sozialversicherung wird finanziell ausschließlich vom Arbeitgeber getragen?</p>
+                    <p class="question-text">12. Welcher zweig der gesetzlichen Sozialversicherung wird finanziell ausschließlich vom Arbeitgeber getragen?</p>
                     <div class="info-icon" onclick="toggleHint('hw12')">ℹ</div>
                 </div>
                 <input type="text" class="answer-input" placeholder="Deine Antwort...">
