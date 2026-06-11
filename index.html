@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Für dich...</title>
     <style>
-        /* Importiert die magische Schriftart NUR für den Button und das X */
         @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
 
-        /* Grunddesign der Seite - Jetzt mit vereinfachtem Bildpfad */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            background-color: #1a1008; /* Dunklerer Fallback, falls das Bild lädt */
+            background-color: #1a1008; 
             background-image: url('hintergrund.png'); 
             background-position: center center;
             background-repeat: no-repeat;
@@ -24,7 +22,7 @@
             overflow-y: auto; 
         }
 
-        /* STYLING FÜR DAS NEUE DROPDOWN-MENÜ OBEN LINKS */
+        /* STYLING FÜR DAS DROPDOWN-MENÜ OBEN LINKS */
         .nav-container {
             position: fixed;
             top: 20px;
@@ -64,7 +62,7 @@
             border: 1px solid #d4af37;
             border-radius: 4px;
             margin-top: 5px;
-            z-index: 1001;
+            z-index: 1010;
         }
 
         .dropdown-content a {
@@ -85,12 +83,6 @@
             display: block;
         }
 
-        /* Ausblenden der neuen Seiten im Standardzustand */
-        .subpage {
-            display: none;
-        }
-
-        /* Container für die Zentrierung */
         .wrapper {
             min-height: 100vh;
             display: flex;
@@ -98,14 +90,13 @@
             align-items: center;
             padding: 20px;
             box-sizing: border-box;
-            background-color: rgba(0, 0, 0, 0.2); /* Leicht dunkler Schleier für die Atmosphäre */
+            background-color: rgba(0, 0, 0, 0.2); 
         }
 
-        /* Das edle Pergament - Hell und scharf */
         .parchment {
             background: #fcf5e3;
             background-image: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 100%);
-            border: 6px double #3a2312; /* Magischer Doppelrahmen */
+            border: 6px double #3a2312; 
             border-radius: 4px;
             padding: 40px 30px;
             max-width: 480px;
@@ -118,7 +109,6 @@
             box-sizing: border-box;
         }
 
-        /* Das Schließen-X oben rechts */
         .close-x {
             display: none; 
             position: absolute;
@@ -138,7 +128,6 @@
             color: #a12a2a;
         }
 
-        /* Haupttext auf dem Pergament - Gestochen scharf */
         .message {
             font-size: 1.4rem;
             color: #4a2f15;
@@ -147,13 +136,12 @@
             font-style: italic;
         }
 
-        /* Der Start-Button im Hogwarts-Stil */
         .start-cheer-btn {
             padding: 15px 25px;
             font-size: 1rem;
             font-family: 'Cinzel Decorative', serif;
             background: linear-gradient(135deg, #3a2312 0%, #1a1008 100%);
-            color: #d4af37; /* Hogwarts-Gold */
+            color: #d4af37; 
             border: 2px solid #d4af37;
             border-radius: 30px;
             cursor: pointer;
@@ -168,7 +156,6 @@
             transform: scale(1.02);
         }
 
-        /* Der automatische Komplimente-Bereich */
         .laune-bereich {
             display: none;
         }
@@ -200,52 +187,31 @@
         <div class="dropdown">
             <button class="dropdown-btn">☰ Navigation</button>
             <div class="dropdown-content">
-                <a href="#" onclick="switchPage('start')">Startseite</a>
-                <a href="#" onclick="switchPage('pruefung')">Prüfungsvorbereitung</a>
-                <a href="#" onclick="switchPage('mathe')">Mathe</a>
-                <a href="#" onclick="switchPage('wiso')">WISO & GK</a>
+                <a href="pruefungsvorbereitung.html" target="_blank">Prüfungsvorbereitung</a>
+                <a href="mathe.html" target="_blank">Mathe</a>
+                <a href="wiso_gk.html" target="_blank">WISO & GK</a>
             </div>
         </div>
     </div>
 
     <div class="wrapper">
-
         <div class="parchment">
             <div class="close-x" id="closeBtn" onclick="showStartPage()">✕</div>
 
-            <div id="main-content">
-                <div id="seite1">
-                    <p class="message">
-                        Diesmal hat es leider nicht geklappt... aber wann immer es dich mal auf diese Seite verirrt, vergiss niemals: Ich bin für dich da. ✨
-                    </p>
-                    <button class="start-cheer-btn" onclick="showLaunePage()">
-                        Brauchst du ein kurzes Lächeln? Klick hier auf den Button!
-                    </button>
-                </div>
-
-                <div id="seite2" class="laune-bereich">
-                    <div class="compliment-box" id="complimentText"></div>
-                    <div class="sub-text">✨ Lehn dich zurück, die Sprüche wechseln von ganz allein... ✨</div>
-                </div>
+            <div id="seite1">
+                <p class="message">
+                    Diesmal hat es leider nicht geklappt... aber wann immer es dich mal auf diese Seite verirrt, vergiss niemals: Ich bin für dich da. ✨
+                </p>
+                <button class="start-cheer-btn" onclick="showLaunePage()">
+                    Brauchst du ein kurzes Lächeln? Klick hier auf den Button!
+                </button>
             </div>
 
-            <div id="page-pruefung" class="subpage">
-                <h2 style="color: #4a2f15; font-family: 'Georgia', serif;">Prüfungsvorbereitung</h2>
-                <p class="message" style="font-size: 1.1rem;">Hier entsteht dein Bereich für die Prüfungsvorbereitung. Du kannst diesen Text ganz einfach nach deinen Wünschen anpassen.</p>
+            <div id="seite2" class="laune-bereich">
+                <div class="compliment-box" id="complimentText"></div>
+                <div class="sub-text">✨ Lehn dich zurück, die Sprüche wechseln von ganz allein... ✨</div>
             </div>
-
-            <div id="page-mathe" class="subpage">
-                <h2 style="color: #4a2f15; font-family: 'Georgia', serif;">Mathe</h2>
-                <p class="message" style="font-size: 1.1rem;">Hier entsteht dein Bereich für mathematische Übungen und Formeln.</p>
-            </div>
-
-            <div id="page-wiso" class="subpage">
-                <h2 style="color: #4a2f15; font-family: 'Georgia', serif;">WISO & GK</h2>
-                <p class="message" style="font-size: 1.1rem;">Hier entsteht dein Bereich für Wirtschafts- und Sozialkunde sowie Gemeinschaftskunde.</p>
-            </div>
-
         </div>
-
     </div>
 
     <script>
@@ -263,43 +229,14 @@
         let intervalId = null;
         let currentIndex = 0;
 
-        // NEU: JavaScript-Funktion zum Wechseln zwischen den Seiten
-        function switchPage(pageId) {
-            // Zuerst alle Inhaltsbereiche ausblenden
-            document.getElementById('main-content').style.display = 'none';
-            document.getElementById('page-pruefung').style.display = 'none';
-            document.getElementById('page-mathe').style.display = 'none';
-            document.getElementById('page-wiso').style.display = 'none';
-            
-            // Falls der Komplimente-Timer läuft, stoppen wir ihn beim Verlassen der Startseite
-            if (intervalId) {
-                clearInterval(intervalId);
-            }
-
-            // Den gewünschten Bereich anzeigen
-            if (pageId === 'start') {
-                document.getElementById('main-content').style.display = 'block';
-                showStartPage(); // Setzt den Ursprungszustand der Startseite wieder her
-            } else if (pageId === 'pruefung') {
-                document.getElementById('page-pruefung').style.display = 'block';
-            } else if (pageId === 'mathe') {
-                document.getElementById('page-mathe').style.display = 'block';
-            } else if (pageId === 'wiso') {
-                document.getElementById('page-wiso').style.display = 'block';
-            }
-        }
-
         function changeCompliment() {
             const box = document.getElementById('complimentText');
-
             box.style.opacity = 0;
             
             setTimeout(() => {
                 box.innerText = compliments[currentIndex];
                 box.style.opacity = 1;
-
                 currentIndex++;
-
                 if (currentIndex >= compliments.length) {
                     currentIndex = 0;
                 }
@@ -310,10 +247,8 @@
             document.getElementById('seite1').style.display = 'none';
             document.getElementById('seite2').style.display = 'block';
             document.getElementById('closeBtn').style.display = 'block';
-
             currentIndex = 0; 
             changeCompliment();
-
             intervalId = setInterval(changeCompliment, 5000);
         }
 
@@ -321,12 +256,10 @@
             document.getElementById('seite2').style.display = 'none';
             document.getElementById('closeBtn').style.display = 'none';
             document.getElementById('seite1').style.display = 'block';
-
             if (intervalId) {
                 clearInterval(intervalId);
             }
         }
     </script>
-
 </body>
 </html>
