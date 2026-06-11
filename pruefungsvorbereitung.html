@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lernbereich</title>
+    <title>Prüfungsvorbereitung – Maler & Lackierer</title>
     <style>
         html, body {
             margin: 0;
@@ -25,7 +25,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 40px 20px;
             box-sizing: border-box;
             background-color: rgba(0, 0, 0, 0.2); 
         }
@@ -35,10 +35,9 @@
             background-image: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 100%);
             border: 6px double #3a2312; 
             border-radius: 4px;
-            padding: 40px 30px;
-            max-width: 600px; /* Hier etwas breiter für besseres Lesen beim Lernen */
+            padding: 40px 40px;
+            max-width: 800px; /* Breiter für den Lernstoff */
             width: 100%;
-            text-align: center;
             box-shadow: 
                 0 10px 30px rgba(0,0,0,0.5),
                 inset 0 0 50px rgba(139,90,43,0.2);
@@ -47,17 +46,97 @@
 
         h1 {
             color: #3a2312;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            border-bottom: 2px dashed #8b5a2b;
-            padding-bottom: 10px;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px double #8b5a2b;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: #5c3513;
+            font-size: 1.5rem;
+            margin-top: 35px;
+            border-bottom: 1px solid #8b5a2b;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            color: #704214;
+            font-size: 1.2rem;
+            margin-top: 20px;
         }
 
         .content-text {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #4a2f15;
             line-height: 1.6;
-            text-align: left; /* Text linksbündig für besseren Lesefluss beim Lernen */
+            text-align: left;
+        }
+
+        /* Wichtige Merkkästen */
+        .info-box {
+            background-color: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Platzhalter für Fachbilder */
+        .image-placeholder {
+            background-color: #e8dfc7;
+            border: 1px dashed #8b5a2b;
+            padding: 40px 20px;
+            text-align: center;
+            margin: 15px 0;
+            color: #704214;
+            font-style: italic;
+            border-radius: 4px;
+        }
+
+        /* Vokabel-/Prüfungslisten */
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Interaktive Aufgaben (Akkordeon für Lösungen) */
+        .task-card {
+            background-color: rgba(139, 90, 43, 0.05);
+            border: 1px solid #3a2312;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .solution-btn {
+            background: #3a2312;
+            color: #fcf5e3;
+            border: none;
+            padding: 8px 15px;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+
+        .solution-btn:hover {
+            background: #5c3513;
+        }
+
+        .solution-content {
+            display: none;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px dashed #3a2312;
+            color: #274011;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -65,12 +144,57 @@
 
     <div class="wrapper">
         <div class="parchment">
-            <h1>Themenbereich</h1>
+            <h1>Prüfungsvorbereitung: Lernfeld 1–4</h1>
+            
             <div class="content-text">
-                <p>Hier kannst du jetzt ganz entspannt deine Notizen, Aufgaben oder Fragen eintragen. Dieser Bereich nutzt dasselbe Design, bietet dir aber in einem eigenen Tab vollen Fokus auf den Stoff! ✨</p>
-            </div>
-        </div>
-    </div>
+                <p>Willkommen im Lernbereich! Hier findest du die wichtigsten Kernkompetenzen, die für die Gesellenprüfung theoretisch wie praktisch sitzen müssen. Gehe die Abschnitte aufmerksam durch und teste dein Wissen am Ende jedes Kapitels.</p>
 
-</body>
-</html>
+                <h2>1. Untergrundprüfung & Vorbereitung</h2>
+                <p>Bevor ein Anstrich oder eine Beschichtung aufgetragen werden kann, muss der Untergrund zwingend geprüft werden. Fehler bei der Prüfung führen unweigerlich zu Haftungsmängeln (Ablösen der Beschichtung).</p>
+                
+                <h3>Die wichtigsten Prüfmethoden im Überblick:</h3>
+                <ul>
+                    <li><strong>Sichtprüfung:</strong> Überprüfung auf Risse, Ausblühungen, Schimmel, Verschmutzungen oder alte Tapetenreste.</li>
+                    <li><strong>Wischprobe (Daumenprobe):</strong> Mit dem Daumen oder einem dunklen Tuch fest über den Putz streichen. Kreidet der Untergrund ab, muss er grundiert oder abgewaschen werden.</li>
+                    <li><strong>Kratz-/Ritzprüfung:</strong> Mit einem harten Gegenstand (z. B. Spachtelkante) prüfen, ob der Putz sandet oder alte Schichten abplatzen.</li>
+                    <li><strong>Benetzungsprobe (Saugfähigkeit):</strong> Wasser auf den Untergrund spritzen. Zieht es sofort ein, ist er stark saugend (Tiefgrund nötig). Perlt es ab, liegt eine Trennschicht vor.</li>
+                    <li><strong>Gitterrisstest:</strong> Speziell für Altanstriche, um die <em>Adhäsionskraft</em> (Haftung zum Untergrund) zu testen. Ein gitterförmiger Ritz wird mit Klebeband ruckartig abgezogen.</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>Wissenswertes zur Adhäsionskraft:</strong> Die Adhäsion beschreibt die Haftung von ungleichen Stoffen aneinander (z. B. Lack auf Holz). Die Kohäsion hingegen beschreibt die inneren Zusammenhaltskräfte innerhalb eines Stoffes (z. B. wie stabil der getrocknete Lackfilm selbst ist).
+                </div>
+
+                <div class="image-placeholder">
+                    [Hier kannst du ein Bild zur Benetzungsprobe oder zum Gitterrisstest einfügen: z.B. <img src="gitterriss.jpg" style="max-width:100%; height:auto; margin-top:10px;">]
+                </div>
+
+                <h2>2. Werkzeugkunde & Applikation</h2>
+                <p>Je nach Material und Untergrund entscheidet das richtige Werkzeug über die Qualität der Oberfläche.</p>
+                
+                <h3>Pinselarten:</h3>
+                <ul>
+                    <li><strong>Ringpinsel (Rundpinsel):</strong> Der Klassiker für Beschneidearbeiten und Beschichtungen auf Holz (Fenster, Türen). Besitzt oft einen Fadenvorband, der bei Abnutzung der Borsten gekürzt werden kann.</li>
+                    <li><strong>Flachpinsel:</strong> Ideal für flächige Bauteile und Lasuren.</li>
+                </ul>
+
+                <h3>Moderne Spritzverfahren:</h3>
+                <p>Für große Flächen im Objektbereich wird häufig das <strong>Airless-Verfahren</strong> genutzt. Hierbei wird das Material rein über hohen hydraulischen Druck (ohne Luft) zerstäubt. Das sorgt für einen extrem schnellen Materialauftrag, erfordert aber sorgfältiges Abkleben.</p>
+
+                <h2>3. Anstrichstoffe (Materialzusammensetzung)</h2>
+                <p>Ein Beschichtungsstoff besteht im Wesentlichen aus vier Hauptkomponenten:</p>
+                <ol>
+                    <li><strong>Bindemittel:</strong> Das Herzstück. Es verbindet die Pigmente untereinander und sorgt für die Haftung auf dem Untergrund (z. B. Acrylat, Alkydharz, Silikat).</li>
+                    <li><strong>Pigmente:</strong> Geben der Farbe ihre Deckkraft und den Farbton.</li>
+                    <li><strong>Füllstoffe:</strong> Geben dem Material Körper und regeln den Glanzgrad sowie die Schichtdicke.</li>
+                    <li><strong>Lösemittel / Wasser:</strong> Halten das Material flüssig, damit es verarbeitet werden kann, und verflüchtigen sich beim Trocknen.</li>
+                </ol>
+
+                <h2>📝 Interaktive Prüfungsfragen</h2>
+                <p>Teste dein Wissen! Klicke auf die Schaltfläche, um die richtige Antwort zu sehen.</p>
+
+                <div class="task-card">
+                    <p><strong>Frage 1:</strong> Ein Putz kreidet bei der Wischprobe stark ab. Welche Maßnahme ist vor dem Anstrich zwingend erforderlich?</p>
+                    <button class="solution-btn" onclick="toggleSolution('sol1')">Lösung anzeigen</button>
+                    <div id="sol1" class="solution-content">
+                        Antwort: Der Untergrund muss gründlich abgewaschen/abgefegt und anschließend mit einem verfestigenden Tiefgrund (
