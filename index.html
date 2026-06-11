@@ -7,122 +7,71 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
 
-        html, body {
-            margin: 0; padding: 0; height: 100%;
-            background-color: #1a1008;
-            background-image: url('hintergrund.png'); 
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            font-family: 'Georgia', serif;
-        }
-
-        .wrapper {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .parchment {
-            background: #fcf5e3;
-            border: 6px double #3a2312;
-            padding: 40px 30px;
-            max-width: 480px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 30px;
-            box-sizing: border-box;
-        }
-
-        /* Der Zauberstab als Button */
-        .magic-wand-trigger {
-            font-size: 4rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-            display: inline-block;
-        }
-        .magic-wand-trigger:hover { transform: translateY(-10px) rotate(15deg); }
-
-        .laune-bereich { display: none; }
-        .start-cheer-btn { padding: 10px 20px; cursor: pointer; }
+        html, body { margin: 0; padding: 0; height: 100%; background: #1a1008; font-family: 'Georgia', serif; }
+        .wrapper { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
+        .parchment { background: #fcf5e3; border: 6px double #3a2312; padding: 40px; max-width: 480px; width: 100%; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 20px; }
+        
+        /* Zauberstab Button - Jetzt als echtes Icon */
+        .wand-container { cursor: pointer; transition: transform 0.3s; margin-top: 20px; }
+        .wand-container:hover { transform: scale(1.1) rotate(-10deg); }
+        
+        .laune-bereich, #riddlePage { display: none; }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
         <div class="parchment">
-            <div id="closeBtn" style="display:none; cursor:pointer; text-align:right;" onclick="showStartPage()">✕</div>
+            <div id="closeBtn" style="display:none; cursor:pointer; text-align:right;" onclick="location.reload()">✕</div>
 
             <div id="seite1">
                 <p>Diesmal hat es leider nicht geklappt... aber ich bin für dich da. ✨</p>
-                <button class="start-cheer-btn" onclick="showLaunePage()">Lächeln gefällig?</button>
+                <button onclick="document.getElementById('seite2').style.display='block'; document.getElementById('seite1').style.display='none';">Lächeln gefällig?</button>
             </div>
 
             <div id="seite2" class="laune-bereich">
-                <div id="complimentText"></div>
+                <p>Du bist wunderbar! ✨</p>
             </div>
 
-            <div id="riddlePage" class="laune-bereich">
-                <div id="riddleBox">
-                    <p id="riddleText"></p>
-                    <input type="text" id="riddleAnswer" placeholder="Deine Antwort...">
-                    <button onclick="checkAnswer()">Antworten</button>
-                </div>
-                <div id="resultBox" style="display:none;">
-                    <p>Du hast das Geheimnis gelüftet!</p>
-                    <a href="https://cyankitsune42.github.io/" target="_blank">Hier geht es zu deinem Geschenk! ✨</a>
-                </div>
+            <div id="riddlePage">
+                <p id="riddleText"></p>
+                <input type="text" id="riddleAnswer">
+                <button onclick="checkAnswer()">Antworten</button>
             </div>
         </div>
 
-        <div class="magic-wand-trigger" onclick="startRiddleMode()" title="Geheimnis lüften...">🪄</div>
+        <div class="wand-container" onclick="startRiddleMode()">
+            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2l2 2-2 2-2-2zM12 22l-2-2 2-2 2 2zM3 12l2 2-2 2-2-2zM21 12l2 2-2 2-2-2zM12 8l4 4-4 4-4-4z"/>
+            </svg>
+            <p style="color: #d4af37; margin: 0; font-family: 'Cinzel Decorative'; font-size: 0.8rem;">Geheimnis lüften</p>
+        </div>
     </div>
 
     <script>
-        const compliments = ["Du bist großartig! 😊", "Die Welt ist schöner mit dir. 🌍", "Lass dir dein Lächeln nicht nehmen! ✨"];
         const riddles = [
-            { q: "Welches Tier ist das Wappentier von Gryffindor?", a: "löwe" },
-            { q: "Wie heißt der Hausmeister von Hogwarts?", a: "filch" },
-            { q: "Was ist der Zauberspruch, um Licht zu erzeugen?", a: "lumos" },
-            { q: "In welchem Sport fliegen Zauberer auf Besen?", a: "quidditch" },
-            { q: "Wie heißt die Schule für Hexerei und Zauberei?", a: "hogwarts" }
+            { q: "Gryffindor Wappentier?", a: "löwe" },
+            { q: "Hausmeister von Hogwarts?", a: "filch" },
+            { q: "Licht-Zauberspruch?", a: "lumos" },
+            { q: "Besensport?", a: "quidditch" },
+            { q: "Wie heißt die Schule?", a: "hogwarts" }
         ];
-
         let currentRiddle = 0;
 
         function startRiddleMode() {
             document.getElementById('seite1').style.display = 'none';
             document.getElementById('seite2').style.display = 'none';
             document.getElementById('riddlePage').style.display = 'block';
-            document.getElementById('closeBtn').style.display = 'block';
-            showRiddle();
+            document.getElementById('riddleText').innerText = riddles[currentRiddle].q;
         }
-
-        function showRiddle() { document.getElementById('riddleText').innerText = riddles[currentRiddle].q; }
 
         function checkAnswer() {
-            const input = document.getElementById('riddleAnswer').value.toLowerCase().trim();
-            if (input === riddles[currentRiddle].a) {
+            if(document.getElementById('riddleAnswer').value.toLowerCase().trim() === riddles[currentRiddle].a) {
                 currentRiddle++;
-                document.getElementById('riddleAnswer').value = '';
-                if (currentRiddle < riddles.length) showRiddle();
-                else {2
-                    document.getElementById('riddleBox').style.display = 'none';
-                    document.getElementById('resultBox').style.display = 'block';
-                }
-            } else { alert("Hmm, das ist leider nicht ganz korrekt."); }
+                if(currentRiddle < riddles.length) document.getElementById('riddleText').innerText = riddles[currentRiddle].q;
+                else window.location.href = "https://cyankitsune42.github.io/";
+            } else alert("Versuch es nochmal!");
         }
-
-        function showStartPage() {
-            location.reload(); // Einfachste Methode zum Zurücksetzen
-        }
-
-        function showLaunePage() {
-            document.getElementById('seite
-                                    
+    </script>
+</body>
+</html>
