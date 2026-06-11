@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lernbereich</title>
+    <title>Berufsmathematik – Maler & Lackierer</title>
     <style>
         html, body {
             margin: 0;
@@ -25,7 +25,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 40px 20px;
             box-sizing: border-box;
             background-color: rgba(0, 0, 0, 0.2); 
         }
@@ -35,10 +35,9 @@
             background-image: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 100%);
             border: 6px double #3a2312; 
             border-radius: 4px;
-            padding: 40px 30px;
-            max-width: 600px; /* Hier etwas breiter für besseres Lesen beim Lernen */
+            padding: 40px 40px;
+            max-width: 850px; 
             width: 100%;
-            text-align: center;
             box-shadow: 
                 0 10px 30px rgba(0,0,0,0.5),
                 inset 0 0 50px rgba(139,90,43,0.2);
@@ -47,30 +46,236 @@
 
         h1 {
             color: #3a2312;
-            font-size: 2rem;
+            font-size: 2.2rem;
+            text-align: center;
             margin-bottom: 20px;
-            border-bottom: 2px dashed #8b5a2b;
-            padding-bottom: 10px;
+            border-bottom: 3px double #8b5a2b;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: #5c3513;
+            font-size: 1.5rem;
+            margin-top: 35px;
+            border-bottom: 1px solid #8b5a2b;
+            padding-bottom: 5px;
         }
 
         .content-text {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #4a2f15;
             line-height: 1.6;
-            text-align: left; /* Text linksbündig für besseren Lesefluss beim Lernen */
+            text-align: left;
         }
+
+        .formula-box {
+            background-color: rgba(58, 35, 18, 0.03);
+            border: 1px solid #8b5a2b;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .formula {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #3a2312;
+            text-align: center;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .example {
+            font-style: italic;
+            color: #555;
+            margin-top: 10px;
+            padding-left: 10px;
+            border-left: 2px solid #a08060;
+        }
+
+        /* QUIZ STYLING */
+        .task-card {
+            background-color: rgba(139, 90, 43, 0.05);
+            border: 2px solid #3a2312;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #3a2312;
+            margin-bottom: 12px;
+        }
+
+        .quiz-input {
+            width: 150px;
+            padding: 8px;
+            font-size: 1rem;
+            border: 2px solid #8b5a2b;
+            border-radius: 4px;
+            background-color: #fcf5e3;
+            color: #4a2f15;
+            margin-right: 10px;
+        }
+
+        .quiz-btn {
+            padding: 8px 15px;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            border-radius: 4px;
+            border: none;
+            font-size: 1rem;
+            background: #3a2312;
+            color: #d4af37;
+            transition: background 0.2s;
+        }
+
+        .quiz-btn:hover {
+            background: #5c3513;
+        }
+
+        .feedback {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1.1rem;
+            display: none;
+        }
+
+        .feedback.correct { color: #274011; }
+        .feedback.wrong { color: #a12a2a; }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
         <div class="parchment">
-            <h1>Themenbereich</h1>
+            <h1>Fachmathematik für Maler & Lackierer</h1>
+            
             <div class="content-text">
-                <p>Hier kannst du jetzt ganz entspannt deine Notizen, Aufgaben oder Fragen eintragen. Dieser Bereich nutzt dasselbe Design, bietet dir aber in einem eigenen Tab vollen Fokus auf den Stoff! ✨</p>
+                <p>Hier findest du alle mathematischen Formeln, die für die Berechnung von Flächen, Materialverbrauch und Mischungen in der Praxis und Prüfung entscheidend sind.</p>
+
+                <h2>1. Flächenberechnungen (A)</h2>
+                <p>Wichtig für die Ermittlung von Wand-, Decken- oder Bodenflächen.</p>
+
+                <div class="formula-box">
+                    <strong>Rechteck (Wände, Decken):</strong>
+                    <div class="formula">A = a * b</div>
+                    <div class="example">
+                        <strong>Beispiel:</strong> Eine Wand ist 5,50 m lang und 2,70 m hoch.<br>
+                        <em>Rechnung:</em> 5,50 m * 2,70 m = <strong>14,85 m²</strong>
+                    </div>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Dreieck (Giebelwände):</strong>
+                    <div class="formula">A = (g * h) / 2</div>
+                    <div class="example">
+                        <strong>Beispiel:</strong> Ein Hausgiebel hat eine Grundlinie (g) von 8,00 m und eine Höhe (h) von 3,00 m.<br>
+                        <em>Rechnung:</em> (8,00 m * 3,00 m) / 2 = <strong>12,00 m²</strong>
+                    </div>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Trapez (Dachschrägen-Wände):</strong>
+                    <div class="formula">A = ((a + c) / 2) * h</div>
+                    <div class="example">
+                        <strong>Beispiel:</strong> Eine Wand unter einer Dachschräge hat eine linke Höhe (a) von 2,50 m, eine rechte Höhe (c) von 1,50 m und eine Länge (h) von 4,00 m.<br>
+                        <em>Rechnung:</em> ((2,50 m + 1,50 m) / 2) * 4,00 m = 2,00 m * 4,00 m = <strong>8,00 m²</strong>
+                    </div>
+                </div>
+
+
+                <h2>2. Materialverbrauch & Ergiebigkeit</h2>
+                <p>Wie viel Farbe wird für ein Objekt benötigt?</p>
+
+                <div class="formula-box">
+                    <strong>Gesamtverbrauch:</strong>
+                    <div class="formula">Verbrauch = Fläche (m²) * Spezifischer Verbrauch (l/m² oder g/m²)</div>
+                    <div class="example">
+                        <strong>Beispiel:</strong> Eine Fläche von 85 m² soll gestrichen werden. Der Hersteller gibt einen Verbrauch von 0,15 Litern pro m² an.<br>
+                        <em>Rechnung:</em> 85 m² * 0,15 l/m² = <strong>12,75 Liter</strong> Farbe.
+                    </div>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Anzahl der Eimer / Gebinde:</strong>
+                    <div class="formula">Eimeranzahl = Gesamtverbrauch / Eimerinhalt</div>
+                    <div class="example">
+                        <strong>Beispiel:</strong> Du benötigst 12,75 Liter Farbe. Ein Eimer enthält 10 Liter.<br>
+                        <em>Rechnung:</em> 12,75 l / 10 l = 1,275 Eimer → Aufgerundet müssen <strong>2 Eimer</strong> bestellt werden.
+                    </div>
+                </div>
+
+
+                <h2>3. Dreisatz & Prozentrechnung</h2>
+                <p>Wichtig für Verdünnungen, Mischungsverhältnisse oder Preisnachlässe.</p>
+
+                <div class="formula-box">
+                    <strong>Mischungsverhältnis (z. B. 2K-Lacke 4:1 nach Volumen):</strong>
+                    <div class="example">
+                        <strong>Beispiel:</strong> Du brauchst 500 ml spritzfertigen Lack. Das Verhältnis von Lack zu Härter ist 4:1 (insgesamt 5 Teile).<br>
+                        <em>Rechnung:</em> <br>
+                        Ein Teil = 500 ml / 5 = 100 ml.<br>
+                        Lack (4 Teile) = 4 * 100 ml = <strong>400 ml</strong>.<br>
+                        Härter (1 Teil) = 1 * 100 ml = <strong>100 ml</strong>.
+                    </div>
+                </div>
+
+
+                <h2>✏️ Interaktives Rechen-Quiz</h2>
+                <p>Rechne die Aufgaben aus und trage das Ergebnis ein (Nutze einen Punkt statt einem Komma, z. B. 12.5).</p>
+
+                <div class="task-card">
+                    <p class="question-text">Aufgabe 1: Eine Deckenfläche ist 6.20 m lang und 4.50 m breit. Wie groß ist die Fläche in m²?</p>
+                    <input type="number" step="0.01" class="quiz-input" id="input1" placeholder="Ergebnis...">
+                    <button class="quiz-btn" onclick="checkMath(1, 27.9)">Prüfen</button>
+                    <div class="feedback" id="feed1"></div>
+                </div>
+
+                <div class="task-card">
+                    <p class="question-text">Aufgabe 2: Eine Giebelwand (Dreieck) hat eine Grundlinie von 6.00 m und eine Höhe von 3.50 m. Wie groß ist die Fläche in m²?</p>
+                    <input type="number" step="0.01" class="quiz-input" id="input2" placeholder="Ergebnis...">
+                    <button class="quiz-btn" onclick="checkMath(2, 10.5)">Prüfen</button>
+                    <div class="feedback" id="feed2"></div>
+                </div>
+
+                <div class="task-card">
+                    <p class="question-text">Aufgabe 3: Eine Wandfläche von 40 m² soll zweifach gestrichen werden. Pro Quadratmeter und Arbeitsgang werden 0.15 Liter Farbe benötigt. Wie viele Liter werden insgesamt gebraucht?</p>
+                    <input type="number" step="0.01" class="quiz-input" id="input3" placeholder="Ergebnis...">
+                    <button class="quiz-btn" onclick="checkMath(3, 12.0)">Prüfen</button>
+                    <div class="feedback" id="feed3"></div>
+                </div>
+
             </div>
         </div>
     </div>
+
+    <script>
+        // Funktion zur Überprüfung der mathematischen Ergebnisse
+        function checkMath(questionNum, correctValue) {
+            const userInput = parseFloat(document.getElementById('input1' .replace('1', questionNum)).value);
+            const feedback = document.getElementById('feed1' .replace('1', questionNum));
+            
+            feedback.style.display = 'block';
+            
+            if (isNaN(userInput)) {
+                feedback.innerText = "⚠ Bitte gib eine Zahl ein.";
+                feedback.className = "feedback wrong";
+                return;
+            }
+            
+            // Toleranz für Rundungsfehler (0.05)
+            if (Math.abs(userInput - correctValue) < 0.05) {
+                feedback.innerText = "✓ Richtig gerechnet! Sauber.";
+                feedback.className = "feedback correct";
+            } else {
+                feedback.innerText = "✗ Leider falsch. Überprüfe noch mal deinen Rechenweg.";
+                feedback.className = "feedback wrong";
+            }
+        }
+    </script>
 
 </body>
 </html>
