@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berufsmathematik – Maler & Lackierer</title>
+    <title>Umfassende Fachmathematik – Maler & Lackierer</title>
     <style>
         html, body {
             margin: 0;
@@ -36,7 +36,7 @@
             border: 6px double #3a2312; 
             border-radius: 4px;
             padding: 40px 40px;
-            max-width: 850px; 
+            max-width: 900px; 
             width: 100%;
             box-shadow: 
                 0 10px 30px rgba(0,0,0,0.5),
@@ -48,9 +48,17 @@
             color: #3a2312;
             font-size: 2.2rem;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border-bottom: 3px double #8b5a2b;
             padding-bottom: 15px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-style: italic;
+            color: #704214;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
         }
 
         h2 {
@@ -77,12 +85,14 @@
         }
 
         .formula {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: bold;
             color: #3a2312;
             text-align: center;
             margin: 10px 0;
             font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.03);
+            padding: 5px;
         }
 
         .example {
@@ -91,6 +101,14 @@
             margin-top: 10px;
             padding-left: 10px;
             border-left: 2px solid #a08060;
+        }
+
+        .vob-note {
+            background-color: rgba(161, 42, 42, 0.05);
+            border-left: 4px solid #a12a2a;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 0.95rem;
         }
 
         /* QUIZ STYLING */
@@ -118,6 +136,7 @@
             background-color: #fcf5e3;
             color: #4a2f15;
             margin-right: 10px;
+            box-sizing: border-box;
         }
 
         .quiz-btn {
@@ -151,101 +170,154 @@
 
     <div class="wrapper">
         <div class="parchment">
-            <h1>Fachmathematik für Maler & Lackierer</h1>
+            <h1>Gesellenprüfung: Fachmathematik</h1>
+            <div class="subtitle">Vollständiges Formelbuch & Prüfungssimulation</div>
             
             <div class="content-text">
-                <p>Hier findest du alle mathematischen Formeln, die für die Berechnung von Flächen, Materialverbrauch und Mischungen in der Praxis und Prüfung entscheidend sind.</p>
 
-                <h2>1. Flächenberechnungen (A)</h2>
-                <p>Wichtig für die Ermittlung von Wand-, Decken- oder Bodenflächen.</p>
-
+                <h2>1. Raumaufmaße & Wandflächen (inkl. VOB)</h2>
+                <p>Bei der Berechnung von Wandflächen für das Angebot oder die Abrechnung gelten strenge Regeln nach der VOB/C (DIN 18363/18366).</p>
+                
                 <div class="formula-box">
-                    <strong>Rechteck (Wände, Decken):</strong>
-                    <div class="formula">A = a * b</div>
+                    <strong>Raum-Wandumfang (U):</strong>
+                    <div class="formula">U = 2 * (Länge + Breite)</div>
+                    <strong>Bruttowandfläche:</strong>
+                    <div class="formula">A = U * Raumhöhe</div>
+                    <div class="vob-note">
+                        <strong>⚠️ VOB-Übermessungsregel:</strong> Aussparungen (Fenster, Türen, Nischen) mit einer Einzelgröße von <strong>bis zu 2,50 m²</strong> werden übermessen (nicht abgezogen). Erst Flächen über 2,50 m² zieht man ab!
+                    </div>
                     <div class="example">
-                        <strong>Beispiel:</strong> Eine Wand ist 5,50 m lang und 2,70 m hoch.<br>
-                        <em>Rechnung:</em> 5,50 m * 2,70 m = <strong>14,85 m²</strong>
+                        <strong>Beispiel:</strong> Ein Raum ist 5,00 m lang, 4,00 m breit und 2,50 m hoch. Er hat ein Fenster mit 1,20 m * 1,00 m (= 1,20 m²).<br>
+                        <em>Rechnung:</em> Umfang = 2 * (5,00 + 4,00) = 18,00 m.<br>
+                        Bruttowandfläche = 18,00 m * 2,50 m = 45,00 m².<br>
+                        Da das Fenster kleiner als 2,50 m² ist, wird es laut VOB übermessen. Abrechnungsfläche = <strong>45,00 m²</strong>.
                     </div>
                 </div>
 
-                <div class="formula-box">
-                    <strong>Dreieck (Giebelwände):</strong>
-                    <div class="formula">A = (g * h) / 2</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Ein Hausgiebel hat eine Grundlinie (g) von 8,00 m und eine Höhe (h) von 3,00 m.<br>
-                        <em>Rechnung:</em> (8,00 m * 3,00 m) / 2 = <strong>12,00 m²</strong>
-                    </div>
-                </div>
+                <h2>2. Wandbekleidung (Tapetenbedarf & Rapport)</h2>
+                <p>Beim Tapezieren reicht das reine Berechnen der Wandfläche nicht aus, da Verschnitt durch das Muster (Rapport) und die Bahnenbreite entsteht.</p>
 
                 <div class="formula-box">
-                    <strong>Trapez (Dachschrägen-Wände):</strong>
-                    <div class="formula">A = ((a + c) / 2) * h</div>
+                    <strong>Standard-Europarolle:</strong> Breite = 0,53 m | Länge = 10,05 m.<br><br>
+                    <strong>Schritt 1: Anzahl der benötigten Bahnen</strong>
+                    <div class="formula">Bahnenanzahl = Wandumfang / Tapetenbreite (0,53 m) [Immer aufrunden!]</div>
+                    
+                    <strong>Schritt 2: Berechnung der Netto-Bahnenlänge bei Muster (Rapport)</strong>
+                    <div class="formula">Bahnenlänge = Raumhöhe + Rapport-Verschnitt (ca. 5 bis 10 cm je nach Muster)</div>
+                    
+                    <strong>Schritt 3: Bahnen pro Rolle</strong>
+                    <div class="formula">Bahnen pro Rolle = Rollenlänge (10,05 m) / Bahnenlänge [Immer abrunden!]</div>
+
+                    <strong>Schritt 4: Gesamtrollenbedarf</strong>
+                    <div class="formula">Rollenbedarf = Gesamtbahnen / Bahnen pro Rolle [Immer aufrunden!]</div>
+                    
                     <div class="example">
-                        <strong>Beispiel:</strong> Eine Wand unter einer Dachschräge hat eine linke Höhe (a) von 2,50 m, eine rechte Höhe (c) von 1,50 m und eine Länge (h) von 4,00 m.<br>
-                        <em>Rechnung:</em> ((2,50 m + 1,50 m) / 2) * 4,00 m = 2,00 m * 4,00 m = <strong>8,00 m²</strong>
-                    </div>
-                </div>
-
-
-                <h2>2. Materialverbrauch & Ergiebigkeit</h2>
-                <p>Wie viel Farbe wird für ein Objekt benötigt?</p>
-
-                <div class="formula-box">
-                    <strong>Gesamtverbrauch:</strong>
-                    <div class="formula">Verbrauch = Fläche (m²) * Spezifischer Verbrauch (l/m² oder g/m²)</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Eine Fläche von 85 m² soll gestrichen werden. Der Hersteller gibt einen Verbrauch von 0,15 Litern pro m² an.<br>
-                        <em>Rechnung:</em> 85 m² * 0,15 l/m² = <strong>12,75 Liter</strong> Farbe.
-                    </div>
-                </div>
-
-                <div class="formula-box">
-                    <strong>Anzahl der Eimer / Gebinde:</strong>
-                    <div class="formula">Eimeranzahl = Gesamtverbrauch / Eimerinhalt</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Du benötigst 12,75 Liter Farbe. Ein Eimer enthält 10 Liter.<br>
-                        <em>Rechnung:</em> 12,75 l / 10 l = 1,275 Eimer → Aufgerundet müssen <strong>2 Eimer</strong> bestellt werden.
-                    </div>
-                </div>
-
-
-                <h2>3. Dreisatz & Prozentrechnung</h2>
-                <p>Wichtig für Verdünnungen, Mischungsverhältnisse oder Preisnachlässe.</p>
-
-                <div class="formula-box">
-                    <strong>Mischungsverhältnis (z. B. 2K-Lacke 4:1 nach Volumen):</strong>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Du brauchst 500 ml spritzfertigen Lack. Das Verhältnis von Lack zu Härter ist 4:1 (insgesamt 5 Teile).<br>
+                        <strong>Beispiel:</strong> Raumumfang = 14,00 m, Raumhöhe = 2,60 m. Verwendet wird eine ansatzfreie Tapete (0,53 m x 10,05 m) mit 5 cm Sicherheitszuschlag oben/unten.<br>
                         <em>Rechnung:</em> <br>
-                        Ein Teil = 500 ml / 5 = 100 ml.<br>
-                        Lack (4 Teile) = 4 * 100 ml = <strong>400 ml</strong>.<br>
-                        Härter (1 Teil) = 1 * 100 ml = <strong>100 ml</strong>.
+                        1. Bahnen = 14,00 m / 0,53 m = 26,41 → <strong>27 Bahnen</strong>.<br>
+                        2. Bahnenlänge = 2,60 m + 0,05 m = <strong>2,65 m</strong>.<br>
+                        3. Bahnen pro Rolle = 10,05 m / 2,65 m = 3,79 → <strong>3 Bahnen pro Rolle</strong> (Rest ist Verschnitt).<br>
+                        4. Rollenbedarf = 27 Bahnen / 3 Bahnen = <strong>9 Rollen</strong>.
+                    </div>
+                </div>
+
+                <h2>3. Stoffmengen-Berechnung & Mischungen</h2>
+                <p>Oft verlangen Hersteller Angaben in Kilogramm ($kg$), die Farbe wird aber in Litern ($l$) geliefert oder umgekehrt. Hierzu wird die Dichte (spezifisches Gewicht) benötigt.</p>
+
+                <div class="formula-box">
+                    <div class="formula">Masse (kg) = Volumen (l) * Dichte (kg/l)</div>
+                    <div class="formula">Volumen (l) = Masse (kg) / Dichte (kg/l)</div>
+                    
+                    <div class="example">
+                        <strong>Beispiel:</strong> Du benötigst für eine Fassade 45 kg Siliconharzfarbe. Die Dichte beträgt 1,5 kg/l.<br>
+                        <em>Rechnung:</em> Volumen = 45 kg / 1,5 kg/l = <strong>30 Liter</strong> (entspricht genau 2 Eimern à 15 Litern).
+                    </div>
+                </div>
+
+                <h2>4. Prozentrechnung (Verdünnungszuschläge & Verluste)</h2>
+                <p>Beschichtungsstoffe verlangen oft eine Grundierungsverdünnung oder besitzen beim Airless-Spritzen einen rechnerischen Spritzverlust (Overspray).</p>
+
+                <div class="formula-box">
+                    <strong>Materialbedarf inkl. Verlustzuschlag:</strong>
+                    <div class="formula">Gesamtmenge = Nettomenge * (1 + (Verlust in % / 100))</div>
+                    <div class="example">
+                        <strong>Beispiel:</strong> Der Netto-Materialbedarf beträgt 20 Liter Lack. Beim Spritzen ist mit 25% Overspray-Verlust zu rechnen.<br>
+                        <em>Rechnung:</em> 20 Liter * 1,25 = <strong>25 Liter Gesamtbedarf</strong>.
                     </div>
                 </div>
 
 
-                <h2>✏️ Interaktives Rechen-Quiz</h2>
-                <p>Rechne die Aufgaben aus und trage das Ergebnis ein (Nutze einen Punkt statt einem Komma, z. B. 12.5).</p>
+                <h2>✏️ Interaktives Rechen-Prüfungsquiz (10 Aufgaben)</h2>
+                <p>Löse die Aufgaben schrittweise auf einem Blatt und trage das Endergebnis ein. Nutze bei Dezimalzahlen einen <strong>Punkt statt einem Komma</strong> (z. B. 15.75)!</p>
 
-                <div class="task-card">
-                    <p class="question-text">Aufgabe 1: Eine Deckenfläche ist 6.20 m lang und 4.50 m breit. Wie groß ist die Fläche in m²?</p>
-                    <input type="number" step="0.01" class="quiz-input" id="input1" placeholder="Ergebnis...">
-                    <button class="quiz-btn" onclick="checkMath(1, 27.9)">Prüfen</button>
-                    <div class="feedback" id="feed1"></div>
+                <div class="task-card" id="m1">
+                    <p class="question-text">1. Ein Raum hat einen Wandumfang von 16.00 m und eine Höhe von 2.50 m. Eine Tür (2.00 m²) und ein Fenster (1.80 m²) liegen im Raum. Berechnen Sie die abrechenbare Wandfläche nach VOB in m².</p>
+                    <input type="number" step="0.01" class="quiz-input" placeholder="Ergebnis...">
+                    <button class="quiz-btn" onclick="checkMath('m1', 40.00)">Prüfen</button>
+                    <div class="feedback"></div>
                 </div>
 
-                <div class="task-card">
-                    <p class="question-text">Aufgabe 2: Eine Giebelwand (Dreieck) hat eine Grundlinie von 6.00 m und eine Höhe von 3.50 m. Wie groß ist die Fläche in m²?</p>
-                    <input type="number" step="0.01" class="quiz-input" id="input2" placeholder="Ergebnis...">
-                    <button class="quiz-btn" onclick="checkMath(2, 10.5)">Prüfen</button>
-                    <div class="feedback" id="feed2"></div>
+                <div class="task-card" id="m2">
+                    <p class="question-text">2. Für eine Decke von 48 m² benötigst du Farbe. Der Verbrauch liegt bei 0.15 Litern pro m² für einen Arbeitsgang. Es soll zweimal gestrichen werden. Wie viele Liter Farbe brauchst du netto?</p>
+                    <input type="number" step="0.01" class="quiz-input" placeholder="Ergebnis...">
+                    <button class="quiz-btn" onclick="checkMath('m2', 14.40)">Prüfen</button>
+                    <div class="feedback"></div>
                 </div>
 
-                <div class="task-card">
-                    <p class="question-text">Aufgabe 3: Eine Wandfläche von 40 m² soll zweifach gestrichen werden. Pro Quadratmeter und Arbeitsgang werden 0.15 Liter Farbe benötigt. Wie viele Liter werden insgesamt gebraucht?</p>
-                    <input type="number" step="0.01" class="quiz-input" id="input3" placeholder="Ergebnis...">
-                    <button class="quiz-btn" onclick="checkMath(3, 12.0)">Prüfen</button>
-                    <div class="feedback" id="feed3"></div>
+                <div class="task-card" id="m3">
+                    <p class="question-text">3. Ein Giebel (Dreieck) hat eine Grundlinie von 9.20 m und eine Höhe von 3.40 m. Berechne die Giebelfläche in m².</p>
+                    <input type="number" step="0.01" class="quiz-input" placeholder="Ergebnis...">
+                    <button class="quiz-btn" onclick="checkMath('m3', 15.64)">Prüfen</button>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="task-card" id="m4">
+                    <p class="question-text">4. Wie viele Bahnen einer 0.53 m breiten Europarolle werden für einen Raum mit einem Wandumfang von 18.50 m rechnerisch benötigt? (Aufrunden auf ganze Bahnen!)</p>
+                    <input type="number" step="1" class="quiz-input" placeholder="Ergebnis...">
+                    <button class="quiz-btn" onclick="checkMath('m4', 35)">Prüfen</button>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="task-card" id="m5">
+                    <p class="question-text">5. Eine Tapetenbahn muss inkl. Muster-Verschnitt 2.80 m lang geschnitten werden. Wie viele ganze Bahnen erhält man aus einer 10.05 m langen Europarolle?</p>
+                    <input type="number" step="1" class="quiz-input" placeholder="Ergebnis...">
+                    <button class="quiz-btn" onclick="checkMath('m5', 3)">Prüfen</button>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="task-card" id="m6">
+                    <p class="question-text">6. Du berechnest für ein Zimmer einen Bedarf von genau 32 Bahnen. Aus einer Rolle gewinnst du 3 Bahnen. Wie viele Rollen Tapete musst du bestellen?</p>
+                    <input type="number" step="1" class="quiz-input" placeholder="Ergebnis...">
+                    <button class="quiz-btn" onclick="checkMath('m6', 11)">Prüfen</button>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="task-card" id="m7">
+                    <p class="question-text">7. Du hast 24 Liter einer Grundierung, die im Verhältnis 1:2 mit Wasser verdünnt werden muss (1 Teil Grundierung + 2 Teile Wasser). Wie viele Liter verarbeitsfertige Mischung erhältst du?</p>
+                    <input type="number" step="0.01" class="quiz-input" placeholder="Ergebnis...">
+                    <button class="quiz-btn" onclick="checkMath('m7', 72.00)">Prüfen</button>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="task-card" id="m8">
+                    <p class="question-text">8. Eine Wandfläche beträgt netto 120 m². Beim Airless-Spritzen wird mit 20% Mehrverbrauch durch Verlust gerechnet. Für wie viele m² muss das Material kalkuliert werden?</p>
+                    <input type="number" step="0.01" class="quiz-input" placeholder="Ergebnis...">
+                    <button class="quiz-btn" onclick="checkMath('m8', 144.00)">Prüfen</button>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="task-card" id="m9">
+                    <p class="question-text">9. Auf einer Baustelle werden 60 Liter Wandfarbe benötigt. Laut Datenblatt wiegt 1 Liter dieser Farbe genau 1.45 kg (Dichte). Wie schwer sind die 60 Liter Farbe in kg?</p>
+                    <input type="number" step="0.01" class="quiz-input" placeholder="Ergebnis...">
+                    <button class="quiz-btn" onclick="checkMath('m9', 87.00)">Prüfen</button>
+                    <div class="feedback"></div>
+                </div>
+
+                <div class="task-card" id="m10">
+                    <p class="question-text">10. Eine Wand unter einer Schräge (Trapezform) hat eine linke Höhe von 3.20 m, eine rechte Höhe von 2.40 m und erstreckt sich über eine Gesamtlänge von 5.00 m. Wie groß ist die Fläche in m²?</p>
+                    <input type="number" step="0.01" class="quiz-input" placeholder="Ergebnis...">
+                    <button class="quiz-btn" onclick="checkMath('m10', 14.00)">Prüfen</button>
+                    <div class="feedback"></div>
                 </div>
 
             </div>
@@ -253,25 +325,25 @@
     </div>
 
     <script>
-        // Funktion zur Überprüfung der mathematischen Ergebnisse
-        function checkMath(questionNum, correctValue) {
-            const userInput = parseFloat(document.getElementById('input1' .replace('1', questionNum)).value);
-            const feedback = document.getElementById('feed1' .replace('1', questionNum));
+        function checkMath(cardId, correctValue) {
+            const card = document.getElementById(cardId);
+            const userInput = parseFloat(card.querySelector('.quiz-input').value);
+            const feedback = card.querySelector('.feedback');
             
             feedback.style.display = 'block';
             
             if (isNaN(userInput)) {
-                feedback.innerText = "⚠ Bitte gib eine Zahl ein.";
+                feedback.innerText = "⚠ Bitte trage eine Zahl ein.";
                 feedback.className = "feedback wrong";
                 return;
             }
             
-            // Toleranz für Rundungsfehler (0.05)
+            // Präzisionsprüfung mit 0.05 Toleranz für eventuelle Rundungswege
             if (Math.abs(userInput - correctValue) < 0.05) {
-                feedback.innerText = "✓ Richtig gerechnet! Sauber.";
+                feedback.innerText = "✓ Perfekt! Das Ergebnis stimmt exakt.";
                 feedback.className = "feedback correct";
             } else {
-                feedback.innerText = "✗ Leider falsch. Überprüfe noch mal deinen Rechenweg.";
+                feedback.innerText = "✗ Rechenfehler! Versuche es noch einmal und achte auf Auf- und Abrundungsregeln.";
                 feedback.className = "feedback wrong";
             }
         }
