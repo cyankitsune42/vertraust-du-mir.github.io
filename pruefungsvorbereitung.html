@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interaktive Prüfungsvorbereitung</title>
+    <title>Gesellenprüfung Simulation – Maler & Lackierer</title>
     <style>
         html, body {
             margin: 0;
@@ -36,7 +36,7 @@
             border: 6px double #3a2312; 
             border-radius: 4px;
             padding: 40px 40px;
-            max-width: 900px; /* Breiter für den Lernstoff und die Grafik */
+            max-width: 850px; 
             width: 100%;
             box-shadow: 
                 0 10px 30px rgba(0,0,0,0.5),
@@ -48,126 +48,122 @@
             color: #3a2312;
             font-size: 2.2rem;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border-bottom: 3px double #8b5a2b;
             padding-bottom: 15px;
         }
 
+        .subtitle {
+            text-align: center;
+            font-style: italic;
+            color: #704214;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
         h2 {
             color: #5c3513;
-            font-size: 1.5rem;
-            margin-top: 35px;
-            border-bottom: 1px solid #8b5a2b;
+            font-size: 1.4rem;
+            margin-top: 40px;
+            border-bottom: 1px dashed #8b5a2b;
             padding-bottom: 5px;
         }
 
-        .content-text {
-            font-size: 1.1rem;
-            color: #4a2f15;
-            line-height: 1.6;
-            text-align: left;
-        }
-
-        /* DIE NEUE THEMENÜBERSICHT-GRAFIK */
-        .themen-grafik {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            border: 4px solid #3a2312;
-            border-radius: 4px;
-            margin: 20px auto 40px auto;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        /* INTERAKTIVES QUIZ STYLING */
-        .quiz-container {
-            margin-top: 40px;
-        }
-
         .task-card {
-            background-color: rgba(139, 90, 43, 0.05);
-            border: 2px solid #3a2312;
+            background-color: rgba(139, 90, 43, 0.03);
+            border: 1px solid #3a2312;
             border-radius: 4px;
             padding: 20px;
-            margin-bottom: 25px;
-            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 12px;
         }
 
         .question-text {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             color: #3a2312;
-            margin-bottom: 15px;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .info-icon {
+            background: #8b5a2b;
+            color: #fcf5e3;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+            flex-shrink: 0;
+        }
+
+        .info-icon:hover {
+            background: #d4af37;
+            color: #3a2312;
         }
 
         .answer-input {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             font-size: 1rem;
             font-family: 'Georgia', serif;
-            border: 2px solid #8b5a2b;
+            border: 1px solid #8b5a2b;
             border-radius: 4px;
             background-color: #fcf5e3;
             color: #4a2f15;
             box-sizing: border-box;
-            margin-bottom: 15px;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 10px;
-        }
-
-        .quiz-btn {
-            padding: 10px 20px;
-            font-family: 'Georgia', serif;
-            cursor: pointer;
-            border-radius: 4px;
-            border: none;
-            font-size: 1rem;
-            transition: background 0.2s;
+            margin-bottom: 12px;
         }
 
         .check-btn {
             background: #3a2312;
             color: #d4af37;
+            border: none;
+            padding: 8px 15px;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.9.5rem;
+            transition: background 0.2s;
         }
 
         .check-btn:hover {
             background: #5c3513;
         }
 
-        .solution-btn {
-            background: #a08060;
-            color: #fcf5e3;
-        }
-
-        .solution-btn:hover {
-            background: #8b5a2b;
-        }
-
         .feedback {
             font-weight: bold;
             margin-top: 10px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             display: none;
         }
 
-        .feedback.correct {
-            color: #274011; /* Dunkelgrün */
-        }
+        .feedback.correct { color: #274011; }
+        .feedback.wrong { color: #a12a2a; }
 
-        .feedback.wrong {
-            color: #a12a2a; /* Dunkelrot */
-        }
-
-        .solution-content {
+        .hint-content {
             display: none;
-            margin-top: 15px;
-            padding-top: 10px;
-            border-top: 1px dashed #3a2312;
-            color: #274011;
+            margin-top: 12px;
+            padding: 10px 15px;
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 3px solid #d4af37;
+            color: #5c3513;
             font-style: italic;
+            font-size: 0.95rem;
+            border-radius: 0 4px 4px 0;
         }
     </style>
 </head>
@@ -175,73 +171,364 @@
 
     <div class="wrapper">
         <div class="parchment">
-            <h1>Interaktive Prüfungsvorbereitung</h1>
+            <h1>Gesellenprüfung: Maler & Lackierer</h1>
+            <div class="subtitle">Interaktive Prüfungssimulation — 30 Fachfragen</div>
             
-            <img src="image_0.png" alt="Maler Gesellenprüfung Themenübersicht" class="themen-grafik">
+            <h2>Bereich 1: Untergrundprüfung und -vorbereitung</h2>
 
-            <div class="content-text">
-                <p>Nutze die obige Grafik, um dir die Kernbereiche der Prüfung einzuprägen. Gehe die drei Abschnitte aufmerksam durch und teste dein Wissen im interaktiven Quiz darunter.</p>
-
-                <h2>Wissenswertes</h2>
-                <ul>
-                    <li><strong>Untergrund:</strong> Immer auf Risse, Kreiden (Daumenprobe) und Saugfähigkeit (Benetzungsprobe) prüfen. Ein Gitterrisstest prüft die Adhäsion (Haftung zum Untergrund).</li>
-                    <li><strong>Werkzeug:</strong> Der Fadenvorband beim Ringpinsel reguliert die Borstenlänge.</li>
-                    <li><strong>Chemie:</strong> Das Bindemittel ist das Herzstück der Farbe; es verbindet Pigmente und sorgt für Haftung. Kohäsion ist die innere Festigkeit der Farbschicht.</li>
-                </ul>
+            <div class="task-card" id="q1">
+                <div class="question-header">
+                    <p class="question-text">1. Mit welcher einfachen Prüfmethode stellen Sie fest, ob ein Putzuntergrund kreidet?</p>
+                    <div class="info-icon" onclick="toggleHint('h1')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q1', 'wischprobe daumenprobe abwischen')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h1" class="hint-content">Musterlösung: Mit der Wischprobe (oder Daumenprobe), indem man mit der flachen Hand oder einem dunklen Tuch über den Untergrund streicht.</div>
             </div>
 
-            <div class="quiz-container">
-                <h2>📝 Interaktives Quiz</h2>
-                <p>Beantworte die Fragen. Klicke auf 'Prüfen', um dein Ergebnis zu sehen, oder 'Lösung anzeigen', wenn du Hilfe brauchst.</p>
-
-                <div class="task-card" id="quiz1">
-                    <p class="question-text">Frage 1: Ein Putz kreidet bei der Wischprobe stark ab. Welche Maßnahme ist vor dem Anstrich zwingend erforderlich?</p>
-                    <input type="text" class="answer-input" id="ans1" placeholder="Deine Antwort hier...">
-                    <div class="feedback" id="feed1"></div>
-                    
-                    <div class="button-group">
-                        <button class="quiz-btn check-btn" onclick="checkAnswer('quiz1', 'grundierung tiefgrund reinigen')">Prüfen</button>
-                        <button class="quiz-btn solution-btn" onclick="toggleSolution('sol1')">Lösung anzeigen</button>
-                    </div>
-                    <div id="sol1" class="solution-content">
-                        Musterlösung: Der Untergrund muss gründlich gereinigt und anschließend mit einem verfestigenden Tiefgrund grundiert werden.
-                    </div>
+            <div class="task-card" id="q2">
+                <div class="question-header">
+                    <p class="question-text">2. Welcher Test wird durchgeführt, um die Adhäsionskraft eines alten Lackanstrichs zu überprüfen?</p>
+                    <div class="info-icon" onclick="toggleHint('h2')">ℹ</div>
                 </div>
-
-                <div class="task-card" id="quiz2">
-                    <p class="question-text">Frage 2: Was ist der Unterschied zwischen Adhäsion und Kohäsion?</p>
-                    <input type="text" class="answer-input" id="ans2" placeholder="Deine Antwort hier...">
-                    <div class="feedback" id="feed2"></div>
-
-                    <div class="button-group">
-                        <button class="quiz-btn check-btn" onclick="checkAnswer('quiz2', 'adhäsion untergrund kohäsion festigkeit bindung')">Prüfen</button>
-                        <button class="quiz-btn solution-btn" onclick="toggleSolution('sol2')">Lösung anzeigen</button>
-                    </div>
-                    <div id="sol2" class="solution-content">
-                        Musterlösung: Adhäsion ist die Haftung zum Untergrund (Haftkraft). Kohäsion ist die innere Festigkeit der Farbschicht (Zusammenhalt).
-                    </div>
-                </div>
-
-                <div class="task-card" id="quiz3">
-                    <p class="question-text">Frage 3: Welchen Zweck erfüllt der Fadenvorband bei einem Ringpinsel?</p>
-                    <input type="text" class="answer-input" id="ans3" placeholder="Deine Antwort hier...">
-                    <div class="feedback" id="feed3"></div>
-
-                    <div class="button-group">
-                        <button class="quiz-btn check-btn" onclick="checkAnswer('quiz3', 'borstenlänge regulieren elastizität schlusskraft abnutzung')">Prüfen</button>
-                        <button class="quiz-btn solution-btn" onclick="toggleSolution('sol3')">Lösung anzeigen</button>
-                    </div>
-                    <div id="sol3" class="solution-content">
-                        Musterlösung: Der Fadenvorband reguliert die nutzbare Borstenlänge bei fortschreitender Abnutzung.
-                    </div>
-                </div>
-
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q2', 'gitterriss gitterrisstest')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h2" class="hint-content">Musterlösung: Der Gitterrisstest (Ritzprüfung im Schachbrettmuster mit anschließendem Klebeband-Abreißtest).</div>
             </div>
+
+            <div class="task-card" id="q3">
+                <div class="question-header">
+                    <p class="question-text">3. Wie prüfen Sie die Saugfähigkeit eines mineralischen Putzes vor Ort ohne Laborgeräte?</p>
+                    <div class="info-icon" onclick="toggleHint('h3')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q3', 'benetzung benetzungsprobe wasser spritzen')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h3" class="hint-content">Musterlösung: Durch eine Benetzungsprobe (Aufspritzen oder Aufstreichen von reinem Wasser).</div>
+            </div>
+
+            <div class="task-card" id="q4">
+                <div class="question-header">
+                    <p class="question-text">4. Welche Maßnahme ergreifen Sie bei einem stark saugenden Untergrund, bevor Sie Dispersionsfarbe auftragen?</p>
+                    <div class="info-icon" onclick="toggleHint('h4')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q4', 'tiefgrund grundieren grundierung')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h4" class="hint-content">Musterlösung: Grundieren mit einem verfestigenden und saugfähigkeitsregulierenden Tiefgrund.</div>
+            </div>
+
+            <div class="task-card" id="q5">
+                <div class="question-header">
+                    <p class="question-text">5. Was versteht man unter 'Ausblühungen' auf einem frischen Putz und wie entstehen sie?</p>
+                    <div class="info-icon" onclick="toggleHint('h5')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q5', 'salze feuchtigkeit salzausblühung')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h5" class="hint-content">Musterlösung: Das Austreten von wasserlöslichen Salzen an der Oberfläche, die durch Feuchtigkeit nach außen transportiert werden und nach dem Trocknen kristallisieren.</div>
+            </div>
+
+            <div class="task-card" id="q6">
+                <div class="question-header">
+                    <p class="question-text">6. Warum müssen Sinterschichten auf neuen Putzflächen zwingend entfernt werden?</p>
+                    <div class="info-icon" onclick="toggleHint('h6')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q6', 'trennschicht haftung verhindern ablösen')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h6" class="hint-content">Musterlösung: Weil sie eine glasige, dichte Trennschicht bilden, die das Eindringen von Grundierungen blockiert und zu Haftungsverlust führt.</div>
+            </div>
+
+            <div class="task-card" id="q7">
+                <div class="question-header">
+                    <p class="question-text">7. Welches Werkzeug oder Verfahren nutzen Sie, um großflächig alte, dicke Tapetenreste effizient abzulösen?</p>
+                    <div class="info-icon" onclick="toggleHint('h7')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q7', 'dampf tapetenablöser perforieren igel')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h7" class="hint-content">Musterlösung: Perforieren mit der Stachelwalze (Tapetenigel) und anschließendes Einweichen mit Tapetenablöser oder dem Dampfgerät.</div>
+            </div>
+
+            <h2>Bereich 2: Werkzeug- und Gerätekunde, Applikation</h2>
+
+            <div class="task-card" id="q8">
+                <div class="question-header">
+                    <p class="question-text">8. Welchen spezifischen Vorteil bietet ein Fadenvorband bei einem Ringpinsel?</p>
+                    <div class="info-icon" onclick="toggleHint('h8')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q8', 'borstenlänge regulieren abnutzung elastizität')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h8" class="hint-content">Musterlösung: Durch das spätere Öffnen des Fadens kann die sichtbare Borstenlänge bei fortschreitender Abnutzung reguliert werden, um die Elastizität zu erhalten.</div>
+            </div>
+
+            <div class="task-card" id="q9">
+                <div class="question-header">
+                    <p class="question-text">9. Welches Spritzverfahren arbeitet komplett ohne Luftzufuhr und zerstäubt das Material rein über hohen Materialdruck?</p>
+                    <div class="info-icon" onclick="toggleHint('h9')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q9', 'airless')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h9" class="hint-content">Musterlösung: Das Airless-Spritzverfahren.</div>
+            </div>
+
+            <div class="task-card" id="q10">
+                <div class="question-header">
+                    <p class="question-text">10. Warum verwendet man für wasserbasierte Acryllacke Pinsel mit Synthetikborsten statt reiner Naturborsten (Chinamark)?</p>
+                    <div class="info-icon" onclick="toggleHint('h10')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q10', 'quellen wasser aufnehmen form verlieren')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h10" class="hint-content">Musterlösung: Naturborsten nehmen Wasser auf, quellen auf, werden weich und verlieren ihre Form. Synthetikborsten quellen nicht auf.</div>
+            </div>
+
+            <div class="task-card" id="q11">
+                <div class="question-header">
+                    <p class="question-text">11. Was beschreibt das 'Overspray' beim maschinellen Spritzverfahren?</p>
+                    <div class="info-icon" onclick="toggleHint('h11')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q11', 'sprühnebel verlust daneben')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h11" class="hint-content">Musterlösung: Der entstehende Sprühnebel aus feinsten Lackpartikeln, der sich außerhalb der eigentlichen Werkstückfläche absetzt (Materialverlust).</div>
+            </div>
+
+            <div class="task-card" id="q12">
+                <div class="question-header">
+                    <p class="question-text">12. Welches Schleifmittel (Körnung) wählen Sie für den feinen Zwischenschliff einer lackierten Oberfläche?</p>
+                    <div class="info-icon" onclick="toggleHint('h12')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q12', '220 240 280 320')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h12" class="hint-content">Musterlösung: Eine feine Körnung zwischen P220 und P320.</div>
+            </div>
+
+            <div class="task-card" id="q13">
+                <div class="question-header">
+                    <p class="question-text">13. Wie verhindern Sie Streifenbildung beim Rollen einer großen Wandfläche mit Dispersionsfarbe?</p>
+                    <div class="info-icon" onclick="toggleHint('h13')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q13', 'nass in nass kreuzgang')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h13" class="hint-content">Musterlösung: Durch das Arbeiten im Kreuzgang und zügiges Arbeiten 'Nass-in-Nass'.</div>
+            </div>
+
+            <div class="task-card" id="q14">
+                <div class="question-header">
+                    <p class="question-text">14. Wann muss eine Schere beim Tapezieren durch ein Abreißmesser (Cutter) ersetzt werden?</p>
+                    <div class="info-icon" onclick="toggleHint('h14')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q14', 'vlies vliestapete doppelnahtnahtschnitt')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h14" class="hint-content">Musterlösung: Beim Schneiden von formstabilen Vliestapeten direkt an der Wand oder beim exakten Doppelnahtschnitt.</div>
+            </div>
+
+            <h2>Bereich 3: Werkstoffkunde und Chemie (Anstrichfarben)</h2>
+
+            <div class="task-card" id="q15">
+                <div class="question-header">
+                    <p class="question-text">15. Welche vier Hauptbestandteile bilden eine klassische Anstrichfarbe?</p>
+                    <div class="info-icon" onclick="toggleHint('h15')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q15', 'bindemittel pigment füllstoff lösemittel wasser')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h15" class="hint-content">Musterlösung: Bindemittel, Pigmente, Füllstoffe und Lösemittel (oder Wasser) sowie Additive.</div>
+            </div>
+
+            <div class="task-card" id="q16">
+                <div class="question-header">
+                    <p class="question-text">16. Welcher Bestandteil einer Farbe ist primär für die Haftung auf dem Untergrund verantwortlich?</p>
+                    <div class="info-icon" onclick="toggleHint('h16')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q16', 'bindemittel')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h16" class="hint-content">Musterlösung: Das Bindemittel.</div>
+            </div>
+
+            <div class="task-card" id="q17">
+                <div class="question-header">
+                    <p class="question-text">17. Was unterscheidet die Adhäsion grundlegend von der Kohäsion?</p>
+                    <div class="info-icon" onclick="toggleHint('h17')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q17', 'adhäsion untergrund kohäsion innere festigkeit')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h17" class="hint-content">Musterlösung: Adhäsion beschreibt die Haftkraft zum Untergrund. Kohäsion beschreibt die innere Zusammenhaltskraft innerhalb des Farbfilms.</div>
+            </div>
+
+            <div class="task-card" id="q18">
+                <div class="question-header">
+                    <p class="question-text">18. Welches physikalische Prinzip sorgt dafür, dass Dispersionssilikatfarben extrem fest auf mineralischen Putzen haften?</p>
+                    <div class="info-icon" onclick="toggleHint('h18')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q18', 'verkieselung chemische verbindung')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h18" class="hint-content">Musterlösung: Die Verkieselung (eine unlösliche chemische Verbindung zwischen dem Bindemittel Kaliwasserglas und dem mineralischen Untergrund).</div>
+            </div>
+
+            <div class="task-card" id="q19">
+                <div class="question-header">
+                    <p class="question-text">19. Was passiert bei der Trocknung eines klassischen Alkydharzlackes (Kunstharzlack)?</p>
+                    <div class="info-icon" onclick="toggleHint('h19')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q19', 'oxidation sauerstoff chemisch')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h19" class="hint-content">Musterlösung: Er trocknet chemisch durch Oxidation (Aufnahme von Luftsauerstoff), nachdem die Lösemittel physikalisch verdunstet sind.</div>
+            </div>
+
+            <div class="task-card" id="q20">
+                <div class="question-header">
+                    <p class="question-text">20. Warum muss bei Zweikomponenten-Lacken (2K) das Mischungsverhältnis exakt eingehalten werden?</p>
+                    <div class="info-icon" onclick="toggleHint('h20')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q20', 'härten klebrig spröde nicht durchhärten')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h20" class="hint-content">Musterlösung: Weil sonst die chemische Reaktion fehlerhaft ist. Zu viel oder zu wenig Härter führt dazu, dass der Lack klebrig bleibt oder versprödet.</div>
+            </div>
+
+            <div class="task-card" id="q21">
+                <div class="question-header">
+                    <p class="question-text">21. Welches Pigment wird weltweit am häufigsten für weiße Wandfarben und Lacke verwendet?</p>
+                    <div class="info-icon" onclick="toggleHint('h21')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q21', 'titandioxid')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h21" class="hint-content">Musterlösung: Titandioxid.</div>
+            </div>
+
+            <h2>Bereich 4: Arbeits- und Umweltschutz</h2>
+
+            <div class="task-card" id="q22">
+                <div class="question-header">
+                    <p class="question-text">22. Welche Atemschutzmaske (Filterklasse) ist beim Abschleifen von alten, bleihaltigen Lackschichten zwingend erforderlich?</p>
+                    <div class="info-icon" onclick="toggleHint('h22')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q22', 'p3 ffp3')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h22" class="hint-content">Musterlösung: Ein Partikelfilter der Klasse P3 (bzw. eine FFP3-Maske), da Bleistaub hochgiftig ist.</div>
+            </div>
+
+            <div class="task-card" id="q23">
+                <div class="question-header">
+                    <p class="question-text">23. Was sagt der 'VOC-Wert' auf einem Lackgebinde über das Produkt aus?</p>
+                    <div class="info-icon" onclick="toggleHint('h23')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q23', 'lösemittel flüchtige organische verbindungen')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h23" class="hint-content">Musterlösung: Er gibt den Gehalt an flüchtigen organischen Verbindungen (Lösemitteln) an, die während der Trocknung in die Umwelt abgegeben werden.</div>
+            </div>
+
+            <div class="task-card" id="q24">
+                <div class="question-header">
+                    <p class="question-text">24. Warum dürfen lösemittelgetränkte Putzlappen niemals zusammengeknüllt in eine offene Tonne geworfen werden?</p>
+                    <div class="info-icon" onclick="toggleHint('h24')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q24', 'selbstentzündung feuer brandgefahr')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h24" class="hint-content">Musterlösung: Es besteht akute Gefahr der Selbstentzündung durch die Wärmeentwicklung bei der Oxidation der Öle/Lösemittel.</div>
+            </div>
+
+            <div class="task-card" id="q25">
+                <div class="question-header">
+                    <p class="question-text">25. Welche persönliche Schutzausrüstung (PSA) ist beim Umgang mit stark alkalischen Reinigungsmitteln (z. B. Laugen) Pflicht?</p>
+                    <div class="info-icon" onclick="toggleHint('h25')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q25', 'schutzbrille handschuhe gummihandschuhe')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h25" class="hint-content">Musterlösung: Schutzbrille gegen Verätzungen der Augen und chemikalienbeständige Schutzhandschuhe.</div>
+            </div>
+
+            <h2>Bereich 5: Schadensbilder und Fehlerursachen</h2>
+
+            <div class="task-card" id="q26">
+                <div class="question-header">
+                    <p class="question-text">26. Was ist die häufigste Ursache für die Blasenbildung bei einem frisch aufgetragenen Lackanstrich auf Holz im Außenbereich?</p>
+                    <div class="info-icon" onclick="toggleHint('h26')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q26', 'feuchtigkeit restfeuchte sonne erwärmung')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h26" class="hint-content">Musterlösung: Zu hohe Holzfeuchtigkeit. Bei Sonneneinstrahlung verdunstet das Wasser, findet keinen Ausweg und drückt den Lackfilm hoch.</div>
+            </div>
+
+            <div class="task-card" id="q27">
+                <div class="question-header">
+                    <p class="question-text">27. Warum reißt eine neu aufgetragene Farbschicht, wenn die Regel 'Hart auf Weich' missachtet wurde?</p>
+                    <div class="info-icon" onclick="toggleHint('h27')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q27', 'spannungen weicher untergrund härter')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h27" class="hint-content">Musterlösung: Die harte obere Schicht kann den elastischen Bewegungen des weicheren Untergrunds nicht folgen. Es entstehen extreme Spannungen und Risse. Es gilt: Weich auf Hart!</div>
+            </div>
+
+            <div class="task-card" id="q28">
+                <div class="question-header">
+                    <p class="question-text">28. Welches Schadensbild entsteht, wenn Lack bei zu hoher Luftfeuchtigkeit oder Kälte aufgetragen wird und kondensiert?</p>
+                    <div class="info-icon" onclick="toggleHint('h28')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q28', 'mattierung glanzverlust anlaufen')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h28" class="hint-content">Musterlösung: Glanzverlust, Erblassen oder mattes Anlaufen der Lackoberfläche.</div>
+            </div>
+
+            <div class="task-card" id="q29">
+                <div class="question-header">
+                    <p class="question-text">29. Was versteht man unter dem Begriff 'Verseifung' eines Anstrichstoffes?</p>
+                    <div class="info-icon" onclick="toggleHint('h29')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q29', 'alkalisch kunstharz alkydharz auflösen klebrig')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h29" class="hint-content">Musterlösung: Die chemische Zersetzung von öl- oder alkydharzhaltigen Bindemitteln durch alkalische Untergründe (z.B. frischer Beton), wodurch der Anstrich klebrig wird und sich verflüssigt.</div>
+            </div>
+
+            <div class="task-card" id="q30">
+                <div class="question-header">
+                    <p class="question-text">30. Wie lässt sich das Phänomen 'Kraterbildung' (Silikonaugen) im Lackfilm erklären?</p>
+                    <div class="info-icon" onclick="toggleHint('h30')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('q30', 'silikon fett trennmittel oberflächenspannung')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="h30" class="hint-content">Musterlösung: Oberflächenstörungen durch Verunreinigungen wie Silikone, Fette oder Öle auf dem Untergrund, die die Benetzung des Lacks punktuell verhindern.</div>
+            </div>
+
         </div>
     </div>
 
     <script>
-        // Logik für das interaktive Quiz (Prüfen auf Schlüsselwörter)
+        // Info-Symbol ein-/ausblenden
+        function toggleHint(id) {
+            const hint = document.getElementById(id);
+            if (hint.style.display === "block") {
+                hint.style.display = "none";
+            } else {
+                hint.style.display = "block";
+            }
+        }
+
+        // Antworten-Validierung per Keyword-Abgleich
         function checkAnswer(quizId, keywords) {
             const quizCard = document.getElementById(quizId);
             const inputField = quizCard.querySelector('.answer-input');
@@ -250,36 +537,24 @@
             const userAnswer = inputField.value.toLowerCase().trim();
             const keywordArray = keywords.split(' ');
             
-            let correctKeywordsCount = 0;
-            
+            let correctCount = 0;
             keywordArray.forEach(keyword => {
                 if (userAnswer.includes(keyword)) {
-                    correctKeywordsCount++;
+                    correctCount++;
                 }
             });
 
             feedback.style.display = 'block';
 
-            // Einfache Validierung: Wenn mindestens ein Schlüsselwort vorkommt, gilt es als 'richtig tendiert'
-            if (correctKeywordsCount >= 1 && userAnswer.length > 5) {
-                feedback.innerText = "✓ Das sieht gut aus! Vergleiche deine Antwort mit der Musterlösung.";
+            if (correctCount >= 1 && userAnswer.length > 3) {
+                feedback.innerText = "✓ Fachlich richtig tendiert! Nutze das ℹ-Symbol zum exakten Abgleich.";
                 feedback.className = "feedback correct";
-            } else if (userAnswer.length <= 5) {
-                feedback.innerText = "✗ Bitte gib eine ausführlichere Antwort ein.";
+            } else if (userAnswer.length <= 3) {
+                feedback.innerText = "✗ Bitte schreibe erst eine fachliche Antwort hinein.";
                 feedback.className = "feedback wrong";
             } else {
-                feedback.innerText = "✗ Hm, deine Antwort enthält nicht die wichtigsten Fachbegriffe. Schau dir die Lösung an.";
+                feedback.innerText = "✗ Das trifft den Kern der Frage noch nicht ganz. Klicke auf das ℹ für die Fachbegriffe.";
                 feedback.className = "feedback wrong";
-            }
-        }
-
-        // Funktion zum Ein- und Ausblenden der Lösungen
-        function toggleSolution(id) {
-            const solution = document.getElementById(id);
-            if (solution.style.display === "block") {
-                solution.style.display = "none";
-            } else {
-                solution.style.display = "block";
             }
         }
     </script>
