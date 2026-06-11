@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Das vollständige Formelbuch – Maler & Lackierer</title>
+    <title>Gesellenprüfung Simulation – Fachmathematik</title>
     <style>
         html, body {
             margin: 0;
@@ -25,7 +25,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px 20px 40px 20px;
+            padding: 15px 10px 40px 10px;
             box-sizing: border-box;
             background-color: rgba(0, 0, 0, 0.2); 
         }
@@ -35,14 +35,15 @@
             background: #fcf5e3;
             border: 3px double #3a2312;
             border-radius: 4px;
-            padding: 12px 25px;
-            margin-bottom: 30px;
-            max-width: 900px;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            max-width: 850px;
             width: 100%;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 10px;
+            flex-wrap: wrap;
             box-sizing: border-box;
         }
 
@@ -50,10 +51,11 @@
             color: #3a2312;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1rem;
-            padding: 5px 10px;
+            font-size: 0.95rem;
+            padding: 6px 8px;
             transition: all 0.2s;
             border-bottom: 2px solid transparent;
+            white-space: nowrap;
         }
 
         .nav-link:hover, .nav-link.active {
@@ -61,13 +63,14 @@
             border-bottom: 2px solid #8b5a2b;
         }
 
+        /* PERGAMENT-CONTAINER */
         .parchment {
             background: #fcf5e3;
             background-image: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.05) 100%);
             border: 6px double #3a2312; 
             border-radius: 4px;
-            padding: 40px 40px;
-            max-width: 900px; 
+            padding: 25px 20px;
+            max-width: 850px; 
             width: 100%;
             box-shadow: 
                 0 10px 30px rgba(0,0,0,0.5),
@@ -77,7 +80,7 @@
 
         h1 {
             color: #3a2312;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             text-align: center;
             margin-bottom: 10px;
             border-bottom: 3px double #8b5a2b;
@@ -88,294 +91,117 @@
             text-align: center;
             font-style: italic;
             color: #704214;
-            margin-bottom: 40px;
-            font-size: 1.1rem;
+            margin-bottom: 30px;
+            font-size: 1rem;
         }
 
         h2 {
             color: #5c3513;
-            font-size: 1.6rem;
-            margin-top: 40px;
-            border-bottom: 2px solid #8b5a2b;
+            font-size: 1.3rem;
+            margin-top: 35px;
+            border-bottom: 1px dashed #8b5a2b;
             padding-bottom: 5px;
         }
 
-        h3 {
-            color: #704214;
-            font-size: 1.2rem;
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
-
-        .content-text {
-            font-size: 1.1rem;
-            color: #4a2f15;
-            line-height: 1.6;
-            text-align: left;
-        }
-
-        .formula-box {
-            background-color: rgba(58, 35, 18, 0.03);
-            border: 1px solid #8b5a2b;
-            border-radius: 4px;
-            padding: 18px;
-            margin: 15px 0 25px 0;
+        .formula-block {
+            background-color: rgba(139, 90, 43, 0.05);
+            border-left: 4px solid #8b5a2b;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 0 4px 4px 0;
         }
 
         .formula {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: #3a2312;
             text-align: center;
-            margin: 12px 0;
-            font-family: 'Courier New', monospace;
-            background: rgba(0,0,0,0.04);
-            padding: 8px;
-            border-radius: 4px;
+            margin: 10px 0;
+            letter-spacing: 0.5px;
         }
 
         .example {
             font-style: italic;
-            color: #444;
-            margin-top: 12px;
-            padding-left: 12px;
-            border-left: 3px solid #8b5a2b;
-            background: rgba(212, 175, 55, 0.05);
-            padding-top: 6px;
-            padding-bottom: 6px;
-        }
-
-        .vob-note {
-            background-color: rgba(161, 42, 42, 0.05);
-            border-left: 4px solid #a12a2a;
-            padding: 10px;
-            margin-top: 10px;
+            color: #5c3513;
+            margin-top: 8px;
             font-size: 0.95rem;
-            color: #611818;
+            line-height: 1.4;
         }
-    </style>
-</head>
-<body>
 
-    <div class="wrapper">
-        
-        <nav class="nav-bar">
-            <a href="index.html" class="nav-link">Laune-Bereich</a>
-            <a href="pruefungsvorbereitung.html" class="nav-link">Fachkunde-Test</a>
-            <a href="mathe.html" class="nav-link active">Formelbuch Mathe</a>
-            <a href="wiso_gk.html" class="nav-link">WiSo & GK</a>
-        </nav>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
 
-        <div class="parchment">
-            <h1>Formelbuch der Berufsmathematik</h1>
-            <div class="subtitle">Sämtliche mathematische Formeln & Praxisbeispiele für Maler und Lackierer</div>
-            
-            <div class="content-text">
+        th, td {
+            border: 1px solid #3a2312;
+            padding: 10px;
+            text-align: left;
+        }
 
-                <h2>1. Flächenaufmaße (Geometrie & VOB)</h2>
-                <p>Nötig für die Ermittlung von Wand-, Decken-, Giebel- und Bauteilflächen.</p>
-                
-                <div class="formula-box">
-                    <h3>Rechteck (Wände, Decken, Böden)</h3>
-                    <div class="formula">A = Länge * Breite</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Eine Wand ist 6,40 m lang und 2,85 m hoch.<br>
-                        <em>Rechnung:</em> 6,40 m * 2,85 m = <strong>18,24 m²</strong>
-                    </div>
-                </div>
+        th {
+            background-color: #3a2312;
+            color: #d4af37;
+        }
 
-                <div class="formula-box">
-                    <h3>Dreieck (Hausgiebel)</h3>
-                    <div class="formula">A = (Grundseite * Höhe) / 2</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Ein Fassadengiebel hat eine Breite von 8,50 m und eine Höhe von 3,20 m.<br>
-                        <em>Rechnung:</em> (8,50 m * 3,20 m) / 2 = 27,20 m² / 2 = <strong>13,60 m²</strong>
-                    </div>
-                </div>
+        tr:nth-child(even) {
+            background-color: rgba(139, 90, 43, 0.03);
+        }
 
-                <div class="formula-box">
-                    <h3>Trapez (Wände unter Dachschrägen)</h3>
-                    <div class="formula">A = ((Seite a + Seite c) / 2) * Höhe (Länge)</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Eine Wand unter einer Schräge ist links 3,10 m hoch (a), rechts 1,80 m hoch (c) und insgesamt 4,50 m lang (h).<br>
-                        <em>Rechnung:</em> ((3,10 m + 1,80 m) / 2) * 4,50 m = (4,90 m / 2) * 4,50 m = 2,45 m * 4,50 m = <strong>11,03 m²</strong>
-                    </div>
-                </div>
+        .calc-tool {
+            background: rgba(0, 0, 0, 0.02);
+            border: 1px solid #3a2312;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 15px;
+        }
 
-                <div class="formula-box">
-                    <h3>Kreis & Kreisteile (Säulen, Rundbögen)</h3>
-                    <div class="formula">A = π * r² &nbsp;&nbsp;oder&nbsp;&nbsp; A = (π * d²) / 4</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Eine runde Deckenfläche oder eine Säule mit einem Durchmesser (d) von 1,20 m (Radius r = 0,60 m) soll beschichtet werden.<br>
-                        <em>Rechnung:</em> 3,1416 * (0,60 m * 0,60 m) = 3,1416 * 0,36 m² = <strong>1,13 m²</strong>
-                    </div>
-                </div>
+        .calc-input {
+            width: 80px;
+            padding: 6px;
+            border: 1px solid #8b5a2b;
+            background: #fcf5e3;
+            border-radius: 4px;
+            color: #3a2312;
+            font-family: 'Georgia', serif;
+            margin: 5px;
+        }
 
-                <div class="formula-box">
-                    <h3>VOB-Minderungsregel (Übermessungsregel nach DIN 18363)</h3>
-                    <div class="vob-note">
-                        <strong>Regel:</strong> Aussparungen (Fenster, Türen, Nischen) und Einzelflächen <strong>bis einschließlich 2,50 m²</strong> werden übermessen (nicht abgezogen). Flächen <strong>über 2,50 m²</strong> werden vom Bruttoaufmaß abgezogen.
-                    </div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Eine Wandfläche misst brutto 35,00 m². Darin befinden sich ein Fenster mit 1,80 m² und eine große Schiebetür mit 3,20 m².<br>
-                        <em>Rechnung:</em> Das Fenster (≤ 2,50 m²) wird übermessen. Die Schiebetür (> 2,50 m²) muss abgezogen werden.<br>
-                        Abrechnungsfläche = 35,00 m² - 3,20 m² = <strong>31,80 m²</strong>
-                    </div>
-                </div>
+        .calc-btn {
+            background: #3a2312;
+            color: #d4af37;
+            border: none;
+            padding: 7px 15px;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
 
+        .calc-btn:hover {
+            background: #5c3513;
+        }
 
-                <h2>2. Verbrauch, Ergiebigkeit & Stoffmengen</h2>
-                <p>Ermittlung des exakten Bedarfs an Beschichtungsstoffen für kalkulierte Flächen.</p>
+        .calc-result {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #274011;
+        }
 
-                <div class="formula-box">
-                    <h3>Netto-Materialbedarf (Farbe / Lack)</h3>
-                    <div class="formula">Verbrauch (Gesamt) = Fläche (m²) * Verbrauch pro m² * Anzahl der Arbeitsgänge</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Eine Fassade von 140 m² soll zweimal mit Fassadenfarbe gestrichen werden. Der Verbrauch pro m² und Arbeitsgang liegt bei 0,18 Litern.<br>
-                        <em>Rechnung:</em> 140 m² * 0,18 l/m² * 2 Gänge = <strong>50,40 Liter</strong> Farbe.
-                    </div>
-                </div>
+        @media (min-width: 768px) {
+            .wrapper { padding: 20px; }
+            .parchment { padding: 40px; }
+            h1 { font-size: 2.2rem; }
+            .nav-bar { gap: 20px; padding: 12px 25px; }
+            .nav-link { font-size: 1rem; }
+        }
 
-                <div class="formula-box">
-                    <h3>Materialbedarf mit Verlustfaktor (Overspray / Spritzverlust)</h3>
-                    <div class="formula">Bruttobedarf = Nettobedarf * (1 + (Verlust in % / 100))</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Der Nettobedarf beträgt 15 Liter Lack. Das Airless-Spritzverfahren hat einen systembedingten Overspray-Verlust von 20%.<br>
-                        <em>Rechnung:</em> 15 Liter * 1,20 = <strong>18,00 Liter</strong> Gesamtbedarf.
-                    </div>
-                </div>
-
-                <div class="formula-box">
-                    <h3>Gebinde- und Eimeranzahl</h3>
-                    <div class="formula">Eimeranzahl = Gesamtbedarf / Inhalt pro Eimer [Immer kaufmännisch aufrunden!]</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Du errechnest einen Gesamtbedarf von 34,2 Litern Wandfarbe. Ein Eimer fasst 12,5 Liter.<br>
-                        <em>Rechnung:</em> 34,2 l / 12,5 l = 2,736 Eimer → Aufgerundet müssen <strong>3 Eimer</strong> bestellt werden.
-                    </div>
-                </div>
-
-                <div class="formula-box">
-                    <h3>Masse-Volumen-Umrechnung (Dichte)</h3>
-                    <div class="formula">Masse (kg) = Volumen (l) * Dichte (kg/l) &nbsp;&nbsp;|&nbsp;&nbsp; Volumen (l) = Masse (kg) / Dichte (kg/l)</div>
-                    <div class="example">
-                        <strong>Beispiel 1:</strong> Ein 10-Liter-Eimer Dispersionsfarbe hat eine Dichte von 1,45 kg/l. Wie schwer ist die Farbe?<br>
-                        <em>Rechnung:</em> 10 l * 1,45 kg/l = <strong>14,50 kg</strong>.<br><br>
-                        <strong>Beispiel 2:</strong> Ein Spachtelmasseauftrag verlangt 25 kg Material. Die Dichte beträgt 1,25 kg/l. Welches Volumen nimmt das ein?<br>
-                        <em>Rechnung:</em> 25 kg / 1,25 kg/l = <strong>20,00 Liter</strong>.
-                    </div>
-                </div>
-
-
-                <h2>3. Mischungsrechnen & Dreisatz</h2>
-                <p>Wichtig für Mehrkomponenten-Anstrichstoffe (2K-Lacke) und prozentuale Dosierungen.</p>
-
-                <div class="formula-box">
-                    <h3>Mischungsverhältnis (Teile-System bei 2K-Lacken)</h3>
-                    <div class="formula">Gesamtteile = Stammkomponente (Teile) + Härter (Teile)</div>
-                    <div class="formula">Menge pro Teil = Gewünschte Gesamtmenge / Gesamtteile</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Es werden 600 ml spritzfertiger Epoxidharzlack benötigt. Das Mischungsverhältnis laut Datenblatt beträgt 5:1 (5 Teile Lack, 1 Teil Härter).<br>
-                        <em>Rechnung:</em> Gesamtteile = 5 + 1 = 6 Teile.<br>
-                        Menge eines Teils = 600 ml / 6 = 100 ml.<br>
-                        Komponente A (Lack): 5 * 100 ml = <strong>500 ml</strong>.<br>
-                        Komponente B (Härter): 1 * 100 ml = <strong>100 ml</strong>.
-                    </div>
-                </div>
-
-                <div class="formula-box">
-                    <h3>Prozentuale Verdünnung</h3>
-                    <div class="formula">Zusatzmenge = Grundmenge * (Prozentwert / 100)</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Ein Eimer Grundierfarbe (12 Liter) soll für den Erstauftrag mit 15% Wasser verdünnt werden.<br>
-                        <em>Rechnung:</em> 12 Liter * 0,15 = <strong>1,80 Liter Wasserzusatz</strong> (Gesamtmenge = 13,8 Liter).
-                    </div>
-                </div>
-
-
-                <h2>4. Wandbekleidung (Rollenbedarf & Rapport-Verschnitt)</h2>
-                <p>Präzise Ermittlung von Tapetenrollen unter Einbeziehung des Rapports (Musterverschnitt) und der Bahnenbreite.</p>
-
-                <div class="formula-box">
-                    <strong>Standardmaße (Europarolle):</strong> Breite = 0,53 m | Länge = 10,05 m.<br><br>
-                    
-                    <h3>Schritt 1: Anzahl der vertikalen Bahnen</h3>
-                    <div class="formula">Bahnenanzahl = Wandumfang / 0,53 m [Immer aufrunden!]</div>
-                    
-                    <h3>Schritt 2: Zuschnittlänge pro Bahn (inkl. Rapport)</h3>
-                    <div class="vob-note">
-                        <strong>Ansatzlose Tapete:</strong> Bahnenlänge = Raumhöhe + 0,10 m (Sicherheitsüberstand oben/unten)<br><br>
-                        <strong>Tapete mit Rapport (Gerader/Versetzter Ansatz):</strong><br>
-                        1. Mindestlänge = Raumhöhe + 0,10 m Sicherheitsüberstand.<br>
-                        2. Anzahl benötigter Rapporte pro Bahn = Mindestlänge / Rapport-Maß [Immer aufrunden!]<br>
-                        3. Endgültige Zuschnittlänge = Anzahl Rapporte * Rapport-Maß
-                    </div>
-                    
-                    <h3>Schritt 3: Ausbeute (Bahnen) pro Rolle</h3>
-                    <div class="formula">Bahnen pro Rolle = 10,05 m / Endgültige Zuschnittlänge [Immer abrunden!]</div>
-
-                    <h3>Schritt 4: Gesamtrollenanzahl</h3>
-                    <div class="formula">Rollenbedarf = Bahnenanzahl (Gesamt) / Bahnen pro Rolle [Immer aufrunden!]</div>
-                    
-                    <div class="example">
-                        <strong>Beispiel mit Rapport:</strong> Ein Raum hat einen Umfang von 16,50 m und eine Höhe von 2,60 m. Die Tapete hat einen versetzten Rapport von 64 cm (0,64 m). Der Sicherheitszuschlag beträgt 10 cm (0,10 m).<br>
-                        <em>Rechnung:</em><br>
-                        1. Bahnenanzahl = 16,50 m / 0,53 m = 31,13 → <strong>32 Bahnen</strong>.<br>
-                        2. Mindestlänge = 2,60 m + 0,10 m = 2,70 m.<br>
-                        &nbsp;&nbsp;&nbsp;Rapporte pro Bahn = 2,70 m / 0,64 m = 4,21 → Aufgerundet: <strong>5 Rapporte</strong>.<br>
-                        &nbsp;&nbsp;&nbsp;Endgültige Zuschnittlänge = 5 * 0,64 m = <strong>3,20 m</strong>.<br>
-                        3. Bahnen pro Rolle = 10,05 m / 3,20 m = 3,14 → <strong>3 Bahnen pro Rolle</strong> (Rest ist Verschnitt).<br>
-                        4. Gesamtrollenbedarf = 32 Bahnen / 3 Bahnen = 10,66 → <strong>11 Rollen</strong>.
-                    </div>
-                </div>
-
-
-                <h2>5. Kostenkalkulation, Lohn & Skonto</h2>
-                <p>Wichtig für den betriebswirtschaftlichen Teil der Fachmathematik.</p>
-
-                <div class="formula-box">
-                    <h3>Lohnkosten-Berechnung</h3>
-                    <div class="formula">Lohnkosten = Arbeitszeit (Stunden) * Stundensatz (€/h)</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Zwei Gesellen benötigen für Lackierarbeiten an Bauteilen insgesamt 14 Arbeitsstunden. Der veranschlagte Verrechnungsstundensatz liegt bei 58,50 €.<br>
-                        <em>Rechnung:</em> 14 h * 58,50 €/h = <strong>819,00 € Lohnkosten</strong>.
-                    </div>
-                </div>
-
-                <div class="formula-box">
-                    <h3>Skonto & Preisnachlass</h3>
-                    <div class="formula">Skontobetrag = Rechnungsbetrag (Brutto) * (Skontosatz in % / 100)</div>
-                    <div class="formula">Zahlungsbetrag = Rechnungsbetrag - Skontobetrag</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Ein Kunde erhält eine Rechnung über 3.200,00 €. Bei Zahlung innerhalb von 7 Tagen gewährt der Malerbetrieb 2% Skonto.<br>
-                        <em>Rechnung:</em> Skonto = 3.200,00 € * 0,02 = 64,00 €.<br>
-                        Zahlungsbetrag = 3.200,00 € - 64,00 € = <strong>3.136,00 €</strong>.
-                    </div>
-                </div>
-
-                <div class="formula-box">
-                    <h3>Umsatzsteuer (Mehrwertsteuer)</h3>
-                    <div class="formula">Bruttobetrag = Nettobetrag * 1,19 &nbsp;&nbsp;|&nbsp;&nbsp; Nettobetrag = Bruttobetrag / 1,19</div>
-                    <div class="example">
-                        <strong>Beispiel:</strong> Das reine Material kostet netto 450,00 €. Wie hoch ist der Rechnungsbetrag inklusive 19% Umsatzsteuer?<br>
-                        <em>Rechnung:</em> 450,00 € * 1,19 = <strong>535,50 €</strong>.
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-<div id="pull-to-refresh-indicator">
-        <svg class="spinner" viewBox="0 0 50 50">
-            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
-        </svg>
-        <span>Wische zum Aktualisieren...</span>
-    </div>
-
-    <style>
-        /* CSS für den Pull-to-Refresh Indikator */
+        /* PULL-TO-REFRESH */
         #pull-to-refresh-indicator {
             position: fixed;
-            top: -60px; /* Standardmäßig außerhalb des Bildschirms */
+            top: -60px;
             left: 0;
             width: 100%;
             height: 60px;
@@ -383,7 +209,7 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
-            background: #fcf5e3; /* Passt perfekt zu deinem Pergament-Stil */
+            background: #fcf5e3;
             border-bottom: 2px solid #3a2312;
             color: #3a2312;
             font-family: 'Georgia', serif;
@@ -395,7 +221,6 @@
             pointer-events: none;
         }
 
-        /* Der rotierende Ladekreis */
         .spinner {
             animation: rotate 2s linear infinite;
             width: 24px;
@@ -408,26 +233,223 @@
             animation: dash 1.5s ease-in-out infinite;
         }
 
-        @keyframes rotate {
-            100% { transform: rotate(360deg); }
-        }
-
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
         @keyframes dash {
             0% { stroke-dasharray: 1, 150; stroke-dashoffset: 0; }
             50% { stroke-dasharray: 90, 150; stroke-dashoffset: -35; }
             100% { stroke-dasharray: 90, 150; stroke-dashoffset: -124; }
         }
     </style>
+</head>
+<body>
+
+    <div id="pull-to-refresh-indicator">
+        <svg class="spinner" viewBox="0 0 50 50">
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        </svg>
+        <span>Wische zum Aktualisieren...</span>
+    </div>
+
+    <div class="wrapper">
+        <nav class="nav-bar">
+            <a href="index.html" class="nav-link">Laune-Bereich</a>
+            <a href="pruefungsvorbereitung.html" class="nav-link">Fachkunde-Test</a>
+            <a href="mathe.html" class="nav-link active">Formelbuch Mathe</a>
+            <a href="wiso_gk.html" class="nav-link">WiSo & GK</a>
+        </nav>
+
+        <div class="parchment">
+            <h1>Interaktives Formelbuch</h1>
+            <div class="subtitle">Wichtige Berechnungen für das Maler- und Lackiererhandwerk</div>
+
+            <h2>1. Flächen- und Umfangsberechnungen</h2>
+            
+            <div class="formula-block">
+                <strong>Rechteck (Wände, Decken):</strong>
+                <div class="formula">A = l &times; b &nbsp;&nbsp;|&nbsp;&nbsp; U = 2 &times; (l + b)</div>
+                <div class="example">Beispiel: Eine Wand mit 5,50 m Länge und 2,75 m Höhe ergibt eine Fläche von 15,125 m².</div>
+                
+                <div class="calc-tool">
+                    <strong>Interaktiver Rechner:</strong><br>
+                    Länge (m): <input type="number" id="rect-l" class="calc-input" step="0.01" value="5.50">
+                    Breite/Höhe (m): <input type="number" id="rect-b" class="calc-input" step="0.01" value="2.75">
+                    <button class="calc-btn" onclick="calcRectangle()">Berechnen</button>
+                    <div id="rect-res" class="calc-result">Fläche: 15.13 m² | Umfang: 16.50 m</div>
+                </div>
+            </div>
+
+            <div class="formula-block">
+                <strong>Dreieck (Giebelwände):</strong>
+                <div class="formula">A = (g &times; h) / 2</div>
+                <div class="example">Beispiel: Ein Fassadengiebel mit einer Grundlinie von 6,00 m und einer Höhe von 2,50 m hat eine Fläche von 7,50 m².</div>
+                
+                <div class="calc-tool">
+                    <strong>Interaktiver Rechner:</strong><br>
+                    Grundlinie g (m): <input type="number" id="tri-g" class="calc-input" step="0.01" value="6.00">
+                    Höhe h (m): <input type="number" id="tri-h" class="calc-input" step="0.01" value="2.50">
+                    <button class="calc-btn" onclick="calcTriangle()">Berechnen</button>
+                    <div id="tri-res" class="calc-result">Fläche: 7.50 m²</div>
+                </div>
+            </div>
+
+            <div class="formula-block">
+                <strong>Trapez (Dachschrägen, Sonderwände):</strong>
+                <div class="formula">A = ((a + c) / 2) &times; h</div>
+                <div class="example">Beispiel: Eine Wand mit zwei ungleichen Höhen (a = 2,50 m, c = 3,50 m) und einer Breite von 4,00 m ergibt eine Fläche von 12,00 m².</div>
+                
+                <div class="calc-tool">
+                    <strong>Interaktiver Rechner:</strong><br>
+                    Seite a (m): <input type="number" id="trap-a" class="calc-input" step="0.01" value="2.50">
+                    Seite c (m): <input type="number" id="trap-c" class="calc-input" step="0.01" value="3.50">
+                    Höhe h (m): <input type="number" id="trap-h" class="calc-input" step="0.01" value="4.00">
+                    <button class="calc-btn" onclick="calcTrapezoid()">Berechnen</button>
+                    <div id="trap-res" class="calc-result">Fläche: 12.00 m²</div>
+                </div>
+            </div>
+
+            <div class="formula-block">
+                <strong>Kreis & Zylinder (Säulen):</strong>
+                <div class="formula">A = &pi; &times; r² &nbsp;&nbsp;|&nbsp;&nbsp; U = 2 &times; &pi; &times; r &nbsp;&nbsp;|&nbsp;&nbsp; Mantelfläche M = U &times; h</div>
+                <div class="example">Beispiel: Eine Rundsäule mit einem Durchmesser von 0,60 m (r = 0,30 m) und einer Höhe von 3,00 m hat eine zu streichende Mantelfläche von ca. 5,65 m².</div>
+                
+                <div class="calc-tool">
+                    <strong>Interaktiver Rechner für Mantelfläche:</strong><br>
+                    Durchmesser d (m): <input type="number" id="cyl-d" class="calc-input" step="0.01" value="0.60">
+                    Höhe h (m): <input type="number" id="cyl-h" class="calc-input" step="0.01" value="3.00">
+                    <button class="calc-btn" onclick="calcCylinder()">Berechnen</button>
+                    <div id="cyl-res" class="calc-result">Mantelfläche: 5.65 m²</div>
+                </div>
+            </div>
+
+            <h2>2. Materialverbrauch & Mengenberechnungen</h2>
+            <p>Zur präzisen Kalkulation muss das Verhältnis zwischen Fläche, Ergiebigkeit und Schichtanzahl stimmen. Beachte immer den Sicherheitszuschlag (Verlust durch Spritznebel, raue Untergründe etc.).</p>
+            
+            <div class="formula-block">
+                <strong>Verbrauchsformel:</strong>
+                <div class="formula">Gesamtmenge = (Fläche &times; Verbrauch pro m²) &times; Anzahl Anstriche</div>
+                <div class="example">Ein Raum hat 65 m² Wandfläche. Die Dispersionsfarbe verbraucht 150 ml/m² pro Arbeitsgang. Für 2 Anstriche werden benötigt: 65 &times; 0,15 l &times; 2 = 19,5 Liter.</div>
+                
+                <div class="calc-tool">
+                    <strong>Mengen-Kalkulator:</strong><br>
+                    Gesamtfläche (m²): <input type="number" id="mat-a" class="calc-input" step="0.1" value="65.0">
+                    Verbrauch (ml/m²): <input type="number" id="mat-v" class="calc-input" step="1" value="150">
+                    Anstriche: <input type="number" id="mat-n" class="calc-input" step="1" value="2"><br>
+                    Zuschlag (%): <input type="number" id="mat-z" class="calc-input" step="1" value="10">
+                    <button class="calc-btn" onclick="calcMaterial()">Menge kalkulieren</button>
+                    <div id="mat-res" class="calc-result">Benötigte Menge: 19.50 Liter (Mit 10% Zuschlag: 21.45 Liter)</div>
+                </div>
+            </div>
+
+            <h2>3. Mischungsverhältnisse & Prozentrechnen</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Komponente / Aufgabe</th>
+                        <th>Rechenweg / Formel</th>
+                        <th>Praxis-Anwendung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>2K-Lack Mischung</strong></td>
+                        <td>Stamm : Härter (z.B. 4 : 1 nach Gewicht)</td>
+                        <td>Exaktes Abwiegen verhindert weiche Oberflächen oder Versprödung.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Verdünnung hinzufügen</strong></td>
+                        <td>Menge &times; Prozentsatz (z.B. + 5% Verdünnung)</td>
+                        <td>Anpassung der Viskosität an Spritzgeräte oder Temperaturen.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Schwund / Verschnitt</strong></td>
+                        <td>Grundwert + Prozentsatz (z.B. bei Mustertapeten)</td>
+                        <td>Aufschlag auf die Nettowandfläche zur Vermeidung von Fehlmengen.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="formula-block">
+                <strong>Beispiel für 2K-Mischungsverhältnis (z.B. 5:1):</strong>
+                <div class="example">Du benötigst insgesamt 600 g verzehrfertiges Material. Mischungsverhältnis ist 5 Teile Stamm, 1 Teil Härter = 6 Teile gesamt. <br>
+                Ein Teil = 600 g / 6 = 100 g. Somit: 500 g Stammkomponente und 100 g Härter.</div>
+                
+                <div class="calc-tool">
+                    <strong>2K-Mischungs-Rechner:</strong><br>
+                    Gewünschte Gesamtmenge (g): <input type="number" id="mix-tot" class="calc-input" step="10" value="600"><br>
+                    Verhältnis: <input type="number" id="mix-stamm" class="calc-input" step="1" value="5"> Teile Stamm zu 1 Teil Härter
+                    <button class="calc-btn" onclick="calcMix()">Verhältnis aufteilen</button>
+                    <div id="mix-res" class="calc-result">Stamm: 500 g | Härter: 100 g</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <script>
-        // JavaScript für die Touch-Erkennung
+        // RECHNER-LOGIKEN
+        function calcRectangle() {
+            const l = parseFloat(document.getElementById('rect-l').value) || 0;
+            const b = parseFloat(document.getElementById('rect-b').value) || 0;
+            const area = l * b;
+            const scope = 2 * (l + b);
+            document.getElementById('rect-res').innerText = `Fläche: ${area.toFixed(2)} m² | Umfang: ${scope.toFixed(2)} m`;
+        }
+
+        function calcTriangle() {
+            const g = parseFloat(document.getElementById('tri-g').value) || 0;
+            const h = parseFloat(document.getElementById('tri-h').value) || 0;
+            const area = (g * h) / 2;
+            document.getElementById('tri-res').innerText = `Fläche: ${area.toFixed(2)} m²`;
+        }
+
+        function calcTrapezoid() {
+            const a = parseFloat(document.getElementById('trap-a').value) || 0;
+            const c = parseFloat(document.getElementById('trap-c').value) || 0;
+            const h = parseFloat(document.getElementById('trap-h').value) || 0;
+            const area = ((a + c) / 2) * h;
+            document.getElementById('trap-res').innerText = `Fläche: ${area.toFixed(2)} m²`;
+        }
+
+        function calcCylinder() {
+            const d = parseFloat(document.getElementById('cyl-d').value) || 0;
+            const h = parseFloat(document.getElementById('cyl-h').value) || 0;
+            const scope = Math.PI * d;
+            const mantle = scope * h;
+            document.getElementById('cyl-res').innerText = `Mantelfläche: ${mantle.toFixed(2)} m²`;
+        }
+
+        function calcMaterial() {
+            const a = parseFloat(document.getElementById('mat-a').value) || 0;
+            const v = parseFloat(document.getElementById('mat-v').value) || 0; // in ml
+            const n = parseInt(document.getElementById('mat-n').value) || 1;
+            const z = parseFloat(document.getElementById('mat-z').value) || 0;
+
+            const netLiters = (a * (v / 1000)) * n;
+            const grossLiters = netLiters * (1 + (z / 100));
+
+            document.getElementById('mat-res').innerText = `Benötigte Menge: ${netLiters.toFixed(2)} Liter (Mit ${z}% Zuschlag: ${grossLiters.toFixed(2)} Liter)`;
+        }
+
+        function calcMix() {
+            const total = parseFloat(document.getElementById('mix-tot').value) || 0;
+            const stammTeile = parseFloat(document.getElementById('mix-stamm').value) || 1;
+            
+            const gesamtTeile = stammTeile + 1;
+            const einTeil = total / gesamtTeile;
+            
+            const stammG = einTeil * stammTeile;
+            const haerterG = einTeil;
+
+            document.getElementById('mix-res').innerText = `Stamm: ${stammG.toFixed(0)} g | Härter: ${haerterG.toFixed(0)} g`;
+        }
+
+        // TOUCH-GESTEN (PULL-TO-REFRESH)
         let touchStartPoint = 0;
         let touchMovePoint = 0;
         const indicator = document.getElementById('pull-to-refresh-indicator');
-        const triggerDistance = 150; // Wie weit man nach unten ziehen muss (in Pixeln)
+        const triggerDistance = 150;
 
         window.addEventListener('touchstart', function(e) {
-            // Nur aktivieren, wenn der Nutzer ganz oben an der Seite steht
             if (window.scrollY === 0) {
                 touchStartPoint = e.touches[0].clientY;
             } else {
@@ -441,9 +463,7 @@
             touchMovePoint = e.touches[0].clientY;
             const pullDistance = touchMovePoint - touchStartPoint;
 
-            // Wenn nach unten gezogen wird
             if (pullDistance > 0 && pullDistance < triggerDistance + 50) {
-                // Den Indikator sichtbar nach unten verschieben (gedrosselt für flüssiges Gefühl)
                 const moveY = Math.min(pullDistance * 0.5, 60); 
                 indicator.style.transform = `translateY(${moveY}px)`;
                 
@@ -460,29 +480,20 @@
 
             const pullDistance = touchMovePoint - touchStartPoint;
             
-            // Wenn weit genug gezogen wurde -> Seite neu laden
             if (pullDistance > triggerDistance) {
                 indicator.style.transform = 'translateY(60px)';
                 indicator.querySelector('span').innerText = "Aktualisiere...";
                 
                 setTimeout(() => {
                     window.location.reload();
-                }, 400); // Kurze Verzögerung für die Animation
+                }, 400);
             } else {
-                // Ansonsten Indikator wieder verstecken
                 indicator.style.transform = 'translateY(0px)';
             }
 
-            // Punkte zurücksetzen
             touchStartPoint = 0;
             touchMovePoint = 0;
         });
     </script>
-    ```
-
-### Wie es funktioniert:
-1. **Sicherheit:** Es löst nur aus, wenn du dich ganz oben auf der Seite befindest (`window.scrollY === 0`). Wenn du mitten im Test nach oben scrollst, lädt die Seite nicht aus Versehen neu.
-2. **Optik:** Es zieht oben einen kleinen Balken im gleichen Pergament-Stil heraus, der dir anzeigt, wann du loslassen musst.
-3. **Flüssig:** Durch die `passive: true` Events ruckelt die Seite beim normalen Scrollen auf dem Handy überhaupt nicht.
 </body>
 </html>
