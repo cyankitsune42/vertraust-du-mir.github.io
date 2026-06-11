@@ -209,9 +209,9 @@
 
         <div class="parchment">
             <h1>Prüfungssimulation: Fachkunde</h1>
-            <div class="subtitle">Interaktives Testmodul für Maler und Lackierer</div>
+            <div class="subtitle">Interaktives Testmodul — 30 Fachkundefragen für Maler und Lackierer</div>
             
-            <h2>Bereich 1: Untergründe und Vorbereitung</h2>
+            <h2>Bereich 1: Untergründe, Prüfpflichten & Vorbereitung</h2>
             
             <div class="task-card" id="f1">
                 <div class="question-header">
@@ -221,7 +221,7 @@
                 <input type="text" class="answer-input" placeholder="Deine Antwort...">
                 <button class="check-btn" onclick="checkAnswer('f1', 'adhäsion adhäsionskraft')">Prüfen</button>
                 <div class="feedback"></div>
-                <div id="hf1" class="hint-content">Musterlösung: Durch die Adhäsionskraft (Adhäsion).</div>
+                <div id="hf1" class="hint-content">Musterlösung: Durch die Adhäsionskraft (Adhäsion / mechanische Verklammerung).</div>
             </div>
 
             <div class="task-card" id="f2">
@@ -232,43 +232,325 @@
                 <input type="text" class="answer-input" placeholder="Deine Antwort...">
                 <button class="check-btn" onclick="checkAnswer('f2', 'oxidation oxidieren sauerstoff')">Prüfen</button>
                 <div class="feedback"></div>
-                <div id="hf2" class="hint-content">Musterlösung: Eine Oxidation (Reaktion von Eisen mit Sauerstoff und Wasser).</div>
+                <div id="hf2" class="hint-content">Musterlösung: Eine Oxidation (Reaktion von Metall mit Sauerstoff und Feuchtigkeit).</div>
             </div>
 
             <div class="task-card" id="f3">
                 <div class="question-header">
-                    <p class="question-text">3. Wie prüft man einen alten Putzuntergrund auf Hohlstellen?</p>
+                    <p class="question-text">3. Wie prüft man einen alten Putzuntergrund auf verborgene Hohlstellen oder Ablösungen?</p>
                     <div class="info-icon" onclick="toggleHint('hf3')">ℹ</div>
                 </div>
                 <input type="text" class="answer-input" placeholder="Deine Antwort...">
                 <button class="check-btn" onclick="checkAnswer('f3', 'abklopfen klopfen hammer holzhammer')">Prüfen</button>
                 <div class="feedback"></div>
-                <div id="hf3" class="hint-content">Musterlösung: Durch Abklopfen (z. B. mit einem Hammerstiel). Ein hohler Klang verrät Schadstellen.</div>
+                <div id="hf3" class="hint-content">Musterlösung: Durch Abklopfen (z. B. mit einem Hammerstiel). Ein hohler Klang signalisiert Fehlstellen.</div>
             </div>
-
-            <h2>Bereich 2: Anstrichfarben und Werkzeuge</h2>
 
             <div class="task-card" id="f4">
                 <div class="question-header">
-                    <p class="question-text">4. Welche drei Hauptbestandteile bilden die Zusammensetzung klassischer Anstrichfarben?</p>
+                    <p class="question-text">4. Mit welcher einfachen Prüfung vor Ort stellt der Maler fest, ob ein Altputz stark sandet oder kreidet?</p>
                     <div class="info-icon" onclick="toggleHint('hf4')">ℹ</div>
                 </div>
                 <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('f4', 'bindemittel pigment lösemittel lösungsmittel zusatzstoffe additiven')">Prüfen</button>
+                <button class="check-btn" onclick="checkAnswer('f4', 'wischtest reibetest wischen reiben handfläche')">Prüfen</button>
                 <div class="feedback"></div>
-                <div id="hf4" class="hint-content">Musterlösung: Bindemittel, Pigmente/Füllstoffe und Lösemittel (bzw. Wasser).</div>
+                <div id="hf4" class="hint-content">Musterlösung: Durch den Wischtest (mit der flachen Hand oder einem dunklen Tuch über den Untergrund reiben).</div>
             </div>
 
             <div class="task-card" id="f5">
                 <div class="question-header">
-                    <p class="question-text">5. Welcher Pinseltyp wird wegen seiner runden Form traditionell für Beschichtungen mit lösemittelhaltigen Lacken auf Holzbauteilen verwendet?</p>
+                    <p class="question-text">5. Wie lässt sich die Tragfähigkeit einer Altschicht am besten auf lose Partikel und unzureichende Haftung prüfen (Schnittverfahren)?</p>
                     <div class="info-icon" onclick="toggleHint('hf5')">ℹ</div>
                 </div>
                 <input type="text" class="answer-input" placeholder="Deine Antwort...">
-                <button class="check-btn" onclick="checkAnswer('f5', 'ringpinsel rundpinsel')">Prüfen</button>
+                <button class="check-btn" onclick="checkAnswer('f5', 'gitterschnitt gitterschnittprüfung')">Prüfen</button>
                 <div class="feedback"></div>
-                <div id="hf5" class="hint-content">Musterlösung: Der Ringpinsel (Rundpinsel).</div>
+                <div id="hf5" class="hint-content">Musterlösung: Durch die Gitterschnittprüfung (oder alternativ den Klebebandtest).</div>
             </div>
+
+            <div class="task-card" id="f6">
+                <div class="question-header">
+                    <p class="question-text">6. Warum müssen alte Papiertapeten vor Spachtel- oder Streicharbeiten zwingend restlos entfernt werden?</p>
+                    <div class="info-icon" onclick="toggleHint('hf6')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f6', 'quellen weichen blasen ablösen wasser feuchtigkeit')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf6" class="hint-content">Musterlösung: Die wasserlöslichen Kleisterreste weichen durch feuchte Beschichtungsstoffe auf, was zu Blasenbildung und Ablösungen führt.</div>
+            </div>
+
+            <div class="task-card" id="f7">
+                <div class="question-header">
+                    <p class="question-text">7. Welches chemische Phänomen beschreibt das Wandern von wasserlöslichen Holzinhaltsstoffen (z.B. Gerbstoffen bei Eiche) an die Oberfläche weißer Lacke?</p>
+                    <div class="info-icon" onclick="toggleHint('hf7')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f7', 'durchbluten verfärben gerbstoffe ausbluten')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf7" class="hint-content">Musterlösung: Das Durchbluten (Ausbluten) von Holzinhaltsstoffen, das gelb-braune Verfärbungen verursacht.</div>
+            </div>
+
+            <h2>Bereich 2: Werkstoffe, Anstrichfarben & Zusammensetzung</h2>
+
+            <div class="task-card" id="f8">
+                <div class="question-header">
+                    <p class="question-text">8. Welche drei Hauptbestandteile bilden die stoffliche Basis jeder flüssigen Anstrichfarbe?</p>
+                    <div class="info-icon" onclick="toggleHint('hf8')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f8', 'bindemittel pigment lösemittel lösungsmittel füllstoff additiv')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf8" class="hint-content">Musterlösung: Bindemittel, Pigmente (inkl. Füllstoffe) und Lösemittel/Wasser (sowie Additive).</div>
+            </div>
+
+            <div class="task-card" id="f9">
+                <div class="question-header">
+                    <p class="question-text">9. Welcher Bestandteil einer Farbe ist allein für die Filmbildung, Haftung und Beständigkeit der Beschichtung verantwortlich?</p>
+                    <div class="info-icon" onclick="toggleHint('hf9')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f9', 'bindemittel')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf9" class="hint-content">Musterlösung: Das Bindemittel verklebt die Pigmentteilchen untereinander und mit dem Untergrund.</div>
+            </div>
+
+            <div class="task-card" id="f10">
+                <div class="question-header">
+                    <p class="question-text">10. Wie nennt man die unlöslichen, feinstpulverisierten Farbteilchen, die für das Deckvermögen und den Farbton zuständig sind?</p>
+                    <div class="info-icon" onclick="toggleHint('hf10')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f10', 'pigment pigmente')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf10" class="hint-content">Musterlösung: Pigmente. Du unterscheidest organische und anorganische Pigmente.</div>
+            </div>
+
+            <div class="task-card" id="f11">
+                <div class="question-header">
+                    <p class="question-text">11. Welches anorganische Weißpigment besitzt das höchste Deckvermögen und wird standardmäßig in Dispersionsfarben eingesetzt?</p>
+                    <div class="info-icon" onclick="toggleHint('hf11')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f11', 'titandioxid titan weiß')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf11" class="hint-content">Musterlösung: Titandioxid (TiO₂).</div>
+            </div>
+
+            <div class="task-card" id="f12">
+                <div class="question-header">
+                    <p class="question-text">12. Auf welchem Bindemittel basieren klassische Silikatfarben, die rein mineralisch verkieseln?</p>
+                    <div class="info-icon" onclick="toggleHint('hf12')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f12', 'kaliwasserglas wasserglas kaliumsilikat')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf12" class="hint-content">Musterlösung: Kaliwasserglas (Kaliumsilikat).</div>
+            </div>
+
+            <div class="task-card" id="f13">
+                <div class="question-header">
+                    <p class="question-text">13. Was versteht man bei Lacken unter physikalischer Trocknung im Gegensatz zur chemischen Härtung?</p>
+                    <div class="info-icon" onclick="toggleHint('hf13')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f13', 'verdunsten verdampfen verdunstung lösemittel wasser')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf13" class="hint-content">Musterlösung: Das reine Verdunsten/Verdampfen der flüchtigen Lösemittel oder des Wassers ohne chemische Veränderung.</div>
+            </div>
+
+            <div class="task-card" id="f14">
+                <div class="question-header">
+                    <p class="question-text">14. Wie trocknen Alkydharzlacke (KH-Lacke) nach dem anfänglichen Verdunsten der Lösemittel an der Luft weiter?</p>
+                    <div class="info-icon" onclick="toggleHint('hf14')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f14', 'oxidativ oxidation sauerstoff chemisch')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf14" class="hint-content">Musterlösung: Oxidativ (durch Aufnahme von Luftsauerstoff vernetzen sich die Moleküle chemisch).</div>
+            </div>
+
+            <div class="task-card" id="f15">
+                <div class="question-header">
+                    <p class="question-text">15. Welcher Lacktyp besteht aus Stammkomponente und Härter und muss innerhalb der Topfzeit verarbeitet werden?</p>
+                    <div class="info-icon" onclick="toggleHint('hf15')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f15', '2k zweikomponenten epoxid polyurethan')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf15" class="hint-content">Musterlösung: 2K-Lack (Zwei-Komponenten-Lack, z.B. EP- oder PUR-Lack).</div>
+            </div>
+
+            <h2>Bereich 3: Werkzeuge, Applikationsverfahren & Geräte</h2>
+
+            <div class="task-card" id="f16">
+                <div class="question-header">
+                    <p class="question-text">16. Welcher runde Pinseltyp wird traditionell vorzugsweise für die Verarbeitung lösemittelhaltiger Lacke auf Holz verwendet?</p>
+                    <div class="info-icon" onclick="toggleHint('hf16')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f16', 'ringpinsel rundpinsel')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf16" class="hint-content">Musterlösung: Der Ringpinsel. Er speichert zähe Lacke gut und erlaubt sauberes Beschichten.</div>
+            </div>
+
+            <div class="task-card" id="f17">
+                <div class="question-header">
+                    <p class="question-text">17. Warum werden für wasserbasierte Acryllacke Pinsel mit synthetischen Borsten (z.B. Polyester) statt reiner Naturborsten (Chinaborsten) eingesetzt?</p>
+                    <div class="info-icon" onclick="toggleHint('hf17')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f17', 'quellen aufquellen wasser aufnehmen form verlieren')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf17" class="hint-content">Musterlösung: Naturborsten nehmen Wasser auf, quellen auf und verlieren ihre Form und Elastizität. Kunstborsten quellen nicht.</div>
+            </div>
+
+            <div class="task-card" id="f18">
+                <div class="question-header">
+                    <p class="question-text">18. Wie funktioniert das hydraulische Airless-Spritzverfahren im Gegensatz zum luftzerstäubenden Becherpistolen-Verfahren?</p>
+                    <div class="info-icon" onclick="toggleHint('hf18')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f18', 'materialdruck druck pumpe ohne luft luftlos')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf18" class="hint-content">Musterlösung: Das Material wird rein über eine Pumpe unter hohen Druck (bis über 200 bar) gesetzt und luftlos durch eine Düse zerstäubt.</div>
+            </div>
+
+            <div class="task-card" id="f19">
+                <div class="question-header">
+                    <p class="question-text">19. Welcher technische Fehler beim Spritzen führt zu ungleichmäßig dicken Lackschichten mit dicken Rändern ("Fingerbildung")?</p>
+                    <div class="info-icon" onclick="toggleHint('hf19')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f19', 'druck zu niedrig düse verstopft abstand falsch verschlissen')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf19" class="hint-content">Musterlösung: Zu geringer Arbeitsdruck am Gerät oder eine abgenutzte/falsche Düse.</div>
+            </div>
+
+            <div class="task-card" id="f20">
+                <div class="question-header">
+                    <p class="question-text">20. Welches moderne Niederdruck-Spritzverfahren reduziert den Overspray (Spritznebel) durch ein hohes Luftvolumen bei geringem Druck gravierend?</p>
+                    <div class="info-icon" onclick="toggleHint('hf20')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f20', 'hvlp niederdruck')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf20" class="hint-content">Musterlösung: HVLP-Verfahren (High Volume Low Pressure).</div>
+            </div>
+
+            <h2>Bereich 4: Tapeten, Wandbekleidungen & Korrosionsschutz</h2>
+
+            <div class="task-card" id="f21">
+                <div class="question-header">
+                    <p class="question-text">21. Was bedeutet die Kennzeichnung "Rapport" (z.B. 64 cm) auf dem Einlegerzettel einer Tapetenrolle für den Zuschnitt?</p>
+                    <div class="info-icon" onclick="toggleHint('hf21')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f21', 'muster musterabstand verschnitt wiederholung wiederholt')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf21" class="hint-content">Musterlösung: Der Abstand, nach dem sich das Mustermotiv auf der Tapete wiederholt. Erzeugt Verschnitt beim Zuschnitt.</div>
+            </div>
+
+            <div class="task-card" id="f22">
+                <div class="question-header">
+                    <p class="question-text">22. Welchen produktionstechnischen Vorteil bietet eine Vliestapete gegenüber einer klassischen Papiertapete bei der Verarbeitung?</p>
+                    <div class="info-icon" onclick="toggleHint('hf22')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f22', 'wandeinklebetechnik dimensionsstabil weichzeit trocken wand')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf22" class="hint-content">Musterlösung: Sie ist dimensionsstabil (dehnt sich nicht aus) und kann trocken direkt in das eingekleisterte Bett eingelegt werden (Wandeinklebetechnik).</div>
+            </div>
+
+            <div class="task-card" id="f23">
+                <div class="question-header">
+                    <p class="question-text">23. Welcher Kleistertyp wird zur Erhöhung der Klebkraft für schwere Wandbekleidungen wie Vinyl- oder Prägetapeten mit normalem Stärkekleister gemischt?</p>
+                    <div class="info-icon" onclick="toggleHint('hf23')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f23', 'kunstharz spezialkleister kunstharzkleister')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf23" class="hint-content">Musterlösung: Spezialkleister mit Kunstharzzusatz (oder reiner Dispersionskleber).</div>
+            </div>
+
+            <div class="task-card" id="f24">
+                <div class="question-header">
+                    <p class="question-text">24. Um Stahlkonstruktionen wirksam kathodisch vor Rost zu schützen, wird welches Metall als Pigment in einer hochdosierten Grundbeschichtung eingesetzt?</p>
+                    <div class="info-icon" onclick="toggleHint('hf24')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f24', 'zink zinkstaub zinkstaubgrundierung')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf24" class="hint-content">Musterlösung: Zink (z. B. eine Zinkstaubgrundierung fungiert als Opferelektrode).</div>
+            </div>
+
+            <div class="task-card" id="f25">
+                <div class="question-header">
+                    <p class="question-text">25. Welcher mechanische Norm-Reinheitsgrad (z. B. Sa 2,5) wird für Stahl durch Sandstrahlen gefordert, um eine langlebige Korrosionsschutzbeschichtung aufzutragen?</p>
+                    <div class="info-icon" onclick="toggleHint('hf25')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f25', 'sa 2,5 sa2,5 oberfläche metallisch blank')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf25" class="hint-content">Musterlösung: Sa 2,5 (Sehr gründliches Strahlen, die Oberfläche muss fast vollständig metallisch blank sein).</div>
+            </div>
+
+            <h2>Bereich 5: Bautenschutz, Wärmedämmung & Arbeitssicherheit</h2>
+
+            <div class="task-card" id="f26">
+                <div class="question-header">
+                    <p class="question-text">26. Was versteht man im Fassadenbereich unter einem WDVS?</p>
+                    <div class="info-icon" onclick="toggleHint('hf26')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f26', 'wärmedämmverbundsystem wärmedämmung dämmung fassade')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf26" class="hint-content">Musterlösung: Wärmedämm-Verbundsystem.</div>
+            </div>
+
+            <div class="task-card" id="f27">
+                <div class="question-header">
+                    <p class="question-text">27. Welchen Zweck erfüllt die Gewebearmierung im Armierungsputz eines Wärmedämm-Verbundsystems?</p>
+                    <div class="info-icon" onclick="toggleHint('hf27')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f27', 'risse zugkräfte spannung rissbildung auffangen')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf27" class="hint-content">Musterlösung: Sie nimmt Zugspannungen auf und verhindert Rissbildungen im Außenputz durch Temperaturschwankungen.</div>
+            </div>
+
+            <div class="task-card" id="f28">
+                <div class="question-header">
+                    <p class="question-text">28. Was gibt der Sd-Wert bei einer Beschichtung oder Folie bauphysikalisch an?</p>
+                    <div class="info-icon" onclick="toggleHint('hf28')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f28', 'wasserdampfdiffusion diffusion diffusionsoffen atmungsaktivität widerstand dampf')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf28" class="hint-content">Musterlösung: Die wasserdampfdiffusionsäquivalente Luftschichtdicke (wie stark das Material das Entweichen von Wasserdampf bremst).</div>
+            </div>
+
+            <div class="task-card" id="f29">
+                <div class="question-header">
+                    <p class="question-text">29. Ab welcher Absturzhöhe muss auf Baustellen laut BG-Vorschrift beim Arbeiten auf Gerüsten zwingend ein dreiteiliger Seitenschutz vorhanden sein?</p>
+                    <div class="info-icon" onclick="toggleHint('hf29')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f29', '2 meter zwei 2,0')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf29" class="hint-content">Musterlösung: Ab 2,00 m Absturzhöhe ist ein Seitenschutz (Geländerholm, Zwischenholm, Bordbrett) vorgeschrieben.</div>
+            </div>
+
+            <div class="task-card" id="f30">
+                <div class="question-header">
+                    <p class="question-text">30. Welche Filterklasse muss eine Atemschutzmaske (Partikelfilter) mindestens aufweisen, wenn krebserzeugende oder hochgiftige Feinstäube (z.B. bleihaltige Altanstriche) geschliffen werden?</p>
+                    <div class="info-icon" onclick="toggleHint('hf30')">ℹ</div>
+                </div>
+                <input type="text" class="answer-input" placeholder="Deine Antwort...">
+                <button class="check-btn" onclick="checkAnswer('f30', 'ffp3 p3 ffp 3')">Prüfen</button>
+                <div class="feedback"></div>
+                <div id="hf30" class="hint-content">Musterlösung: Partikelfilterklasse P3 bzw. eine FFP3-Maske.</div>
+            </div>
+
         </div>
     </div>
 
@@ -299,10 +581,4 @@
                 feedback.innerText = "✗ Bitte schreibe erst eine fachliche Antwort hinein.";
                 feedback.className = "feedback wrong";
             } else {
-                feedback.innerText = "✗ Das trifft den Kern noch nicht ganz. Klicke auf das ℹ für die Fachbegriffe.";
-                feedback.className = "feedback wrong";
-            }
-        }
-    </script>
-</body>
-</html>
+                feedback.innerText = "✗ Das
