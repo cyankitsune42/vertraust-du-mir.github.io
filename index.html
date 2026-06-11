@@ -24,6 +24,72 @@
             overflow-y: auto; 
         }
 
+        /* STYLING FÜR DAS NEUE DROPDOWN-MENÜ OBEN LINKS */
+        .nav-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            background: linear-gradient(135deg, #3a2312 0%, #1a1008 100%);
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            padding: 10px 15px;
+            font-family: 'Georgia', serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-btn:hover {
+            background: linear-gradient(135deg, #5c3513 0%, #2c1a10 100%);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #2c1a10;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
+            border: 1px solid #d4af37;
+            border-radius: 4px;
+            margin-top: 5px;
+            z-index: 1001;
+        }
+
+        .dropdown-content a {
+            color: #fcf5e3;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #4a2f15;
+            color: #d4af37;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Ausblenden der neuen Seiten im Standardzustand */
+        .subpage {
+            display: none;
+        }
+
         /* Container für die Zentrierung */
         .wrapper {
             min-height: 100vh;
@@ -130,23 +196,52 @@
 </head>
 <body>
 
+    <div class="nav-container">
+        <div class="dropdown">
+            <button class="dropdown-btn">☰ Navigation</button>
+            <div class="dropdown-content">
+                <a href="#" onclick="switchPage('start')">Startseite</a>
+                <a href="#" onclick="switchPage('pruefung')">Prüfungsvorbereitung</a>
+                <a href="#" onclick="switchPage('mathe')">Mathe</a>
+                <a href="#" onclick="switchPage('wiso')">WISO & GK</a>
+            </div>
+        </div>
+    </div>
+
     <div class="wrapper">
 
         <div class="parchment">
             <div class="close-x" id="closeBtn" onclick="showStartPage()">✕</div>
 
-            <div id="seite1">
-                <p class="message">
-                    Diesmal hat es leider nicht geklappt... aber wann immer es dich mal auf diese Seite verirrt, vergiss niemals: Ich bin für dich da. ✨
-                </p>
-                <button class="start-cheer-btn" onclick="showLaunePage()">
-                    Brauchst du ein kurzes Lächeln? Klick hier auf den Button!
-                </button>
+            <div id="main-content">
+                <div id="seite1">
+                    <p class="message">
+                        Diesmal hat es leider nicht geklappt... aber wann immer es dich mal auf diese Seite verirrt, vergiss niemals: Ich bin für dich da. ✨
+                    </p>
+                    <button class="start-cheer-btn" onclick="showLaunePage()">
+                        Brauchst du ein kurzes Lächeln? Klick hier auf den Button!
+                    </button>
+                </div>
+
+                <div id="seite2" class="laune-bereich">
+                    <div class="compliment-box" id="complimentText"></div>
+                    <div class="sub-text">✨ Lehn dich zurück, die Sprüche wechseln von ganz allein... ✨</div>
+                </div>
             </div>
 
-            <div id="seite2" class="laune-bereich">
-                <div class="compliment-box" id="complimentText"></div>
-                <div class="sub-text">✨ Lehn dich zurück, die Sprüche wechseln von ganz allein... ✨</div>
+            <div id="page-pruefung" class="subpage">
+                <h2 style="color: #4a2f15; font-family: 'Georgia', serif;">Prüfungsvorbereitung</h2>
+                <p class="message" style="font-size: 1.1rem;">Hier entsteht dein Bereich für die Prüfungsvorbereitung. Du kannst diesen Text ganz einfach nach deinen Wünschen anpassen.</p>
+            </div>
+
+            <div id="page-mathe" class="subpage">
+                <h2 style="color: #4a2f15; font-family: 'Georgia', serif;">Mathe</h2>
+                <p class="message" style="font-size: 1.1rem;">Hier entsteht dein Bereich für mathematische Übungen und Formeln.</p>
+            </div>
+
+            <div id="page-wiso" class="subpage">
+                <h2 style="color: #4a2f15; font-family: 'Georgia', serif;">WISO & GK</h2>
+                <p class="message" style="font-size: 1.1rem;">Hier entsteht dein Bereich für Wirtschafts- und Sozialkunde sowie Gemeinschaftskunde.</p>
             </div>
 
         </div>
@@ -167,6 +262,32 @@
 
         let intervalId = null;
         let currentIndex = 0;
+
+        // NEU: JavaScript-Funktion zum Wechseln zwischen den Seiten
+        function switchPage(pageId) {
+            // Zuerst alle Inhaltsbereiche ausblenden
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('page-pruefung').style.display = 'none';
+            document.getElementById('page-mathe').style.display = 'none';
+            document.getElementById('page-wiso').style.display = 'none';
+            
+            // Falls der Komplimente-Timer läuft, stoppen wir ihn beim Verlassen der Startseite
+            if (intervalId) {
+                clearInterval(intervalId);
+            }
+
+            // Den gewünschten Bereich anzeigen
+            if (pageId === 'start') {
+                document.getElementById('main-content').style.display = 'block';
+                showStartPage(); // Setzt den Ursprungszustand der Startseite wieder her
+            } else if (pageId === 'pruefung') {
+                document.getElementById('page-pruefung').style.display = 'block';
+            } else if (pageId === 'mathe') {
+                document.getElementById('page-mathe').style.display = 'block';
+            } else if (pageId === 'wiso') {
+                document.getElementById('page-wiso').style.display = 'block';
+            }
+        }
 
         function changeCompliment() {
             const box = document.getElementById('complimentText');
